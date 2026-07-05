@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05 01:19",
+  "updatedAt": "2026-07-05 04:08",
   "tickers": [
     {
       "ticker": "NVDA",
@@ -23,16 +23,16 @@
           "source": "Seeking Alpha"
         },
         {
-          "title": "Hers’s Why NVIDIA (NVDA) is One of the Best AI and Technology Stocks to Buy Now - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeUFnczZkZ3RReUJoaUVmc0dydG1wLWFuWVpDZkR5aEdLTmFjak53REdvSDgweUtWbGIyUVRGc3ZOdXJHMUtxMnRvRHk4RGN0OWZMeDRYeHE3S201aXhYWWJKQUJhSnZKYWNKenN1a180VWdxSE5GVEI3MG1ISnZkSnhjX21ZLTctZXUtUHRlWU1zZw?oc=5",
-          "pub": "Sat, 04 Jul 2026 14:08:47 GMT",
+          "title": "Is NVIDIA Corporation (NVDA) The Best Robotics Stock to Buy According to Short Sellers? - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNc25kYTdiUzBha2xfenctclZJdGRKWjk5UjhUeEpFc2JGNDR0SUppa05JYlRuV0ZkaUVWRWZFM2pLY29kRUJ2VUItSHl4SkJuVDhlbXVmNGl2QUJVYmdrSy11bkJzMjZua0RhUmNWNFlCNDIzM3RIUngtejNkcnJqM01YN0lPTmRUMm42elJLWTlRUEhzMHlfTDV6cmJ3Q2JzV0dj?oc=5",
+          "pub": "Sat, 04 Jul 2026 13:47:44 GMT",
           "source": "Yahoo Finance"
         },
         {
-          "title": "Rep. Daniel Meuser Sells Off NVIDIA Corporation (NASDAQ:NVDA) Shares - MarketBeat",
-          "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNc3hLYXJUYkNkeVdMVGllOS1XN1hmWUF3c1NwbENDZl9JcERDclhMbHJTdlNXdWEwTFh4VmpYdFhuUVd6S2lPQ016YXpCUmdndzNfR0l6YUxkUzR6UHJsQVVURnptejFLTko2a2hFVF9QRm40QmJVV2lxeU9jRTdLXzRHVjdiYXBQTFlmZVR5WUM5N3dtU1JJWmM0MFhwWHFkbUhZNEtRdHFnRjNJdVdVMVk0MnVaQWdzX0E?oc=5",
-          "pub": "Sat, 04 Jul 2026 15:04:05 GMT",
-          "source": "MarketBeat"
+          "title": "Nvidia vs. Strategy: Which Stock Has a Better Chance of Surging 10x by 2036? - The Motley Fool",
+          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQR05NdE4yWU9IdUdnWkJ1SE1tamJrWlpVRl9oUzE2QUZjMFhkVktzamFXc2drUDBSYjFCVUtyenpCVkRNbFZDclZfaFdGQmpQdnJaNDF6eTNVU2g0Z2EtZlQzekgtM1F5cTYtMGV5YWRrczg2ZmpCaWZzaUtHcXJEU3h5Q2FYVndZM3pjeWR1TTc?oc=5",
+          "pub": "Sat, 04 Jul 2026 17:07:00 GMT",
+          "source": "The Motley Fool"
         }
       ]
     },
@@ -52,6 +52,12 @@
       "shortRatio": 1.1,
       "news": [
         {
+          "title": "Jim Cramer Highlights Intel’s “Three Major Growth Opportunities” - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNNllScnY0TkxpWHdNSjZzNTdFLV9rYnJ0ZlFyNE1HSng0RVB6eThUekViUEtEYWVtaThwNnNTWno4YURVcktkRTBMdWtKMF9Rb1p1ZUt0OGdsNjA4aVhoeU9aZGl0b1dRY3ZfcFg5QUhCUDJPekVPbjdyLWlpZG4zeHZidTkydkZtLWZYTnItX0hIOEhVdlJRRGt0cTJLMUk?oc=5",
+          "pub": "Fri, 03 Jul 2026 18:02:19 GMT",
+          "source": "Yahoo Finance"
+        },
+        {
           "title": "Intel: AI Efficiency Could Counter Semiconductor Demand - Seeking Alpha",
           "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcFA1RDk4TUNBS2llSHcxWEYySmNTWG5ybHZNTU5sTEFtY3VaWmg5VWlfWVU5THI3QjFUdTctQ1lmendIMTBPYmdSeHdjZzJHanMzQ0tOQ1dXdnFsYjVBcDdxWnh5c0NGWW1XNHZHZGdnTlRiN1d1YnFxd3dLTlFHaHJNODV6ajdYWEFRbWMxZm5DSUUxTmQwd3VFZw?oc=5",
           "pub": "Sat, 04 Jul 2026 08:14:22 GMT",
@@ -62,12 +68,6 @@
           "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWWkwV1IyaWFxeThDS2tGZGhIbjNQWnVIN0stbkhfaXZiaTh1N2hvUWpPSlhrRm9FNkZpWVNJa2ozLXB1ZW5wdWR4eFQ0TGVSaTVZVkYyY2h2UkRfRTVVTDEwOUZsQzJJZDVnZFFHSjBnNkZ1R0VLaVNSQkR2eVJmeG5pd2FYZGpIbktidFp6M3l2dkFzVk1lM09DbzNvZTBpcTk5UHVYckVkNXZfQmV2c3dXekIxaUJLT3lkd0xB?oc=5",
           "pub": "Thu, 02 Jul 2026 15:17:03 GMT",
           "source": "Investing.com"
-        },
-        {
-          "title": "Jim Cramer Highlights Intel’s “Three Major Growth Opportunities” - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNNllScnY0TkxpWHdNSjZzNTdFLV9rYnJ0ZlFyNE1HSng0RVB6eThUekViUEtEYWVtaThwNnNTWno4YURVcktkRTBMdWtKMF9Rb1p1ZUt0OGdsNjA4aVhoeU9aZGl0b1dRY3ZfcFg5QUhCUDJPekVPbjdyLWlpZG4zeHZidTkydkZtLWZYTnItX0hIOEhVdlJRRGt0cTJLMUk?oc=5",
-          "pub": "Fri, 03 Jul 2026 18:02:19 GMT",
-          "source": "Yahoo Finance"
         }
       ]
     },
@@ -99,10 +99,10 @@
           "source": "Barchart.com"
         },
         {
-          "title": "The Wide Divide Priced Into Advanced Micro Devices Stock - Trefis",
-          "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQMEhnZGtMTVVmSldlRzBBcS05UVB4MzBvQjlIaVhtdEc2a2ZrNEtPWFhyUkFOQ0hKY1lfdUhBTHJWQk05QlVCX3RHOUhQTmJFSXM2Ny1BZGxqeEpRVl9yMHpHZjJlYkZHUGYtTHFjU0ZCYXRQMjJiRU5EZ0tfNF9zTFZVNVE1SzlDeWhiUWV4dV92bmtmUHhiZkp6Y0ZvcTVpT1psOUM0TDdjNFFlVjVYZTBDQlJoa1E?oc=5",
-          "pub": "Thu, 02 Jul 2026 15:29:28 GMT",
-          "source": "Trefis"
+          "title": "Why July Could Be a Big Month for AMD Stock Investors - The Motley Fool",
+          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNclo4aFRBcEhhYThJOWxHRmNXOGIyRHg5dWdnVEZJeFVPeE5vLXVzOElXc0FLRHFLSUx3MTlNcGlxdy1hVFNTT1B1WnR0eEc4Y0x1TDN3ZWE0SGdzZHFpYVhBdlJ6MlB6eDlUQXNsQXY0YzM0RjFyXzl1VmdMUEtRWE5xbENVc0ZVNXRsZWlCMUFmQ0xIZ0tUZQ?oc=5",
+          "pub": "Sat, 04 Jul 2026 20:59:00 GMT",
+          "source": "The Motley Fool"
         }
       ]
     },
@@ -134,9 +134,9 @@
           "source": "The Motley Fool"
         },
         {
-          "title": "Prediction: Micron Technology Stock Will Hit at Least $2,000 in 1 Year - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbmgwT21OVEF4UG1JZWk3NHFoVDh6R1FzNTZUYTJUTTR6UlZ6cEJsNjdEWHN0akFTOWtLaDd4d3pTMDAtQWJzYTM0R0hxS1ppNkZVMUxGMXlmZV81eml5TlpCeEhkMG15cEdsU2FubVJ0OFlZOWt5dkU3T1JwUVZkUlk2QUVkWVFBSEVnVkhZc3pKdTVjd1RkQnZ3UlNfa0dHcVJreGd3?oc=5",
-          "pub": "Sat, 04 Jul 2026 19:01:00 GMT",
+          "title": "Retail Investors’ Verdict: Micron Technology (MU) is Better Than Space (SPCX) - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxOSm5ySU1lc0hyYzNtWW4xdEJ1OGxicnVmNzVZbEVocGpJVkZsWkhXNEZUbzBNVG9qOTVvN1lUTnctaU0tbDNHTnZZX0xhMHZLc1dWa2hYbHB0MC1XbUlXTmczNENUc2NvTER6NWVpMjg4NWhMQi1sLWxQMlFOODYyUGpuWEc1YVp0ckZVWjM1MmtpdXF2M2ZFcnRCN29SWXZvSHdZUUU1ZEtTWUE?oc=5",
+          "pub": "Fri, 03 Jul 2026 13:22:34 GMT",
           "source": "Yahoo Finance"
         }
       ]
@@ -157,16 +157,16 @@
       "shortRatio": 1.95,
       "news": [
         {
+          "title": "Broadcom: This Is Just The Start Of A New Leg Up (NASDAQ:AVGO) - Seeking Alpha",
+          "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNLXc4cTlVOUNBY19HejdCMV9NeDZ3UDRzX0diWjR0amNqeFBtOEpJZk9PTi04TG10ZmIzY1B6bWJVYkdZQWpvUEU4V0JyRndFY3VEd0dTMjFPbjZPejNrOUFhX3B4N2hxSzFwOWxyOEpzOHFsN203UVVWSkxwWkloY0tVOWRtaEw0N2c?oc=5",
+          "pub": "Sat, 04 Jul 2026 14:30:00 GMT",
+          "source": "Seeking Alpha"
+        },
+        {
           "title": "Broadcom Inc. (AVGO) Down 14% Since Last Earnings Report: Can It Rebound? - Yahoo Finance",
           "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRjRYQi1aczBrUVRQMUw5UmpmUkd6RVNaYWFydHd4WXdld0tNODVBVzM5Y1BULUp6RHZJdDNSclNwZ2pPaFN1eW4wQUpjTnRzQXVhYUUyZ3NsX2N6enctTUkyNGVwMmlINkU0UVpPVEhMelBnV0tUWlZHUXUtMGloWklTV1ljZXBmeXFpZ3V1UmFhMS01?oc=5",
           "pub": "Fri, 03 Jul 2026 15:30:03 GMT",
           "source": "Yahoo Finance"
-        },
-        {
-          "title": "Broadcom: Wall Street's ~$115 Billion FCF Consensus Crumbles Under Stresstesting (AVGO) - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQd3h6RGdYOTVXQXhMT3J0ZEhDZjhJXzZoTWFoUHNtYUZQNTU0TXhkSXh4NWc2ZHFEX3RjZzlIcUNTNkZ1MjhucVV5eVdIbm85YVZPeXdmX2VEelZJRThSazBLRW1lNng4ei1BRFgzNHVBdUpGRkRKYWdNclYzVEJNLTlRYjd4c2JwRnJrM3Q2Qlo2OWFqczgydEFJTUJfWmdYLVluVEg4dzZROVRLMEI4dDVtRVF5eWVCUmFfT09BUjg?oc=5",
-          "pub": "Fri, 03 Jul 2026 07:16:08 GMT",
-          "source": "Seeking Alpha"
         },
         {
           "title": "Broadcom Inc. stock underperforms Thursday when compared to competitors - MarketWatch",
@@ -219,7 +219,7 @@
       "d1": -7.354318890818135,
       "d7": -9.724554187523394,
       "d30": 23.05682951717771,
-      "ytd": 124.84572902196889,
+      "ytd": 124.84570343768908,
       "offHigh52w": -16.591980909081084,
       "volume": 15071700,
       "volRatioPct": 116.6887320532091,
@@ -262,22 +262,22 @@
       "shortRatio": 2.93,
       "news": [
         {
-          "title": "3 Reasons Why Growth Investors Shouldn't Overlook Lam Research (LRCX) - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNRE1RMmxzeTNnd2NHVVJPX3BST21rQWRpYWdZRURuZ2RVTVNKY2xkVHVsMUd1MnRjYXY4c0lYanZBcnlXWEhNZVZJbDlIRFNiZ2prWHVCUkNjeTdRSkxSYzJyZnBORDJRaGUxXzJ0WkdvOW5qbXhyYWRKbzN1QW50QWFWaElydEx1RWx3SlZ5dVBkUWZDN3ByMnNBdw?oc=5",
-          "pub": "Thu, 02 Jul 2026 16:45:01 GMT",
+          "title": "Jim Cramer Says He Kept Waiting for Breaks in Stocks Like Lam Research Which Never Came - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNekhJRVhwcXA3YXlHUmdBZ1FwN3ZaRExLcXViUWdVM3NYWlZpcjZ4S2NUOEJpNXA5NnBTcVByemxUZU1Ud1hYZS02RHNXeUpVcmNwb243a05PcEh6akJzYkZ2MXRlZy1RYWxGcTF1MDZULVh6VlNYSEV3c2dhZEo5OXdOV21EWExrZE5TR1RwVS15TjFYUG81aw?oc=5",
+          "pub": "Sat, 04 Jul 2026 14:24:12 GMT",
           "source": "Yahoo Finance"
         },
         {
-          "title": "Semiconductor Equipment Stocks Continue to Decline; Lam Research (LRCX.US) Drops Over 15% in Two Days - Moomoo",
-          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTTBzYWF5bE9hOS1SSk5zZW5YcHJzUlM0dTdlcWdTX0ZsTVZlbWhGdjNnV1ZwVDN1UmxxQ2xZdlI4OEwwbTFkeXZTUVJlZTg3TDBpU19raDk3MHY4Z3lYdURjYW5GQXBEVjAtNFozMm9aeFlQTE9zdnd0S2J0czNtT0Q4QlV2T3B3U1MtSHFJNW84UTZsV2dPLTR5MUtxUERGT2lmLUZXN3hhZjd4YUotdA?oc=5",
-          "pub": "Thu, 02 Jul 2026 15:46:39 GMT",
-          "source": "Moomoo"
+          "title": "QRG Capital Management Inc. Raises Stock Holdings in Lam Research Corporation $LRCX - MarketBeat",
+          "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPZDloQ19vXzlNVmNKdUpmQkJpU01JU2lSWGJ3R3RPS003cDFJazNyVk9heFJDaHpkMHQ0WnNSMlJiUjM5dVhvTWNMaVNnWW1wTjNkV053MVBWOFMxb3NlWlhrYUpnRTNLeTJTc2FyRzZGdzZkMTVTdXZOUlV1ekdHWEowV0dKdlVqTFI5cnRESENFS2g4SFVwcUFIY0FibWJWRU9YaWtWaGhnN1FWUFdkX3FPNS1kUGhsTkktOXh1WmE4NXk0T2pROEtGSzhrdUN4ZHBxeVRnVXp4QQ?oc=5",
+          "pub": "Sat, 04 Jul 2026 10:02:58 GMT",
+          "source": "MarketBeat"
         },
         {
-          "title": "Lam Research Corp. stock underperforms Thursday when compared to competitors - MarketWatch",
-          "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOck9RdlJRR3UzVS1fV3NtYzliRHZ0N1JPM0lGRTZ6MF95TmI4ZTJ5aHRTSF9McXhSVDJ4M2o3U192YURDSjNJWERpeEh3X3VhUmg1Rml2WG1IaWNHcXhjWWlVU1MwSHc1eWlQM3JrdzY3aUxaUTdMS19pOGd0T1AwZzIwb3BBenBmRWVMTUE0TFlObWYyZFZtNGFLdnJHUXFWS0ZvbUtXYTBQUnlTX1R1b0g4dFR1aWJ3QUQxdkJZdGNwSkwyQ3JaalpWTDZtbjlx?oc=5",
-          "pub": "Thu, 02 Jul 2026 20:30:00 GMT",
-          "source": "MarketWatch"
+          "title": "Lam Research Stock Fell 10% in a Day. Here’s Where the Stock Could Go in 2026 - TIKR.com",
+          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPQTBEbTJfejZDSWFCRXVhSXlTVVBkUlI2WXpnQ2RLMU5aX0hFaW02ME4zdEFzeWdmNjlQOWZLN2lkenh2Q0VSRmIzOUowclZxVG5CbFNGZnY0SmxKLVZKVVdTME5PV1JodjhzbkVvYzlVMHZFelpEN2k3UElrUWZKZHFaTFZqa2J5U1JGNTJrTFR6NjZkVzRBQW5LdGw1VGYzVUE?oc=5",
+          "pub": "Sat, 04 Jul 2026 14:45:14 GMT",
+          "source": "TIKR.com"
         }
       ]
     },
@@ -448,98 +448,95 @@
       "lang": "영어"
     }
   ],
-  "summary": "이번 주는 AI 메모리 펀더멘털 강세에도 반도체 전반이 급락했다. 특히 MU가 -19.6%로 무너졌는데, 이는 6/24 실적에서 HBM 물량이 2026년까지 완판·데이터센터 매출 +150%·총이익률 75%를 확인했음에도 나온 밸류에이션 되돌림 성격이다. GFS(-18.9%)·AMKR(-18.7%)·MRVL(-12.8%) 등 후공정·ASIC·장비주까지 동반 급락해 사이클 고점 경계가 확산됐다. 반면 INTC(30D +11.5%)·AMAT(30D +23.1%)·LRCX(30D +5.2%)는 상대적 강세를 유지해 리쇼어링·WFE 자본지출 테마의 저변은 살아있으며, BIS의 6월 수출통제 재확인은 미·중 공급망 이원화를 강화했으나 H200 건별 라이선스+25% 관세는 '깨끗한 디커플링'보다 '관리된 재관여'를 시사한다.",
+  "summary": "이번 주 반도체 섹터는 메모리(MU -19.6%)·후공정(AMKR -18.7%, GFS -18.9%)·장비(LRCX -12.5%, AMAT -9.7%)를 중심으로 급락하며 그간의 급등에 대한 차익실현과 AI 메모리 과열 경계가 동시에 표출됐다. 반면 리쇼어링 구조 신호는 강화되어, TSMC가 7월 3일 대만 경제부로부터 애리조나 자회사에 대한 200억 달러 자본 투입을 승인받았고, 인텔 파운드리는 18A-P 리스크 생산 진입·구글 TPU 대량 위탁 보도·엔비디아의 18A 평가 등 모멘텀을 이어갔다. 수출통제 측면에서는 6월 1일 BIS가 중국 본사 기업의 역외 자회사에도 AI칩 규제가 적용됨을 재확인하며 관리된 분절화가 심화됐다. 작업가설('미국의 제조 패권 회복')은 미 본토 증설 가속이라는 지지 신호와, 그 증설을 여전히 대만·한국 기업이 주도한다는 반박 신호가 공존한다.",
   "scenarioProbs": {
     "Base": 45,
-    "Bull": 18,
-    "Bear": 27,
+    "Bull": 20,
+    "Bear": 25,
     "BlackSwan": 10
   },
   "hypothesis": [
     {
       "dir": "up",
-      "w": "중",
-      "txt": "장비·리쇼어링 축(INTC·AMAT·LRCX) 30일 상대강세 유지 — 미국 내 팹·WFE 투자 저변 시그널",
-      "tag": "추정",
-      "note": "주가 스냅샷상 30D INTC +11.5%, AMAT +23.1%, LRCX +5.2%로 유일하게 플러스권. 다만 이번 주(7D)엔 동반 조정.",
+      "w": "강",
+      "txt": "TSMC 애리조나 자회사에 200억 달러 자본 투입, 대만 경제부(MOEA) 승인(7/3)",
+      "tag": "실제",
+      "note": "미·대만 관세협상 연계로 애리조나 총투자 확대 흐름(15% 관세 대가로 최대 4,650억 달러 거론)의 일부. 미 본토 첨단 제조 능력 확충 방향",
       "isNew": true
     },
     {
       "dir": "up",
       "w": "중",
-      "txt": "BIS, 中 본사·모기업 둔 해외 자회사에도 AI칩 라이선스 요건 적용 재확인 — 우회 루프홀 차단",
-      "tag": "실제",
-      "note": "6/1 상무부 가이던스. 블랙웰의 中 본사 기업 대상 우회 선적을 다시 불법화, 공급망 이원화 강화.",
+      "txt": "인텔 18A-P 리스크 생산 진입, 구글 TPU 300만개+ 위탁 보도·엔비디아 18A 멀티다이 평가",
+      "tag": "추정",
+      "note": "18A-P 리스크 생산은 인텔 공식 발표(실제)이나 구글·엔비디아 위탁 규모는 언론 보도 기반 추정. 리쇼어링 가설의 핵심 종목 INTC의 파운드리 신뢰도 변곡점",
       "isNew": true
     },
     {
       "dir": "down",
       "w": "중",
-      "txt": "H200 건별 라이선스(1/15 발효)+25% 관세 = 완전 차단이 아닌 조건부 대중 재관여",
-      "tag": "실제",
-      "note": "'미국의 완전한 제조 패권 회복·디커플링'보다 '관리된 이원화'에 가까워 가설을 부분 반박.",
-      "isNew": true
-    },
-    {
-      "dir": "down",
-      "w": "강",
-      "txt": "리쇼어링 핵심 종목 포함 반도체 전면 급락(INTC -9.4%, GFS -18.9%, AMKR -18.7%)",
-      "tag": "실제",
-      "note": "이번 주 급락은 정책 호재와 무관한 사이클·밸류에이션 리스크 오프. 가설의 단기 시장 지지력 약화.",
+      "txt": "첨단 로직·HBM 주도권은 여전히 대만·한국에 — 미 본토 증설도 아시아 기업이 주도",
+      "tag": "추정",
+      "note": "미국 회복은 자국 기업(INTC)보다 TSMC·삼성·SK하이닉스의 현지 팹 이전 성격이 강해 '패권 회복'의 질적 완성도는 아직 낮음. 이번 주 INTC -9.4%, GFS -18.9% 급락도 온전한 내재화까지의 변동성 반영",
       "isNew": true
     }
   ],
   "cycleSignals": [
     {
-      "name": "HBM/메모리 가격·수급",
+      "name": "HBM/메모리 가격",
       "status": "green",
-      "summary": "Micron 6/24 실적서 HBM 2026년까지 완판, 데이터센터 매출 +150%, 총이익률 75% 확인으로 수급·가격은 견고. 다만 MU가 이번 주 -19.6% 급락해 사이클 고점 경계가 주가에 선반영되는 국면.",
+      "summary": "DRAM 가격 Q1 2026 약 90% 급등, HBM은 2027년까지 완판 기조로 마이크론 3분기(FY26) 매출 414.6억 달러·전년비 +346%·비GAAP 매출총이익률 84.9% 기록. 다만 이번 주 MU -19.6% 급락은 과열·차익실현 신호로 하방 변동성 확대",
       "tag": "실제"
     },
     {
       "name": "WFE/장비 수주",
       "status": "amber",
-      "summary": "30일 기준 AMAT(+23.1%)·LRCX(+5.2%)·ASML(+3.7%) 상대강세로 장비 사이클 저변은 양호하나, 이번 주 AMAT -9.7%·LRCX -12.5%로 급격 조정돼 모멘텀 둔화 신호.",
+      "summary": "AMAT 30일 +23.1% 등 장비 사이클은 강세를 유지했으나 이번 주 AMAT -9.7%·LRCX -12.5%·ASML -3.9%로 조정. 미 의회의 대중 SME(장비) 국가단위 금수 압박이 장비주 수주 전망의 상방·하방 양방향 리스크로 작용",
       "tag": "추정"
     },
     {
-      "name": "AI capex(하이퍼스케일러)",
+      "name": "AI capex",
       "status": "green",
-      "summary": "AI칩 생산이 컴퓨트 증설의 병목이 될 만큼 수요 견조하며 Nvidia Vera Rubin 플랫폼향 메모리 수요가 이를 방증. 다만 이번 주 신규 capex 가이던스는 미확인.",
+      "summary": "하이퍼스케일러 AI 투자와 가속기 수요는 구조적 강세를 지속하는 것으로 판단되나, 이번 주 광범위한 반도체 급락은 AI capex 지속가능성·회수율에 대한 시장 경계가 재부상했음을 시사",
+      "tag": "추정"
+    },
+    {
+      "name": "custom_placeholder",
+      "status": "amber",
+      "summary": "참고: 아래 customChipSignal 참조",
       "tag": "추정"
     }
   ],
   "customChipSignal": {
     "name": "자체칩(ASIC) 동향",
-    "status": "amber",
-    "summary": "커스텀 실리콘 대표주 약세 심화 — AVGO 30D -25.0%, MRVL 30D -15.6%(7D -12.8%). 머천트 GPU 대비 ASIC 테마 모멘텀이 이번 주 뚜렷이 둔화, 하이퍼스케일러 자체칩 채택 속도에 대한 재평가 조짐.",
+    "status": "green",
+    "summary": "구글이 TPU 300만개+ 를 인텔 파운드리에 위탁했다는 보도 등 하이퍼스케일러 자체칩 내재화가 구조적으로 확대. 다만 대표주 AVGO는 30일 -25.0%, MRVL -15.6%로 밸류에이션 조정을 겪으며 단기 모멘텀은 약화",
     "tag": "추정"
   },
   "intelScenario": {
     "current": "Base",
-    "rationale": "INTC는 30일 +11.5%로 리쇼어링·정책 수혜 기대가 상대강세로 반영됐으나, 이번 주 -9.4% 조정. 18A/Panther Lake 램프와 대형 외부 파운드리 고객 확보가 아직 사실로 확인되지 않아 파운드리 전환 스토리는 '진행 중·미검증'.",
-    "keyTrigger": "18A 외부 파운드리 고객(대형 팹리스) 수주 공식화 여부 및 CHIPS·232조 관세 등 정책 지원 신호",
-    "tag": "추정"
+    "rationale": "18A-P의 리스크 생산 진입과 구글 TPU 위탁·엔비디아 18A 평가 보도로 파운드리 신뢰도가 개선되며 30일 +11.5%로 상대적 강세를 보였다. 그러나 14A는 외부 고객의 확정 약정이 있어야 증설한다는 보수적 기조이고 대형 외부 고객의 공식 대량 계약은 미확정 상태이며, 이번 주 -9.4% 급락으로 실행 리스크가 여전함을 보여줬다. Bull로 재평가되려면 14A 신규 고객의 서명(Q3~Q4 예상)이 필요하다.",
+    "keyTrigger": "7월 하순 인텔 Q2 2026 실적 발표에서 파운드리 영업손실 개선 폭과 외부 고객(14A) 약정 진척 코멘트"
   },
   "topNews": [
     {
-      "headline": "BIS, 중국계 해외 자회사까지 AI칩 수출 라이선스 적용 재확인",
-      "summary": "미 상무부 산업안보국은 6월 가이던스를 통해 본사·모기업이 중국에 있는 모든 기업으로 첨단 AI칩 라이선스 요건이 확대 적용됨을 명확히 했다. 이는 블랙웰 등 규제 대상 칩의 해외 우회 선적을 다시 차단하는 조치로, 미·중 공급망 이원화를 재강화한다.",
-      "implication": "우회 루프홀 축소는 미국의 통제 레버리지 강화로 가설에 우호적이나, 이미 발생한 선적분은 소급 금지 아님.",
+      "headline": "TSMC, 애리조나 200억 달러 증설 자본 투입 승인(7/3)",
+      "summary": "대만 경제부(MOEA)가 TSMC의 미국 자회사에 대한 200억 달러 자본 투입을 공식 승인했다. 미·대만 관세협상에서 대만산 관세를 15%로 낮추는 대가로 애리조나 총투자를 최대 4,650억 달러 규모로 확대하는 방안과 연계된 흐름이다.",
+      "implication": "미 본토 첨단 제조 능력 확충은 가속되나, 그 주체가 대만 기업이라는 점에서 '미국 자체 패권 회복'은 부분적 검증에 그친다.",
       "tag": "실제"
     },
     {
-      "headline": "Micron, HBM 2026년 완판·데이터센터 +150%에도 주가 급락",
-      "summary": "6/24 회계연도 Q3 실적에서 Micron은 HBM 물량이 2026년까지 완판됐고 데이터센터 매출이 150% 성장, 총이익률은 75% 기록을 확인했다. 그러나 MU 주가는 이번 주 -19.6%로 급락하며 실적 서프라이즈와 주가가 디커플링됐다.",
-      "implication": "AI 메모리 펀더멘털은 견고하나 사이클 고점·밸류에이션 리스크가 주가를 지배 — 차익실현 우위 국면.",
+      "headline": "인텔 파운드리 모멘텀: 18A-P 리스크 생산 진입·대형 위탁 보도",
+      "summary": "인텔은 VLSI 심포지엄에서 18A 계열 첫 성능 개선판인 18A-P가 리스크 생산에 진입했다고 밝혔다. 여기에 구글이 300만개 이상 TPU를 인텔에 위탁했다는 보도와 엔비디아의 18A 멀티다이 GPU 평가 소식이 더해지며 파운드리 사업의 변곡 기대가 형성됐다.",
+      "implication": "INTC 리쇼어링 가설의 핵심 촉매이나 외부 대량 계약 확정 전까지는 실행 리스크가 상존한다.",
       "tag": "실제"
     },
     {
-      "headline": "중국 EUV 시제품 보도 vs 의회 '국가 단위 장비 수출금지' 압박",
-      "summary": "로이터는 중국이 EUV 노광 시스템 시제품을 제작했다고 보도했으나, 상업화는 빨라야 2030년으로 평가된다. 동시에 미 의회는 엔티티 단위가 아닌 대중 전면 SME 수출금지(초크포인트 장비 대상)를 요구하며 규제 강화 압박을 이어가고 있다.",
-      "implication": "장기적으로 통제 강화 방향은 장비주(ASML·AMAT·LRCX)의 대중 매출 리스크와 미국 리쇼어링 수혜가 양립하는 이중 구도.",
+      "headline": "AI 메모리 랠리 급반전: 마이크론 등 이번 주 급락",
+      "summary": "마이크론은 3분기(FY26) 매출 414.6억 달러·전년비 +346%, HBM 2027년까지 완판 등 기록적 실적으로 시총 1조 달러를 돌파했으나, 이번 주 MU가 -19.6% 급락하며 메모리·후공정·장비 전반이 동반 조정됐다.",
+      "implication": "메모리 상승 사이클은 유효하나 과열·AI capex 지속성 경계가 부각되며 단기 변동성이 크게 확대됐다.",
       "tag": "실제"
     }
   ],
-  "qualUpdatedAt": "2026-07-05 01:19"
+  "qualUpdatedAt": "2026-07-05 04:08"
 }
