@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-05 09:51",
+  "updatedAt": "2026-07-05 01:19",
   "tickers": [
     {
       "ticker": "NVDA",
@@ -17,16 +17,16 @@
       "shortRatio": 1.72,
       "news": [
         {
-          "title": "Hers’s Why NVIDIA (NVDA) is One of the Best AI and Technology Stocks to Buy Now - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeUFnczZkZ3RReUJoaUVmc0dydG1wLWFuWVpDZkR5aEdLTmFjak53REdvSDgweUtWbGIyUVRGc3ZOdXJHMUtxMnRvRHk4RGN0OWZMeDRYeHE3S201aXhYWWJKQUJhSnZKYWNKenN1a180VWdxSE5GVEI3MG1ISnZkSnhjX21ZLTctZXUtUHRlWU1zZw?oc=5",
-          "pub": "Sat, 04 Jul 2026 14:08:47 GMT",
-          "source": "Yahoo Finance"
-        },
-        {
           "title": "Nvidia: Won't Be This Insanely Cheap For Too Long (NASDAQ:NVDA) - Seeking Alpha",
           "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQazhaRjYtS2RDdDVUV0tpSVdKZ3F2cWlqWjVqaUhtaWd1VTdmcEVGSUtwNWkydm5kcG45SnNuckFCVmtaTzdpaHQ5NzQxV20yUkNwRzhJRXNnamQxMDlzNk4zbkdBUlRMaVBlY092cUhjQldva1ZsNGY4NkJnMjhRTEV2V0dJVjBmVWZjTi1BaUtlQQ?oc=5",
           "pub": "Fri, 03 Jul 2026 15:30:00 GMT",
           "source": "Seeking Alpha"
+        },
+        {
+          "title": "Hers’s Why NVIDIA (NVDA) is One of the Best AI and Technology Stocks to Buy Now - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeUFnczZkZ3RReUJoaUVmc0dydG1wLWFuWVpDZkR5aEdLTmFjak53REdvSDgweUtWbGIyUVRGc3ZOdXJHMUtxMnRvRHk4RGN0OWZMeDRYeHE3S201aXhYWWJKQUJhSnZKYWNKenN1a180VWdxSE5GVEI3MG1ISnZkSnhjX21ZLTctZXUtUHRlWU1zZw?oc=5",
+          "pub": "Sat, 04 Jul 2026 14:08:47 GMT",
+          "source": "Yahoo Finance"
         },
         {
           "title": "Rep. Daniel Meuser Sells Off NVIDIA Corporation (NASDAQ:NVDA) Shares - MarketBeat",
@@ -219,7 +219,7 @@
       "d1": -7.354318890818135,
       "d7": -9.724554187523394,
       "d30": 23.05682951717771,
-      "ytd": 124.84570343768908,
+      "ytd": 124.84572902196889,
       "offHigh52w": -16.591980909081084,
       "volume": 15071700,
       "volRatioPct": 116.6887320532091,
@@ -448,7 +448,7 @@
       "lang": "영어"
     }
   ],
-  "summary": "이번 주 반도체 섹터는 광범위한 리스크오프 국면으로, 메모리(MU -19.6%)·후공정(AMKR -18.7%)·파운드리 서비스(GFS -18.9%)가 동반 급락했다. 마이크론은 DRAM 관련 소송과 공급과잉 우려로 주가가 $1,000 아래로 밀렸으나, 회계 3분기 매출 $41.46B로 컨센서스를 상회했고 2026년 HBM 물량은 사실상 완판 상태여서 구조적 수요는 견조하다. 정책 측면에서는 미 상무부(BIS)가 6월 1일 中 본사 자회사의 해외 법인에도 첨단 AI칩 수출제한이 적용된다고 재확인해 우회로를 차단했으나, H200의 케이스별 허가·25% 관세 병행이라는 '관리된 디커플링' 기조는 유지됐다. 장비주는 주간 약세(AMAT -9.7%, LRCX -12.5%)에도 30일 기준 상대 강세를 지켜, 미국 리쇼어링 설비투자 사이클은 아직 훼손되지 않았다.",
+  "summary": "이번 주는 AI 메모리 펀더멘털 강세에도 반도체 전반이 급락했다. 특히 MU가 -19.6%로 무너졌는데, 이는 6/24 실적에서 HBM 물량이 2026년까지 완판·데이터센터 매출 +150%·총이익률 75%를 확인했음에도 나온 밸류에이션 되돌림 성격이다. GFS(-18.9%)·AMKR(-18.7%)·MRVL(-12.8%) 등 후공정·ASIC·장비주까지 동반 급락해 사이클 고점 경계가 확산됐다. 반면 INTC(30D +11.5%)·AMAT(30D +23.1%)·LRCX(30D +5.2%)는 상대적 강세를 유지해 리쇼어링·WFE 자본지출 테마의 저변은 살아있으며, BIS의 6월 수출통제 재확인은 미·중 공급망 이원화를 강화했으나 H200 건별 라이선스+25% 관세는 '깨끗한 디커플링'보다 '관리된 재관여'를 시사한다.",
   "scenarioProbs": {
     "Base": 45,
     "Bull": 18,
@@ -459,86 +459,87 @@
     {
       "dir": "up",
       "w": "중",
-      "txt": "BIS, 中 본사 기업의 역외 자회사에도 첨단칩 수출제한 적용 재확인 — Blackwell 우회로 차단",
-      "tag": "실제",
-      "note": "6/1 상무부 가이던스로 엔비디아 대상 사실상 재차단. 기술 통제·리쇼어링 압박 강화 신호.",
+      "txt": "장비·리쇼어링 축(INTC·AMAT·LRCX) 30일 상대강세 유지 — 미국 내 팹·WFE 투자 저변 시그널",
+      "tag": "추정",
+      "note": "주가 스냅샷상 30D INTC +11.5%, AMAT +23.1%, LRCX +5.2%로 유일하게 플러스권. 다만 이번 주(7D)엔 동반 조정.",
       "isNew": true
     },
     {
       "dir": "up",
-      "w": "약",
-      "txt": "장비주 30일 상대 강세 유지(AMAT +23.1%, LRCX +5.2%) — 미국 팹 설비투자 사이클 지속",
-      "tag": "추정",
-      "note": "주간은 리스크오프로 하락했으나 중기 WFE 모멘텀은 유지. 리쇼어링 CAPEX 뒷받침.",
+      "w": "중",
+      "txt": "BIS, 中 본사·모기업 둔 해외 자회사에도 AI칩 라이선스 요건 적용 재확인 — 우회 루프홀 차단",
+      "tag": "실제",
+      "note": "6/1 상무부 가이던스. 블랙웰의 中 본사 기업 대상 우회 선적을 다시 불법화, 공급망 이원화 강화.",
+      "isNew": true
+    },
+    {
+      "dir": "down",
+      "w": "중",
+      "txt": "H200 건별 라이선스(1/15 발효)+25% 관세 = 완전 차단이 아닌 조건부 대중 재관여",
+      "tag": "실제",
+      "note": "'미국의 완전한 제조 패권 회복·디커플링'보다 '관리된 이원화'에 가까워 가설을 부분 반박.",
       "isNew": true
     },
     {
       "dir": "down",
       "w": "강",
-      "txt": "H200 케이스별 허가 + 25% 관세 병행으로 對中 상업판매 재개 — 완전 디커플링보다 상업적 실리 우선",
+      "txt": "리쇼어링 핵심 종목 포함 반도체 전면 급락(INTC -9.4%, GFS -18.9%, AMKR -18.7%)",
       "tag": "실제",
-      "note": "12월 이후 완화 기조가 유지되며, 제조패권 회복보다 매출·협상 레버리지 우선이라는 반박 신호.",
-      "isNew": false
-    },
-    {
-      "dir": "down",
-      "w": "중",
-      "txt": "TSM 주가 방어적(7D -0.2%) + 아시아 메모리 지배력 유지 — 아시아 제조 우위 여전",
-      "tag": "실제",
-      "note": "섹터 급락 속 대만 파운드리·한국 HBM의 구조적 지배력은 미국 리쇼어링으로 대체되지 않음.",
+      "note": "이번 주 급락은 정책 호재와 무관한 사이클·밸류에이션 리스크 오프. 가설의 단기 시장 지지력 약화.",
       "isNew": true
     }
   ],
   "cycleSignals": [
     {
-      "name": "HBM/메모리 가격",
-      "status": "amber",
-      "summary": "HBM4 스택가 ~$500(추정)로 상승세이고 2026년 HBM 물량은 완판이나, 이번 주 마이크론이 DRAM 소송·공급과잉 우려로 급락하며 범용 메모리 가격 조정 경계감이 커졌다.",
+      "name": "HBM/메모리 가격·수급",
+      "status": "green",
+      "summary": "Micron 6/24 실적서 HBM 2026년까지 완판, 데이터센터 매출 +150%, 총이익률 75% 확인으로 수급·가격은 견고. 다만 MU가 이번 주 -19.6% 급락해 사이클 고점 경계가 주가에 선반영되는 국면.",
       "tag": "실제"
     },
     {
       "name": "WFE/장비 수주",
       "status": "amber",
-      "summary": "AMAT·LRCX·ASML이 주간 동반 하락(각 -9.7%/-12.5%/-3.9%)했으나 30일 기준으로는 강세를 유지해, 설비투자 사이클은 둔화가 아닌 밸류에이션 되돌림으로 해석된다.",
+      "summary": "30일 기준 AMAT(+23.1%)·LRCX(+5.2%)·ASML(+3.7%) 상대강세로 장비 사이클 저변은 양호하나, 이번 주 AMAT -9.7%·LRCX -12.5%로 급격 조정돼 모멘텀 둔화 신호.",
       "tag": "추정"
     },
     {
-      "name": "AI CAPEX",
+      "name": "AI capex(하이퍼스케일러)",
       "status": "green",
-      "summary": "하이퍼스케일러의 AI 가속기·HBM 수요가 구조적으로 유지되며 마이크론 HBM 완판이 이를 방증하나, 이번 주 신규 CAPEX 상향 확인은 없어 관망 필요.",
+      "summary": "AI칩 생산이 컴퓨트 증설의 병목이 될 만큼 수요 견조하며 Nvidia Vera Rubin 플랫폼향 메모리 수요가 이를 방증. 다만 이번 주 신규 capex 가이던스는 미확인.",
       "tag": "추정"
     }
   ],
   "customChipSignal": {
     "name": "자체칩(ASIC) 동향",
     "status": "amber",
-    "summary": "구글 TPU·아마존 Trainium 등 HBM3E 탑재 자체칩 수요는 구조적으로 확대 중이나, 이번 주 ASIC 대표주 MRVL(-12.8%)·AVGO(30D -25.0%)가 급락하며 밸류에이션 부담과 차익실현이 표면화됐다.",
-    "tag": "실제"
+    "summary": "커스텀 실리콘 대표주 약세 심화 — AVGO 30D -25.0%, MRVL 30D -15.6%(7D -12.8%). 머천트 GPU 대비 ASIC 테마 모멘텀이 이번 주 뚜렷이 둔화, 하이퍼스케일러 자체칩 채택 속도에 대한 재평가 조짐.",
+    "tag": "추정"
   },
   "intelScenario": {
     "current": "Base",
-    "rationale": "인텔은 이번 주 -9.4%로 섹터 급락에 동조했으나 30일 기준 +11.5%로 상대 강세를 유지해, 리쇼어링·관세 정책의 수혜 기대가 주가에 반영되고 있다(추정). 다만 18A/14A 외부 대형 고객 확보에 대한 이번 주 신규 확증은 없어 파운드리 전환의 실증은 여전히 미완이다.",
-    "keyTrigger": "18A 대량양산 수율·외부 앵커 고객 발표 및 7월 하순 실적 가이던스"
+    "rationale": "INTC는 30일 +11.5%로 리쇼어링·정책 수혜 기대가 상대강세로 반영됐으나, 이번 주 -9.4% 조정. 18A/Panther Lake 램프와 대형 외부 파운드리 고객 확보가 아직 사실로 확인되지 않아 파운드리 전환 스토리는 '진행 중·미검증'.",
+    "keyTrigger": "18A 외부 파운드리 고객(대형 팹리스) 수주 공식화 여부 및 CHIPS·232조 관세 등 정책 지원 신호",
+    "tag": "추정"
   },
   "topNews": [
     {
-      "headline": "마이크론 $1,000 붕괴 — DRAM 소송·공급과잉 우려로 메모리 급락",
-      "summary": "MU가 주간 -19.6% 급락하며 $1,000 아래로 내려앉았다. DRAM 관련 소송과 공급과잉 경계감이 촉발했으나, 회계 3분기 매출 $41.46B로 예상을 상회했고 2026년 HBM 물량은 완판 상태다.",
-      "implication": "구조적 AI 메모리 수요는 유효하나 범용 DRAM 사이클 정점 논쟁이 단기 변동성을 키운다.",
+      "headline": "BIS, 중국계 해외 자회사까지 AI칩 수출 라이선스 적용 재확인",
+      "summary": "미 상무부 산업안보국은 6월 가이던스를 통해 본사·모기업이 중국에 있는 모든 기업으로 첨단 AI칩 라이선스 요건이 확대 적용됨을 명확히 했다. 이는 블랙웰 등 규제 대상 칩의 해외 우회 선적을 다시 차단하는 조치로, 미·중 공급망 이원화를 재강화한다.",
+      "implication": "우회 루프홀 축소는 미국의 통제 레버리지 강화로 가설에 우호적이나, 이미 발생한 선적분은 소급 금지 아님.",
       "tag": "실제"
     },
     {
-      "headline": "BIS, 中 본사 기업 역외 자회사에도 첨단 AI칩 수출제한 재확인",
-      "summary": "미 상무부는 6월 1일 가이던스에서 중국에 본사·모회사를 둔 모든 기업에 첨단 AI칩 라이선스 요건이 적용된다고 명확히 했다. 이는 Blackwell급 칩의 역외 우회 구매 통로를 다시 차단하는 조치다.",
-      "implication": "H200 완화 기조 속에서도 최상위 칩 통제는 유지 — 관리된 디커플링 프레임 지속.",
+      "headline": "Micron, HBM 2026년 완판·데이터센터 +150%에도 주가 급락",
+      "summary": "6/24 회계연도 Q3 실적에서 Micron은 HBM 물량이 2026년까지 완판됐고 데이터센터 매출이 150% 성장, 총이익률은 75% 기록을 확인했다. 그러나 MU 주가는 이번 주 -19.6%로 급락하며 실적 서프라이즈와 주가가 디커플링됐다.",
+      "implication": "AI 메모리 펀더멘털은 견고하나 사이클 고점·밸류에이션 리스크가 주가를 지배 — 차익실현 우위 국면.",
       "tag": "실제"
     },
     {
-      "headline": "후공정·파운드리 서비스株 동반 급락 — 섹터 전반 리스크오프",
-      "summary": "GFS(-18.9%)·AMKR(-18.7%)·MRVL(-12.8%) 등 장비·OSAT·ASIC 주변부 종목이 메모리와 함께 급락했다. 반면 TSM(-0.2%)은 방어적 흐름을 보이며 대형 파운드리 선호가 부각됐다.",
-      "implication": "위험선호 후퇴 국면에서 자금이 실적 가시성 높은 대형주로 이동, 주변부 밸류에이션 리셋 진행.",
+      "headline": "중국 EUV 시제품 보도 vs 의회 '국가 단위 장비 수출금지' 압박",
+      "summary": "로이터는 중국이 EUV 노광 시스템 시제품을 제작했다고 보도했으나, 상업화는 빨라야 2030년으로 평가된다. 동시에 미 의회는 엔티티 단위가 아닌 대중 전면 SME 수출금지(초크포인트 장비 대상)를 요구하며 규제 강화 압박을 이어가고 있다.",
+      "implication": "장기적으로 통제 강화 방향은 장비주(ASML·AMAT·LRCX)의 대중 매출 리스크와 미국 리쇼어링 수혜가 양립하는 이중 구도.",
       "tag": "실제"
     }
   ],
-  "qualUpdatedAt": "2026-07-05 09:51"
+  "qualUpdatedAt": "2026-07-05 01:19"
 }
