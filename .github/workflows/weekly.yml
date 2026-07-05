@@ -1,0 +1,47 @@
+name: Weekly Semiconductor Dashboard
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'   # 매주 월요일 KST 09:00 (UTC 00:00)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-send:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch quantitative data (tickers + news)
+        run: python run_semi.py --no-email
+
+      - name: Update qualitative sections (Claude API + web search)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python semi_qual.py
+
+      - name: Send Email
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python send_email_semi.py
+
+      - name: Commit and push index.html + data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html data.json
+          git diff --staged --quiet || git commit -m "chore: weekly dashboard update"
+          git push

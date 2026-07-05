@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반도체 투자 대시보드</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --bg-2:#141414; --bg-3:#1c1c1c;
+  --ink:#ededed; --ink-2:#a3a3a3; --ink-3:#6b6b6b;
+  --line:#2a2a2a; --line-2:#3a3a3a;
+  --accent:#d4a574; --accent-2:#7da3c4;
+  --warn:#c4926b; --danger:#b86a6a; --success:#7a9b7a;
+  --serif:'Fraunces',ui-serif,Georgia,serif;
+  --sans:'IBM Plex Sans KR',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+.shell{max-width:1280px;margin:0 auto;padding:48px 36px 80px}
+@media(max-width:768px){.shell{padding:28px 18px 48px}}
+
+/* HEADER */
+.head{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:40px}
+.head-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.title{font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:400;line-height:1.05;letter-spacing:-0.02em;font-style:italic}
+.subtitle{font-size:13px;color:var(--ink-2);margin-top:12px;line-height:1.6}
+.meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-align:right;line-height:1.8}
+.meta strong{color:var(--ink-2);font-weight:400}
+.badge-new{font-family:var(--mono);font-size:9px;color:var(--danger);border:1px solid var(--danger)55;padding:1px 5px;border-radius:3px;margin-left:5px;letter-spacing:0.05em}
+
+/* LIVE BANNER */
+.live-banner{background:rgba(212,165,116,0.07);border:1px solid rgba(212,165,116,0.25);border-radius:8px;padding:14px 18px;margin-bottom:32px}
+.live-banner-kicker{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;margin-bottom:6px}
+.live-banner-text{font-size:14px;color:var(--ink);line-height:1.65}
+.live-banner-probs{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px}
+
+/* TABS */
+.tabs{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:40px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:12px 18px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);background:none;border:none;cursor:pointer;border-bottom:1px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all 0.2s}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-num{display:inline-block;margin-right:6px;font-size:10px}
+.tab.active .tab-num{color:var(--accent)}
+
+/* PANEL */
+.panel{display:none;animation:fade 0.3s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* TYPOGRAPHY */
+h2{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-0.01em;margin-bottom:8px;font-style:italic}
+h3{font-family:var(--serif);font-size:20px;font-weight:500;margin:28px 0 10px;letter-spacing:-0.01em}
+h4{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-2);margin:20px 0 10px;font-weight:500}
+.lead{font-size:14px;color:var(--ink-2);max-width:680px;line-height:1.7;margin-bottom:28px}
+p{font-size:13px;color:var(--ink-2);line-height:1.7;margin-bottom:10px}
+
+/* STAT CARDS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.stat{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat-label{font-size:11px;color:var(--ink-3);letter-spacing:0.5px;margin-bottom:6px}
+.stat-val{font-family:var(--mono);font-size:26px;line-height:1;margin-bottom:4px}
+.stat-sub{font-size:11px;color:var(--ink-3)}
+.c-red{color:var(--danger)} .c-amber{color:var(--accent)} .c-green{color:var(--success)} .c-blue{color:var(--accent-2)} .c-sub{color:var(--ink-3)}
+
+/* HYPOTHESIS */
+.hypo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+@media(max-width:640px){.hypo-grid{grid-template-columns:1fr}}
+.hypo-panel{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px}
+.hypo-title{font-family:var(--mono);font-size:11px;letter-spacing:1px;margin-bottom:10px}
+.hypo-row{padding:9px 0;border-top:1px solid var(--line)}
+.hypo-row:first-child{border-top:none}
+.hypo-header{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.hypo-w{font-family:var(--mono);font-size:10px;border:1px solid var(--line);padding:1px 5px;border-radius:3px}
+.hypo-txt{font-size:13px;color:var(--ink);line-height:1.45;flex:1}
+.hypo-note{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:0.3px}
+.tag-실제{color:var(--accent-2)} .tag-추정{color:var(--accent)} .tag-가정{color:var(--ink-3)}
+.new-flag{background:rgba(212,165,116,0.15);border-radius:3px;padding:1px 5px;font-size:9px;font-family:var(--mono);color:var(--accent);margin-left:4px}
+
+/* THRESHOLDS */
+.th-filter{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.th-btn{font-size:11px;padding:5px 10px;border-radius:5px;cursor:pointer;background:transparent;color:var(--ink-3);border:1px solid var(--line);transition:all 0.15s}
+.th-btn.active{background:var(--bg-2);color:var(--ink);border-color:var(--accent)}
+.th-list{display:flex;flex-direction:column;gap:7px}
+.th-item{display:flex;gap:12px;align-items:flex-start;border-radius:7px;padding:10px 14px}
+.th-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.th-axis{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.th-name{font-size:13px;color:var(--ink)}
+.th-trigger{font-size:12px;margin-top:4px;line-height:1.5}
+.th-item.red{background:rgba(184,106,106,0.1);border:1px solid rgba(184,106,106,0.3)}
+.th-item.amber{background:rgba(196,146,107,0.08);border:1px solid rgba(196,146,107,0.2)}
+.th-item.green{background:rgba(63,90,74,0.05);border:1px solid var(--line);opacity:0.8}
+
+/* SCENARIOS */
+.sc-tabs{display:flex;gap:6px;margin-bottom:18px}
+.sc-tab{font-size:12px;padding:6px 14px;border-radius:6px;cursor:pointer;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--line)}
+.sc-tab.active{background:var(--accent);color:#1a1206;font-weight:700;border-color:var(--accent)}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.sc-card{background:var(--bg-2);border:1px solid var(--line);padding:18px;border-top:3px solid var(--line-2)}
+.sc-card.bull{border-top-color:var(--success)}
+.sc-card.base{border-top-color:var(--accent)}
+.sc-card.bear{border-top-color:var(--danger)}
+.sc-card.swan{border-top-color:#8a4a9a}
+.sc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.sc-prob{font-family:var(--mono);font-size:20px;font-weight:500;margin-bottom:8px}
+.sc-desc{font-size:12px;color:var(--ink-2);line-height:1.6}
+
+/* INTEL SCENARIO */
+.intel-current{background:rgba(212,165,116,0.08);border:1px solid rgba(212,165,116,0.3);border-radius:8px;padding:16px;margin-bottom:16px}
+.intel-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;margin-bottom:6px}
+.intel-val{font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:8px}
+.intel-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+
+/* TAIWAN */
+.tw-stage{background:var(--bg-2);border-left:3px solid var(--line-2);padding:18px 22px;margin-bottom:10px;border:1px solid var(--line)}
+.tw-stage.p0{border-left-color:var(--ink-3)}
+.tw-stage.p1{border-left-color:var(--accent)}
+.tw-stage.p2{border-left-color:var(--warn)}
+.tw-stage.p3{border-left-color:var(--danger)}
+.tw-header{display:flex;gap:12px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}
+.tw-tag{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.tw-name{font-family:var(--serif);font-size:17px;color:var(--ink)}
+.tw-prob{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.tw-desc{font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:10px}
+.tw-assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-bottom:10px}
+.tw-asset{background:var(--bg-3);padding:10px 12px}
+.tw-asset-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+.tw-asset-name{font-family:var(--mono);font-size:12px;color:var(--ink);font-weight:500}
+.tw-asset-r{font-family:var(--mono);font-size:12px}
+.tw-asset-note{font-size:11px;color:var(--ink-3);line-height:1.4}
+.tw-action{font-family:var(--mono);font-size:11px;color:var(--accent);border-top:1px solid var(--line);padding-top:8px;margin-top:4px}
+
+/* STOCKS / LAYERS */
+.layer-section{margin-bottom:28px}
+.layer-header{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-2);margin-bottom:10px;flex-wrap:wrap}
+.layer-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;min-width:80px}
+.layer-name{font-family:var(--serif);font-size:17px;color:var(--ink)}
+.layer-desc{font-size:12px;color:var(--ink-3);margin-left:auto}
+.stock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.stock-card{background:var(--bg-2);border:1px solid var(--line);padding:13px 15px}
+.stock-ticker{font-family:var(--mono);font-size:15px;color:var(--ink);font-weight:500}
+.stock-name{font-size:11px;color:var(--ink-3);margin-left:8px}
+.stock-note{font-size:12px;color:var(--ink-2);margin-top:5px;line-height:1.5}
+
+/* CYCLE / CUSTOM CHIP */
+.cycle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:20px}
+.cycle-card{background:var(--bg-2);border:1px solid var(--line);border-radius:7px;padding:14px 16px}
+.cycle-card.red{border-left:3px solid var(--danger)}
+.cycle-card.amber{border-left:3px solid var(--accent)}
+.cycle-card.green{border-left:3px solid var(--success)}
+.cycle-name{font-size:13px;color:var(--ink);margin-bottom:5px}
+.cycle-summary{font-size:12px;color:var(--ink-2);line-height:1.5}
+
+/* NEWS */
+.news-item{background:var(--bg-2);border:1px solid var(--line);border-radius:7px;padding:16px 18px;margin-bottom:10px}
+.news-headline{font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:6px}
+.news-summary{font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:6px}
+.news-implication{font-size:12px;color:var(--accent);font-style:italic}
+
+/* CONTRARIAN */
+.contra-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.contra-grid{grid-template-columns:1fr}}
+.contra-card{background:var(--bg-2);border:1px solid rgba(184,106,106,0.3);border-radius:8px;padding:16px}
+.contra-h{font-family:var(--serif);font-size:15px;color:var(--danger);line-height:1.3;margin-bottom:8px}
+.contra-b{font-size:13px;color:var(--ink);line-height:1.65}
+
+/* NOTE */
+.note{background:var(--bg-2);border:1px solid var(--line);border-left:2px solid var(--warn);padding:16px 20px;font-size:13px;line-height:1.7;color:var(--ink-2);margin:20px 0}
+.note.danger{border-left-color:var(--danger)}
+.note.info{border-left-color:var(--accent-2)}
+
+/* LOADING / ERROR */
+.loading{text-align:center;padding:60px;color:var(--ink-3);font-family:var(--mono);font-size:13px}
+.err{text-align:center;padding:40px;color:var(--danger);font-family:var(--mono);font-size:13px}
+
+/* FOOTER */
+.foot{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:0.05em;color:var(--ink-3);line-height:1.8}
+.foot strong{color:var(--ink-2);font-weight:400}
+
+@media(max-width:640px){
+  .hypo-grid{grid-template-columns:1fr}
+  .sc-grid{grid-template-columns:1fr 1fr}
+  .contra-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- HEADER -->
+<header class="head">
+  <div class="head-top">
+    <div>
+      <div class="kicker">Semiconductor · Decision Dashboard · Auto-Updated</div>
+      <h1 class="title">반도체 투자<br>의사결정 대시보드</h1>
+      <p class="subtitle">목적: 거래 트리거 + 분기 리밸런싱 · 매주 월요일 KST 09:00 자동 갱신</p>
+    </div>
+    <div class="meta">
+      <strong>DATA</strong> <span id="meta-date">로딩 중…</span><br>
+      <strong>SOURCE</strong> Claude API + Web Search<br>
+      <strong>AUTO</strong> GitHub Actions → Netlify<br>
+      <br>
+      <span style="color:var(--accent-2)">[실제]</span> 확인 사실<br>
+      <span style="color:var(--accent)">[추정]</span> 애널 추정<br>
+      <span style="color:var(--ink-3)">[가정]</span> 시나리오 가정
+    </div>
+  </div>
+</header>
+
+<!-- LIVE BANNER (data.json 로드 후 채워짐) -->
+<div class="live-banner" id="live-banner" style="display:none">
+  <div class="live-banner-kicker">★ 이번 주 시황 요약 · Claude API + 웹검색 자동 갱신</div>
+  <div class="live-banner-text" id="banner-summary"></div>
+  <div class="live-banner-probs" id="banner-probs"></div>
+</div>
+
+<!-- TABS -->
+<nav class="tabs" id="tabs">
+  <button class="tab active" data-tab="overview"><span class="tab-num">01</span>종합</button>
+  <button class="tab" data-tab="threshold"><span class="tab-num">02</span>임계점</button>
+  <button class="tab" data-tab="scenario"><span class="tab-num">03</span>시나리오</button>
+  <button class="tab" data-tab="layers"><span class="tab-num">04</span>AI 레이어</button>
+  <button class="tab" data-tab="news"><span class="tab-num">05</span>주간 뉴스</button>
+  <button class="tab" data-tab="contra"><span class="tab-num">06</span>반대의견</button>
+  <button class="tab" data-tab="briefing"><span class="tab-num">07</span>종목 브리핑</button>
+</nav>
+
+<!-- 01 OVERVIEW -->
+<section class="panel active" data-panel="overview">
+  <h2>종합 — 작업가설 점검표</h2>
+  <p class="lead">가설: '미국이 아시아에 빼앗긴 반도체 제조 패권을 회복하려 한다.' 결론이 아니라 검증 대상.</p>
+  <div class="stat-grid" id="stat-grid">
+    <div class="loading">데이터 로딩 중…</div>
+  </div>
+  <div style="background:var(--bg-2);border:1px solid rgba(212,165,116,0.35);border-radius:8px;padding:14px 18px;margin-bottom:14px" id="judge-box" style="display:none">
+    <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:1px;margin-bottom:6px">현재 종합 판단</div>
+    <div style="font-size:14px;color:var(--ink);line-height:1.7" id="judge-text"></div>
+  </div>
+  <div class="hypo-grid" id="hypo-grid"></div>
+  <div style="margin-top:16px;padding:12px 14px;border:1px dashed var(--line);border-radius:7px;color:var(--ink-3);font-size:12px;line-height:1.6">
+    ⚠ 의사결정 원칙: 각 임계점에 행동(매수/매도/리밸런싱)이 연결돼 있다. 트리거 없는 지표는 정보 수집 취미일 뿐이다.<br>
+    운영 리듬 — 매주 월: 자동 갱신 확인 / 매주 금: 반대가설 점검 / 분기: 시나리오 재보정
+  </div>
+</section>
+
+<!-- 02 THRESHOLDS -->
+<section class="panel" data-panel="threshold">
+  <h2>임계점 알람 — 거래·리밸런싱 트리거</h2>
+  <p class="lead">34개 임계점 신호등. ★사이클(3개) + ★자체칩(1개) 매주 자동 갱신.</p>
+
+  <!-- 자동 갱신 사이클 신호 -->
+  <div id="cycle-section" style="display:none;margin-bottom:20px">
+    <h4>★ 자동 갱신 — 사이클 선행지표 & 자체칩</h4>
+    <div class="cycle-grid" id="cycle-grid"></div>
+  </div>
+
+  <!-- 정적 임계점 -->
+  <div class="th-filter" id="th-filter"></div>
+  <div class="th-list" id="th-list"></div>
+  <div style="margin-top:12px;font-size:11px;color:var(--ink-3)">
+    ★사이클·★자체칩 축은 매주 자동 갱신. 나머지는 매주 월요일 직접 점검 후 상태 판단.
+  </div>
+</section>
+
+<!-- 03 SCENARIOS -->
+<section class="panel" data-panel="scenario">
+  <h2>시나리오 매트릭스</h2>
+  <p class="lead">단일 예측이 아니라 확률 분포. 확률은 매주 자동 재조정.</p>
+  <div class="sc-tabs">
+    <button class="sc-tab active" data-sv="market">시장 전체</button>
+    <button class="sc-tab" data-sv="intel">Intel 단독 ★</button>
+    <button class="sc-tab" data-sv="taiwan">대만 단계별 ★</button>
+  </div>
+  <div id="sc-market" class="sc-view active-sv"></div>
+  <div id="sc-intel" class="sc-view" style="display:none"></div>
+  <div id="sc-taiwan" class="sc-view" style="display:none"></div>
+</section>
+
+<!-- 04 AI LAYERS -->
+<section class="panel" data-panel="layers">
+  <h2>AI 인프라 9레이어 분류</h2>
+  <p class="lead">AI 데이터센터를 구성하는 9개 레이어. 레이어별 AI capex 수혜 직접도와 주요 미국 플레이어. 매수 추천 아님.</p>
+  <div id="layers-content"></div>
+</section>
+
+<!-- 05 NEWS -->
+<section class="panel" data-panel="news">
+  <h2>주간 핵심 뉴스</h2>
+  <p class="lead">이번 주 반도체·지정학 핵심 뉴스 3개. 매주 자동 갱신.</p>
+  <div id="news-list">
+    <div class="loading">뉴스 로딩 중…</div>
+  </div>
+</section>
+
+<!-- 06 CONTRARIAN -->
+<section class="panel" data-panel="contra">
+  <h2>반대 의견 보드</h2>
+  <p class="lead">확증편향 자동화 방지. 보고 싶지 않은 의견을 일부러 노출. 본 뒤 본인 베팅 명제를 재평가하라.</p>
+  <div class="contra-grid" id="contra-grid"></div>
+</section>
+
+<!-- 07 TICKER BRIEFING (run_semi.py 자동 갱신) -->
+<section class="panel" data-panel="briefing">
+  <h2>종목 브리핑 — 자동 갱신</h2>
+  <p class="lead">semi_fetch.py의 TICKERS에 적힌 종목별 시세·공매도·뉴스. run_semi.py 실행 시 갱신. (미국 종목 기준 — 한국 전용 지표 없음)</p>
+  <div id="briefing-list">
+    <div class="loading">데이터 없음 — run_semi.py 실행 시 생성됩니다.</div>
+  </div>
+</section>
+
+<footer class="foot">
+  <strong>DATA</strong> Claude API (claude-sonnet-4-6) + Web Search · GitHub Actions 자동 갱신 · Netlify 호스팅<br>
+  <strong>DISCLAIMER</strong> 매수 추천 아님. 투자 의사결정은 본인 책임.
+</footer>
+</div>
+
+<script>
+// build_semi.py가 data.json을 여기 인라인 → 이메일 첨부(단일 파일)에서도 동작
+window.__DATA__ = {"updatedAt": "2026-07-05 09:51", "tickers": [{"ticker": "NVDA", "name": "NVIDIA Corporation", "date": "2026-07-02", "price": 194.83, "d1": -1.3918412665829716, "d7": -0.46490427943773893, "d30": -12.459799754993439, "ytd": 3.2923625056294314, "offHigh52w": -17.257543544776542, "volume": 142068700, "volRatioPct": 90.23484193401163, "shortPctFloat": 1.2899999500000001, "shortRatio": 1.72, "news": [{"title": "Hers’s Why NVIDIA (NVDA) is One of the Best AI and Technology Stocks to Buy Now - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPeUFnczZkZ3RReUJoaUVmc0dydG1wLWFuWVpDZkR5aEdLTmFjak53REdvSDgweUtWbGIyUVRGc3ZOdXJHMUtxMnRvRHk4RGN0OWZMeDRYeHE3S201aXhYWWJKQUJhSnZKYWNKenN1a180VWdxSE5GVEI3MG1ISnZkSnhjX21ZLTctZXUtUHRlWU1zZw?oc=5", "pub": "Sat, 04 Jul 2026 14:08:47 GMT", "source": "Yahoo Finance"}, {"title": "Nvidia: Won't Be This Insanely Cheap For Too Long (NASDAQ:NVDA) - Seeking Alpha", "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQazhaRjYtS2RDdDVUV0tpSVdKZ3F2cWlqWjVqaUhtaWd1VTdmcEVGSUtwNWkydm5kcG45SnNuckFCVmtaTzdpaHQ5NzQxV20yUkNwRzhJRXNnamQxMDlzNk4zbkdBUlRMaVBlY092cUhjQldva1ZsNGY4NkJnMjhRTEV2V0dJVjBmVWZjTi1BaUtlQQ?oc=5", "pub": "Fri, 03 Jul 2026 15:30:00 GMT", "source": "Seeking Alpha"}, {"title": "Rep. Daniel Meuser Sells Off NVIDIA Corporation (NASDAQ:NVDA) Shares - MarketBeat", "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNc3hLYXJUYkNkeVdMVGllOS1XN1hmWUF3c1NwbENDZl9JcERDclhMbHJTdlNXdWEwTFh4VmpYdFhuUVd6S2lPQ016YXpCUmdndzNfR0l6YUxkUzR6UHJsQVVURnptejFLTko2a2hFVF9QRm40QmJVV2lxeU9jRTdLXzRHVjdiYXBQTFlmZVR5WUM5N3dtU1JJWmM0MFhwWHFkbUhZNEtRdHFnRjNJdVdVMVk0MnVaQWdzX0E?oc=5", "pub": "Sat, 04 Jul 2026 15:04:05 GMT", "source": "MarketBeat"}]}, {"ticker": "INTC", "name": "Intel Corporation", "date": "2026-07-02", "price": 120.35, "d1": -5.251140249742248, "d7": -9.42274185531815, "d30": 11.507456808882921, "ytd": 205.61197361562478, "offHigh52w": -14.609056059755032, "volume": 124577600, "volRatioPct": 94.94810377778192, "shortPctFloat": 2.86, "shortRatio": 1.1, "news": [{"title": "Intel: AI Efficiency Could Counter Semiconductor Demand - Seeking Alpha", "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcFA1RDk4TUNBS2llSHcxWEYySmNTWG5ybHZNTU5sTEFtY3VaWmg5VWlfWVU5THI3QjFUdTctQ1lmendIMTBPYmdSeHdjZzJHanMzQ0tOQ1dXdnFsYjVBcDdxWnh5c0NGWW1XNHZHZGdnTlRiN1d1YnFxd3dLTlFHaHJNODV6ajdYWEFRbWMxZm5DSUUxTmQwd3VFZw?oc=5", "pub": "Sat, 04 Jul 2026 08:14:22 GMT", "source": "Seeking Alpha"}, {"title": "HSBC raises Intel stock price target to $200 on foundry upside - Investing.com", "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQWWkwV1IyaWFxeThDS2tGZGhIbjNQWnVIN0stbkhfaXZiaTh1N2hvUWpPSlhrRm9FNkZpWVNJa2ozLXB1ZW5wdWR4eFQ0TGVSaTVZVkYyY2h2UkRfRTVVTDEwOUZsQzJJZDVnZFFHSjBnNkZ1R0VLaVNSQkR2eVJmeG5pd2FYZGpIbktidFp6M3l2dkFzVk1lM09DbzNvZTBpcTk5UHVYckVkNXZfQmV2c3dXekIxaUJLT3lkd0xB?oc=5", "pub": "Thu, 02 Jul 2026 15:17:03 GMT", "source": "Investing.com"}, {"title": "Jim Cramer Highlights Intel’s “Three Major Growth Opportunities” - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNNllScnY0TkxpWHdNSjZzNTdFLV9rYnJ0ZlFyNE1HSng0RVB6eThUekViUEtEYWVtaThwNnNTWno4YURVcktkRTBMdWtKMF9Rb1p1ZUt0OGdsNjA4aVhoeU9aZGl0b1dRY3ZfcFg5QUhCUDJPekVPbjdyLWlpZG4zeHZidTkydkZtLWZYTnItX0hIOEhVdlJRRGt0cTJLMUk?oc=5", "pub": "Fri, 03 Jul 2026 18:02:19 GMT", "source": "Yahoo Finance"}]}, {"ticker": "AMD", "name": "Advanced Micro Devices, Inc.", "date": "2026-07-02", "price": 517.82, "d1": -4.263422080760771, "d7": -2.7695889361303183, "d30": -0.713266644907129, "ytd": 131.71790598095092, "offHigh52w": -10.860541002386203, "volume": 28142500, "volRatioPct": 88.0695009808474, "shortPctFloat": 2.8800000999999997, "shortRatio": 1.46, "news": [{"title": "Jim Cramer Considers AMD Stock’s Dip as a Buying Opportunity - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPcHpYUU0wc3VlVnZsQmNWUnRNbXJpdjdnNWNGa3FCM2t0U0Z2WkZROGtmREl2bkZYbjlwd0tQSnNWSTZDaGxLVHhrWlhGbUZpLVh3aG5yQ3lzaHBMLUZtLVBtX1EwVzRaaGxpZ2hGaVJIOWdMNzl5V0JWdnkyQjZ6ZWhiUW9qQ3ZlSFdhbDZlTHA4TVRUMGFBOTM0Zw?oc=5", "pub": "Sat, 04 Jul 2026 14:21:32 GMT", "source": "Yahoo Finance"}, {"title": "Analysts at UBS Say Advanced Micro Devices Stock Could Rally to $670 - Barchart.com", "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcHNpOXpRc0pHeFloaTkzb1lsMURYeF9lckdzaXJUdEQ5a1JlWnpoc054eFpNLTlfQ0lrS1Q4ejRiYmNyS2JibUs3Y2FuQjRtZV80ZzRpb09HX0Q4NW1xSEdBOFI5OFRVQ25aWjduVV9FVkpyQU1PbVlyVFdSTmUwMHExZXZVX1BCa3hHNEZ3a01JVXY1d2JxYTgxdlhaXzVIbTAzZk1UR3NtRkJvVXhIbQ?oc=5", "pub": "Wed, 01 Jul 2026 18:55:17 GMT", "source": "Barchart.com"}, {"title": "The Wide Divide Priced Into Advanced Micro Devices Stock - Trefis", "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQMEhnZGtMTVVmSldlRzBBcS05UVB4MzBvQjlIaVhtdEc2a2ZrNEtPWFhyUkFOQ0hKY1lfdUhBTHJWQk05QlVCX3RHOUhQTmJFSXM2Ny1BZGxqeEpRVl9yMHpHZjJlYkZHUGYtTHFjU0ZCYXRQMjJiRU5EZ0tfNF9zTFZVNVE1SzlDeWhiUWV4dV92bmtmUHhiZkp6Y0ZvcTVpT1psOUM0TDdjNFFlVjVYZTBDQlJoa1E?oc=5", "pub": "Thu, 02 Jul 2026 15:29:28 GMT", "source": "Trefis"}]}, {"ticker": "MU", "name": "Micron Technology, Inc.", "date": "2026-07-02", "price": 975.56, "d1": -5.494636157682464, "d7": -19.611724969833478, "d30": -8.320644681773437, "ytd": 209.41911424294014, "offHigh52w": -19.611724969833478, "volume": 61316900, "volRatioPct": 105.23479942576091, "shortPctFloat": 3.6900000000000004, "shortRatio": 0.76, "news": [{"title": "Trump Calls Micron a ‘Great’ Company but Can’t Stop the Stock From Falling - Barron's", "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBRbTllZDJkTEI4dEZiamNSUlFUamZwWVdFSHpEbVZIUG5sTjk5ZzZUano5b2Rsdi11LU1uNE5oV08wbEd0eldVN2xOQ2ZRSGNiV2RLRWdMME84YXpYV2pjN3JIN1NMN0hzcndQbW9RRUdXMjdU?oc=5", "pub": "Thu, 02 Jul 2026 20:16:00 GMT", "source": "Barron's"}, {"title": "Buy or Sell Micron Stock? (My Final Verdict) - The Motley Fool", "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQMU1YVl85R1RWMTcxUjBOeHp6dU1QekNWYzlidjMzbDFiRFhtZ2F5ekVFZkxUdVVDVHRYNV9LMkVCQlEyenQ1LXVuQnl3SEg2dW4wM1FfOUEtZVlUeVJkbmlyX0xZeWJOalRVQm5FM2pBZEc3MlNsYTlJUkpSTnpTZWRhMkdZcUR5NHQyZQ?oc=5", "pub": "Thu, 02 Jul 2026 05:16:54 GMT", "source": "The Motley Fool"}, {"title": "Prediction: Micron Technology Stock Will Hit at Least $2,000 in 1 Year - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQbmgwT21OVEF4UG1JZWk3NHFoVDh6R1FzNTZUYTJUTTR6UlZ6cEJsNjdEWHN0akFTOWtLaDd4d3pTMDAtQWJzYTM0R0hxS1ppNkZVMUxGMXlmZV81eml5TlpCeEhkMG15cEdsU2FubVJ0OFlZOWt5dkU3T1JwUVZkUlk2QUVkWVFBSEVnVkhZc3pKdTVjd1RkQnZ3UlNfa0dHcVJreGd3?oc=5", "pub": "Sat, 04 Jul 2026 19:01:00 GMT", "source": "Yahoo Finance"}]}, {"ticker": "AVGO", "name": "Broadcom Inc.", "date": "2026-07-02", "price": 360.45, "d1": -2.4069919908501825, "d7": -4.871867007116471, "d30": -25.03260679634235, "ytd": 4.072788759895696, "offHigh52w": -25.03260679634235, "volume": 26749500, "volRatioPct": 74.17351923516726, "shortPctFloat": 1.3200001, "shortRatio": 1.95, "news": [{"title": "Broadcom Inc. (AVGO) Down 14% Since Last Earnings Report: Can It Rebound? - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQRjRYQi1aczBrUVRQMUw5UmpmUkd6RVNaYWFydHd4WXdld0tNODVBVzM5Y1BULUp6RHZJdDNSclNwZ2pPaFN1eW4wQUpjTnRzQXVhYUUyZ3NsX2N6enctTUkyNGVwMmlINkU0UVpPVEhMelBnV0tUWlZHUXUtMGloWklTV1ljZXBmeXFpZ3V1UmFhMS01?oc=5", "pub": "Fri, 03 Jul 2026 15:30:03 GMT", "source": "Yahoo Finance"}, {"title": "Broadcom: Wall Street's ~$115 Billion FCF Consensus Crumbles Under Stresstesting (AVGO) - Seeking Alpha", "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQd3h6RGdYOTVXQXhMT3J0ZEhDZjhJXzZoTWFoUHNtYUZQNTU0TXhkSXh4NWc2ZHFEX3RjZzlIcUNTNkZ1MjhucVV5eVdIbm85YVZPeXdmX2VEelZJRThSazBLRW1lNng4ei1BRFgzNHVBdUpGRkRKYWdNclYzVEJNLTlRYjd4c2JwRnJrM3Q2Qlo2OWFqczgydEFJTUJfWmdYLVluVEg4dzZROVRLMEI4dDVtRVF5eWVCUmFfT09BUjg?oc=5", "pub": "Fri, 03 Jul 2026 07:16:08 GMT", "source": "Seeking Alpha"}, {"title": "Broadcom Inc. stock underperforms Thursday when compared to competitors - MarketWatch", "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNNURYNU9XVHFCMWNBb292c05WcXlYeWZPNUFwWDI2WjQ3ZTNjbnR0Ul9RcDhrTjZISEhBSHl5RXZmdjVDYTR2RkpyMzVDWDk1WkNaZTV4OWdFa2FEdXR4Tkt2dzNfRUZFUm93M2V0Z1FEYjVnVXd0NXNKU2ZTUDJwbEx1S2JZMzlobFpvdklhcGtrOTE1TVRRQnlMcG9RZXEyWWR3d0h1ZVVVN0diUEhyTXY1ZFNvQ0N2RFB0c05WQng1X3lPMkdxOHNn?oc=5", "pub": "Thu, 02 Jul 2026 20:31:00 GMT", "source": "MarketWatch"}]}, {"ticker": "TSM", "name": "Taiwan Semiconductor Manufactur", "date": "2026-07-02", "price": 434.16, "d1": -2.266845344793389, "d7": -0.19080590149176402, "d30": -2.5774604292012393, "ytd": 36.542350087607886, "offHigh52w": -9.089767572576779, "volume": 18375000, "volRatioPct": 123.21673020557355, "shortPctFloat": 0.50999997, "shortRatio": 1.99, "news": [{"title": "Philadelphia Semiconductor Index Plunges Over 6% in Single Day; TSMC ADR Tumbles Nearly 7%, Taiwan Futures After-Hours Session Crashes 867 Points - finance.biggo.com", "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HRmVaQV9sNFVfOUR6TUR3WGN1MzNycURZQ0FseDNXQnMxZlNZSTU4MGFpSzFIcmdUQVNfMGgtem9UMDllNV81VGotc0F4R190QXRwSHpnNmNDRi14anJRUnEwQmYwSXJsNFVJcHk5ZV9tUkl1WkE?oc=5", "pub": "Wed, 01 Jul 2026 22:25:00 GMT", "source": "finance.biggo.com"}, {"title": "Taiwan Raids Super Micro Offices, Widening Probe Into Alleged Nvidia Chip Smuggling to China - finance.biggo.com", "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9LX3Z0bjJLU2NPN3lucW9UN0c4Y2xTUjJHZUJmVDNHa0EzeVJLTGVLQUJwdWxLVzRWRmJ3aEZYZTNITElfSUt3TElJWXp1TEdnWWt2MUo0d2pxYnhEV1dPTDFGZHQzOVdLZjB0b1FfakRHVGhvYVE?oc=5", "pub": "Wed, 01 Jul 2026 13:15:00 GMT", "source": "finance.biggo.com"}, {"title": "SK Hynix Confirms Nasdaq Listing on July 10 with approximately $29 Billion ADR Issuance - finance.biggo.com", "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE53X2xxT1JwaWJETTJyLVRjN3loNTFfZm9fSFhad1VBUFZLQWpLcjVJZEZfSG1vZGMwLXZZaml0c25lSkVwYnJQUkxLVjZ0cFk2WU9UUW5reFY0eUE5WnlyV0tSWFdOWV9vblFPSmNGcTFpNFFGUUE?oc=5", "pub": "Tue, 30 Jun 2026 10:15:00 GMT", "source": "finance.biggo.com"}]}, {"ticker": "AMAT", "name": "Applied Materials, Inc.", "date": "2026-07-02", "price": 603.04, "d1": -7.354318890818135, "d7": -9.724554187523394, "d30": 23.05682951717771, "ytd": 124.84570343768908, "offHigh52w": -16.591980909081084, "volume": 15071700, "volRatioPct": 116.6887320532091, "shortPctFloat": 2.77, "shortRatio": 2.51, "news": [{"title": "B. Riley Raises PT on Applied Materials (AMAT) Stock - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOamZLSzhCMXBnYXdiSGNhN1FHdElXNE42dURlLWQzanpIQjlSeC05cXdpa19JNDQ4SVQ4dng3RGVlOTZORTkxVHB5VnVHNFZBUWEwaUNpZEg0YXFqNmxoamUxbmI4UVdKSmp3NkhMYU5LSjg2RTZGWHRMV0JkaUk1ZVdTMFI4WmhFQ2w2WUpnb292Y0do?oc=5", "pub": "Sat, 04 Jul 2026 14:10:54 GMT", "source": "Yahoo Finance"}, {"title": "Applied Materials Stock Fell 7% in a Chip Selloff as Michael Burry Shorted It. Here’s Where the Stock Could Go - TIKR.com", "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPM0pBRm9BS3ZGY1RXbnA3TThTNWdKaGdlMnlJTGoyT2hPRHdKbmxEMzdrTVZEQklxWGpneDR1d0xSUmN0T1VaWHJlQVNDX2FpNDNnVjlkVmZ1NG9HSDliaDdWTzhjMUF3M3c2RVhLNlVBTnZPTEFxeW41UmF4anZESVJsUDhxMV9zeEtwZkg5ZjJDQzhlRlF3ZzlmV1RGaGlDZlU3aHFFZVNpTTJRRm9hSGdjX3c1WVhJdlBOLUZjZ0l4ZWFsYVhLUTMwc1c3QQ?oc=5", "pub": "Sat, 04 Jul 2026 16:03:21 GMT", "source": "TIKR.com"}, {"title": "Applied Materials Inc. stock underperforms Thursday when compared to competitors - MarketWatch", "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNMWZrc24zeW5qMkVUYmxJdkdFMVNOZllqUy1NZWpyVW1UUXJxeEJQMkx6c3ZfTEpLQ05HYnhnRkNQQXNhaVk1S3Fsc1dFUml2X1NNYWUyLUxjdVo2X2ZBVTF2NFVVajhScnNxbTZtcFIxdWRpYmhPQ2JlOVFDZWpCSXhwa2VBX2RvS0FLbVF0OTJoN3BuUFk0UjVDdUNDRVVpeEZZR1pvaHZJTFJxN3ByOTIwZFlsR0NsbGpyTGFtRmhyRk5tQWxnWTI4cXhRZkVFNVAwNGdn?oc=5", "pub": "Thu, 02 Jul 2026 20:30:00 GMT", "source": "MarketWatch"}]}, {"ticker": "LRCX", "name": "Lam Research Corporation", "date": "2026-07-02", "price": 351.41, "d1": -10.185044499535445, "d7": -12.545419029230864, "d30": 5.15760714863327, "ytd": 90.2511942947457, "offHigh52w": -18.90475744781964, "volume": 18954700, "volRatioPct": 132.04748749019717, "shortPctFloat": 2.6700001, "shortRatio": 2.93, "news": [{"title": "3 Reasons Why Growth Investors Shouldn't Overlook Lam Research (LRCX) - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNRE1RMmxzeTNnd2NHVVJPX3BST21rQWRpYWdZRURuZ2RVTVNKY2xkVHVsMUd1MnRjYXY4c0lYanZBcnlXWEhNZVZJbDlIRFNiZ2prWHVCUkNjeTdRSkxSYzJyZnBORDJRaGUxXzJ0WkdvOW5qbXhyYWRKbzN1QW50QWFWaElydEx1RWx3SlZ5dVBkUWZDN3ByMnNBdw?oc=5", "pub": "Thu, 02 Jul 2026 16:45:01 GMT", "source": "Yahoo Finance"}, {"title": "Semiconductor Equipment Stocks Continue to Decline; Lam Research (LRCX.US) Drops Over 15% in Two Days - Moomoo", "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPTTBzYWF5bE9hOS1SSk5zZW5YcHJzUlM0dTdlcWdTX0ZsTVZlbWhGdjNnV1ZwVDN1UmxxQ2xZdlI4OEwwbTFkeXZTUVJlZTg3TDBpU19raDk3MHY4Z3lYdURjYW5GQXBEVjAtNFozMm9aeFlQTE9zdnd0S2J0czNtT0Q4QlV2T3B3U1MtSHFJNW84UTZsV2dPLTR5MUtxUERGT2lmLUZXN3hhZjd4YUotdA?oc=5", "pub": "Thu, 02 Jul 2026 15:46:39 GMT", "source": "Moomoo"}, {"title": "Lam Research Corp. stock underperforms Thursday when compared to competitors - MarketWatch", "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOck9RdlJRR3UzVS1fV3NtYzliRHZ0N1JPM0lGRTZ6MF95TmI4ZTJ5aHRTSF9McXhSVDJ4M2o3U192YURDSjNJWERpeEh3X3VhUmg1Rml2WG1IaWNHcXhjWWlVU1MwSHc1eWlQM3JrdzY3aUxaUTdMS19pOGd0T1AwZzIwb3BBenBmRWVMTUE0TFlObWYyZFZtNGFLdnJHUXFWS0ZvbUtXYTBQUnlTX1R1b0g4dFR1aWJ3QUQxdkJZdGNwSkwyQ3JaalpWTDZtbjlx?oc=5", "pub": "Thu, 02 Jul 2026 20:30:00 GMT", "source": "MarketWatch"}]}, {"ticker": "ASML", "name": "ASML Holding N.V. - New York Re", "date": "2026-07-02", "price": 1769.32, "d1": -3.999918135849978, "d7": -3.902937536013351, "d30": 3.7499165198740636, "ytd": 52.565198202134496, "offHigh52w": -11.0644202187674, "volume": 2699100, "volRatioPct": 113.3359060697918, "shortPctFloat": 0.43, "shortRatio": 0.88, "news": [{"title": "Semiconductor Rally Surges 101% in First Half; Wall Street Rotates from Big Tech to Chip and Space Stocks - finance.biggo.com", "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBvTERfZjdfM0hkOWdjR3lRSDUxZzNsZWMwcy1SbHF1QWFkSGViemxyLXZQbktRS21ISERNaVBVS25Ic1lVOHJjQ0tkbGhEd0pkdnpXenFVMUcxQUlnRW45X3FRQ3ZYUjM1bHN1REhobmRPbVMtMUE?oc=5", "pub": "Wed, 01 Jul 2026 01:25:00 GMT", "source": "finance.biggo.com"}, {"title": "South Korean Giants' NT$16.4 Trillion Expansion Push Sends Applied Materials, ASML to Record Highs - finance.biggo.com", "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9yckxnVmprckxrUmdBS3c4LXoxNzg2Z2t3Z0FvSHA1bGhKbHlPY3R4NzMwZ1VXWi1VV2NlWkpPdGRxR1RGeUc3N2NLSUEwek1OWmYyR2xTNEV0MzJNQlBhUENGUGlYWUtyLTBEcm8tSk1pMEVZMFE?oc=5", "pub": "Tue, 30 Jun 2026 17:55:00 GMT", "source": "finance.biggo.com"}, {"title": "Global Chip Stocks Surge: Samsung Up 3%, SK Hynix 1% as US Semiconductor Rebound Fuels AI Rally Across Europe - finance.biggo.com", "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0tNWhoNS11RjhFWHJFMWI5UVROZUlBUFJNVVJnMGdlLUJmenJMR3VMNk9hU2FMaVJSMzNqSU1lc0xCcGN4eDZqcXpISTdrV2EwQlBvZkhXWGh1M3RrMWRNRGtHZlBieG82SjlPaXo5SmNxUkxxc1E?oc=5", "pub": "Tue, 30 Jun 2026 18:36:00 GMT", "source": "finance.biggo.com"}]}, {"ticker": "MRVL", "name": "Marvell Technology, Inc.", "date": "2026-07-02", "price": 245.29, "d1": -9.836425549557614, "d7": -12.78888403277314, "d30": -15.647035290677847, "ytd": 174.73918677477585, "offHigh52w": -22.48206587121453, "volume": 38435900, "volRatioPct": 57.69627736968006, "shortPctFloat": 5.2600004, "shortRatio": 0.71, "news": [{"title": "Cantor Fitzgerald Raises PT on Marvell Technology (MRVL) Stock - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxNODh2WXlRRm5IVXlOWUNSXzduSXRKLU9aTFRPZFIyZmRJUVV5YWMzS1BORVV0SEhISUllVWEwaVNmRG9KQkRZRmo0WElnUDhHcG1XTzFjZVROdHlqenVXWnhVTVhOaklJYUFuX0hSalZIVmRYVW93eFJtaWFfNWxWOUVrS1d4MGJfVXhZNlZ2YVRoYkpJdmNhSlZ1eFVxUnEz?oc=5", "pub": "Sat, 04 Jul 2026 14:11:21 GMT", "source": "Yahoo Finance"}, {"title": "Marvell Technology: Great Business, Impossible Price (NASDAQ:MRVL) - Seeking Alpha", "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPUXNmd1FJSGhpNjMwam9IZnFJaFpzZXBLY0h5SUc4WVpFVjlDYklRY3pfVEdyLUtxV0d6X0h4eV9nQ0hKTzFyc0lHNmtxWWNhUkFaQmROSFlFNVJnSjFkSGFHNWI2M2FrWjZRb3RPREVfbmFsV3pBZERXdzJLWmM4QllxN0FNTXlhaUFucGVTNXRIZTh5QUE?oc=5", "pub": "Thu, 02 Jul 2026 22:36:24 GMT", "source": "Seeking Alpha"}, {"title": "Marvell Technology, Inc. $MRVL Stock Holdings Trimmed by USS Investment Management Ltd - MarketBeat", "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxOeTN2M1RFRXFCRy1lS05YNlZNVWdsNGpMdWtlNU16bmltbElMWUdqdXgtbnRIdGpyUUptMEVodDRYSEttNzUyUGV5eUYtUTJBb2JPd3pSaWk3ZDlCWTgzWHd6ZFdWdm5DNG1udXZneXF2N09hS25fMnpEcUg1XzQzM0VwWjl0YVM5WURCZTdMY0JSY1o3NmRTbDJEeElMSmZLM09BYTlSWUxRZTJiUWVmV25GalNTcWJpM1lCOVRXNS1LYlJyS0JfRGFnTVM2S2VZNWZMc3loZVZqSW1q?oc=5", "pub": "Thu, 02 Jul 2026 10:20:39 GMT", "source": "MarketBeat"}]}, {"ticker": "GFS", "name": "GlobalFoundries Inc.", "date": "2026-07-02", "price": 69.84, "d1": -9.568829079145058, "d7": -18.903861924618358, "d30": -17.327843331195346, "ytd": 89.69527547470094, "offHigh52w": -22.25361931173816, "volume": 3792500, "volRatioPct": 111.63793103448276, "shortPctFloat": 14.89, "shortRatio": 1.03, "news": [{"title": "GlobalFoundries lines up Aug. 5 call after Q2 results - Stock Titan", "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQZFZja2FvQ2IzcDI2TUV4cmlXZjN2R1c5WG82Y0xrY2oyaS1YNVRTMVYzMDdDWkRIMk1Ca2tNc0tlYnV5TERqNkMzSnJmdVFsbE8xSVZzMmJfSzczQnJaUEdmUnJTQm9Pal94WTRhdXI4NW9YNzVMaVJuSTNWQVJmQVowQkc3Z2lLdW5ITF9fWExuNTZ5Nlk5UEgtSFBQWXRQVk9JcFMxTjZTczk5SjljRDU1UGFfaS1VUTdoMUtn?oc=5", "pub": "Wed, 01 Jul 2026 11:00:00 GMT", "source": "Stock Titan"}, {"title": "GLOBALFOUNDRIES (GFS) legal chief sells 335 shares in Rule 10b5-1 trade - Stock Titan", "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOX0VvWEZmcUxzdFlQejZFaU9iSks4ZjA3UDcxVGJTSnU5UHJsR1JVZ2xzUFpwSHJmNENObGJkZF9jMklrOUdjTjN0RlVoQTl1c2x5NVozVE5EemhQUWJILTBnSUo1X3NZR3pfdHdrc0lHMU53dWZlVVpwa0JHcTVTOEY3NWk5aTZhaXplNmxkdmRBZi1iWHdNTUFVdWd3bWVSYXhLNG5oZjJfckhIU0pXREFB?oc=5", "pub": "Mon, 29 Jun 2026 20:34:52 GMT", "source": "Stock Titan"}, {"title": "Price to book forward of GlobalFoundries Inc. – NASDAQ:GFS - TradingView", "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQTGtZX2VBdGs4VmxxaWtoc2xCVXZYRlNQQ1VZOTZkcHV2WGh0Q202MkVUVU8wUUc1WTdKRW1neFJ0X0pPTU5MYlBEZHZVaGZWWWJBM2pOazVmVkd3VUhmUHI0NHliZHQtYW5LZm9rX3ZwaS1DUkdkT2tQS1Ita1J1UjFxU2huYjRLTDVJNVJtdUo0TVlsS21RN3pVWQ?oc=5", "pub": "Sun, 28 Jun 2026 09:57:49 GMT", "source": "TradingView"}]}, {"ticker": "AMKR", "name": "Amkor Technology, Inc.", "date": "2026-07-02", "price": 69.65, "d1": -12.9266115939903, "d7": -18.652184896526002, "d30": -6.705417947370296, "ytd": 62.7725753939528, "offHigh52w": -25.54783617981915, "volume": 6962100, "volRatioPct": 107.37361371112316, "shortPctFloat": 14.97, "shortRatio": 1.69, "news": [{"title": "Amkor Technology (AMKR) Stock Moves -12.93%: What You Should Know - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQNU5COTJNZ2RHN2JOM3ZfbVNkOFlxS29FUTktRHpqNHNLaXFtcnNPNmY3TE1CMVM4MEo4WC1jRkRWY040QjFPSkE3MVRkNFFGaVlTRXlNMVI3MkJlbkJrcWkyeTA4MFNEV0U4WFFSdk1YX3ZYY1dZTHB6cVhnUWVURzJuRWR0aEpsWXhXZG9iMWlXMm5fRjdZclQyNzI1Wms?oc=5", "pub": "Thu, 02 Jul 2026 22:00:02 GMT", "source": "Yahoo Finance"}, {"title": "Amkor Technology, Inc. (AMKR) is Attracting Investor Attention: Here is What You Should Know - Yahoo Finance", "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxQaURzLXU1M0xxZm9NWHNiaUhzT1JFcmFnMzRGalFGYmlkTFBUZnl5b0dhZkJMZGpuZWtUTi1WaC1xS0Z2bC1HMThRUXZOR01IV1RkZUVndXVyLTZJVERZYUFGVEctWFBnVlE5TnRsTWM0S0xvOWI0YVBVajNwbEdYeEI2VW5BMmZGeTAzbUFtbWI4SDVTUjlaeW9aZ1c4NEJuMGJj?oc=5", "pub": "Fri, 03 Jul 2026 13:00:05 GMT", "source": "Yahoo Finance"}, {"title": "Price to book forward of Amkor Technology, Inc. – NASDAQ:AMKR - TradingView", "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQdVozbUxBUGxfOGFXczVYS0JLdnVfS2NhX0FLLTRxdXp3Nk5VSi1rTkRBbG5fV2lZVmVwNER6elJJUTFJak5zMjJPREhDS3FPeEtTc1NWaXNPUFZmOXNfdGNra1kzdWJEdjBBbXREVHlwOUw2QnBPN2hrRmg3Z2VBdnBkdVdXSVltTDRpTDFOdnRtX3FSUGJob3Z3bEU?oc=5", "pub": "Wed, 01 Jul 2026 04:01:18 GMT", "source": "TradingView"}]}], "autoNews": [{"title": "Micron Breaks Ground on a $9.3 Billion Bet to Crack SK Hynix's Grip on AI Memory - Startup Fortune", "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQYkFNY1R5YmVyd0NwWkd0c2hsU0JaZi1feVRULXhwRnR1cTU5OWZCLTI1QmNweFVoMFBsNjBmZ0FLdlpMSHRZTXROZHpEcUhONUFWaEN6dVAwMjROekpCUmFEMy0xQS16Zi1LNWZvbEtfZVNHQzhVbkQ3akhmaWlUTXgxUGlSNllTa2Fjek1QWWphX3VPazRtTThZSjBUMlJpUGZSbWxjU0I?oc=5", "pub": "Sat, 04 Jul 2026 05:38:04 GMT", "source": "Startup Fortune", "category": "메모리·HBM", "lang": "영어"}, {"title": "Micron Challenges HBM Giants with Hiroshima Expansion - 조선일보", "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPaHRVQ3NvVXoxTWxxWFVTQ3o5Y0trZkdPYVZlejVwVzlNRVE5Vkw2ay11NXg0bHRwLXBGQy02Mzd1bWRYNmpHTTdWQ2xxRjlOXzBSMVQyTTIxY0d5UER4aGF2Z0VSN1JfWUVTYVR6UDFqLXFvVVdoVFJZQlkxSWwwTmtWeWxBS2NDWUg2VVJB?oc=5", "pub": "Sat, 04 Jul 2026 10:03:32 GMT", "source": "조선일보", "category": "메모리·HBM", "lang": "영어"}, {"title": "EMIB-T Roadmap, Custom HBM, HBM4 Packaging Challenges, Microfluidic Cooling, Photonic Interconnects, and More - SemiAnalysis", "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5Eb2VEVVJPN0xOVUJ3TVBFWGFJWVBTX1lCQnFBZnlwM0czTHItZnh2OWdZa25xRzc2OHJrSVB0VnNUTWwyVVFDalNNYVN4T0JhNHBWNldBYXhZdw?oc=5", "pub": "Thu, 02 Jul 2026 17:27:09 GMT", "source": "SemiAnalysis", "category": "메모리·HBM", "lang": "영어"}], "summary": "이번 주 반도체 섹터는 광범위한 리스크오프 국면으로, 메모리(MU -19.6%)·후공정(AMKR -18.7%)·파운드리 서비스(GFS -18.9%)가 동반 급락했다. 마이크론은 DRAM 관련 소송과 공급과잉 우려로 주가가 $1,000 아래로 밀렸으나, 회계 3분기 매출 $41.46B로 컨센서스를 상회했고 2026년 HBM 물량은 사실상 완판 상태여서 구조적 수요는 견조하다. 정책 측면에서는 미 상무부(BIS)가 6월 1일 中 본사 자회사의 해외 법인에도 첨단 AI칩 수출제한이 적용된다고 재확인해 우회로를 차단했으나, H200의 케이스별 허가·25% 관세 병행이라는 '관리된 디커플링' 기조는 유지됐다. 장비주는 주간 약세(AMAT -9.7%, LRCX -12.5%)에도 30일 기준 상대 강세를 지켜, 미국 리쇼어링 설비투자 사이클은 아직 훼손되지 않았다.", "scenarioProbs": {"Base": 45, "Bull": 18, "Bear": 27, "BlackSwan": 10}, "hypothesis": [{"dir": "up", "w": "중", "txt": "BIS, 中 본사 기업의 역외 자회사에도 첨단칩 수출제한 적용 재확인 — Blackwell 우회로 차단", "tag": "실제", "note": "6/1 상무부 가이던스로 엔비디아 대상 사실상 재차단. 기술 통제·리쇼어링 압박 강화 신호.", "isNew": true}, {"dir": "up", "w": "약", "txt": "장비주 30일 상대 강세 유지(AMAT +23.1%, LRCX +5.2%) — 미국 팹 설비투자 사이클 지속", "tag": "추정", "note": "주간은 리스크오프로 하락했으나 중기 WFE 모멘텀은 유지. 리쇼어링 CAPEX 뒷받침.", "isNew": true}, {"dir": "down", "w": "강", "txt": "H200 케이스별 허가 + 25% 관세 병행으로 對中 상업판매 재개 — 완전 디커플링보다 상업적 실리 우선", "tag": "실제", "note": "12월 이후 완화 기조가 유지되며, 제조패권 회복보다 매출·협상 레버리지 우선이라는 반박 신호.", "isNew": false}, {"dir": "down", "w": "중", "txt": "TSM 주가 방어적(7D -0.2%) + 아시아 메모리 지배력 유지 — 아시아 제조 우위 여전", "tag": "실제", "note": "섹터 급락 속 대만 파운드리·한국 HBM의 구조적 지배력은 미국 리쇼어링으로 대체되지 않음.", "isNew": true}], "cycleSignals": [{"name": "HBM/메모리 가격", "status": "amber", "summary": "HBM4 스택가 ~$500(추정)로 상승세이고 2026년 HBM 물량은 완판이나, 이번 주 마이크론이 DRAM 소송·공급과잉 우려로 급락하며 범용 메모리 가격 조정 경계감이 커졌다.", "tag": "실제"}, {"name": "WFE/장비 수주", "status": "amber", "summary": "AMAT·LRCX·ASML이 주간 동반 하락(각 -9.7%/-12.5%/-3.9%)했으나 30일 기준으로는 강세를 유지해, 설비투자 사이클은 둔화가 아닌 밸류에이션 되돌림으로 해석된다.", "tag": "추정"}, {"name": "AI CAPEX", "status": "green", "summary": "하이퍼스케일러의 AI 가속기·HBM 수요가 구조적으로 유지되며 마이크론 HBM 완판이 이를 방증하나, 이번 주 신규 CAPEX 상향 확인은 없어 관망 필요.", "tag": "추정"}], "customChipSignal": {"name": "자체칩(ASIC) 동향", "status": "amber", "summary": "구글 TPU·아마존 Trainium 등 HBM3E 탑재 자체칩 수요는 구조적으로 확대 중이나, 이번 주 ASIC 대표주 MRVL(-12.8%)·AVGO(30D -25.0%)가 급락하며 밸류에이션 부담과 차익실현이 표면화됐다.", "tag": "실제"}, "intelScenario": {"current": "Base", "rationale": "인텔은 이번 주 -9.4%로 섹터 급락에 동조했으나 30일 기준 +11.5%로 상대 강세를 유지해, 리쇼어링·관세 정책의 수혜 기대가 주가에 반영되고 있다(추정). 다만 18A/14A 외부 대형 고객 확보에 대한 이번 주 신규 확증은 없어 파운드리 전환의 실증은 여전히 미완이다.", "keyTrigger": "18A 대량양산 수율·외부 앵커 고객 발표 및 7월 하순 실적 가이던스"}, "topNews": [{"headline": "마이크론 $1,000 붕괴 — DRAM 소송·공급과잉 우려로 메모리 급락", "summary": "MU가 주간 -19.6% 급락하며 $1,000 아래로 내려앉았다. DRAM 관련 소송과 공급과잉 경계감이 촉발했으나, 회계 3분기 매출 $41.46B로 예상을 상회했고 2026년 HBM 물량은 완판 상태다.", "implication": "구조적 AI 메모리 수요는 유효하나 범용 DRAM 사이클 정점 논쟁이 단기 변동성을 키운다.", "tag": "실제"}, {"headline": "BIS, 中 본사 기업 역외 자회사에도 첨단 AI칩 수출제한 재확인", "summary": "미 상무부는 6월 1일 가이던스에서 중국에 본사·모회사를 둔 모든 기업에 첨단 AI칩 라이선스 요건이 적용된다고 명확히 했다. 이는 Blackwell급 칩의 역외 우회 구매 통로를 다시 차단하는 조치다.", "implication": "H200 완화 기조 속에서도 최상위 칩 통제는 유지 — 관리된 디커플링 프레임 지속.", "tag": "실제"}, {"headline": "후공정·파운드리 서비스株 동반 급락 — 섹터 전반 리스크오프", "summary": "GFS(-18.9%)·AMKR(-18.7%)·MRVL(-12.8%) 등 장비·OSAT·ASIC 주변부 종목이 메모리와 함께 급락했다. 반면 TSM(-0.2%)은 방어적 흐름을 보이며 대형 파운드리 선호가 부각됐다.", "implication": "위험선호 후퇴 국면에서 자금이 실적 가시성 높은 대형주로 이동, 주변부 밸류에이션 리셋 진행.", "tag": "실제"}], "qualUpdatedAt": "2026-07-05 09:51"};
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// 정적 데이터 (data.json으로 갱신되지 않는 고정 콘텐츠)
+// ══════════════════════════════════════════════════════════════
+
+const STATIC_THRESHOLDS = [
+  // 축1 미·중
+  {axis:"축1 미·중",name:"BIS Federal Register 신규 수출통제 건수(월)",status:"amber",trigger:"신규 통제 → 장비주(AMAT/LRCX/KLAC) 대중 매출 비중 점검 후 비중 축소 검토",tag:"실제"},
+  {axis:"축1 미·중",name:"China Select Committee 청문 일정",status:"green",trigger:"강경 결의 → 대중 노출 큰 종목 단기 변동성 대비",tag:"실제"},
+  {axis:"축1 미·중",name:"중국 상무부 보복성 수출통제(갈륨·게르마늄·희토류)",status:"amber",trigger:"통제 강화 → 소재 의존 종목 헤지",tag:"실제"},
+  {axis:"축1 미·중",name:"NVIDIA/AMD 대중 칩 매출 15% 정부 환수 구조 변동",status:"amber",trigger:"구조 변경 → NVDA/AMD 가이던스 재계산",tag:"실제"},
+  // 축2 대만
+  {axis:"축2 대만",name:"대만 ADIZ 진입 PLA 항공기·함정 일일 횟수",status:"amber",trigger:"급증 → TSMC 의존 팹리스(NVDA/AMD) 단기 리스크 프리미엄 확대 베팅",tag:"실제"},
+  {axis:"축2 대만",name:"미 7함대 대만해협 항행 빈도",status:"green",trigger:"긴장 고조 시 시나리오 매트릭스 'Black Swan' 가중",tag:"추정"},
+  {axis:"축2 대만",name:"TSMC N2 Baoshan 가동률(웨이퍼/월)",status:"green",trigger:"차질 → AI 가속기 공급 병목 → 가격 상방",tag:"실제"},
+  {axis:"축2 대만",name:"TSMC 애리조나 선단 노드 일정(2팹/3팹/4팹)",status:"amber",trigger:"추가 지연 → 리쇼어링 가설 반박 신호 누적",tag:"실제"},
+  // 축3 한반도
+  {axis:"축3 한반도",name:"한국 산업부 대중 반도체 수출 통계(월)",status:"green",trigger:"급감 → 메모리 사이클 둔화 신호",tag:"실제"},
+  {axis:"축3 한반도",name:"SK하이닉스/삼성 HBM4 NVIDIA 인증 진척",status:"amber",trigger:"Micron 탈락/지연 → MU 비중 점검, 삼성 점유율 상방",tag:"추정"},
+  {axis:"축3 한반도",name:"평택 P5 / 이천 팹 증설 진척(위성·공시)",status:"green",trigger:"증설 가속 → 메모리 공급 과잉 선행 경보",tag:"추정"},
+  {axis:"축3 한반도",name:"북한 도발 빈도(미사일/핵)",status:"green",trigger:"고조 → 한반도 리스크 프리미엄(단기 노이즈)",tag:"실제"},
+  // 축4 유럽·러
+  {axis:"축4 유럽·러",name:"ASML 대중국 수출 라이선스 상태",status:"amber",trigger:"추가 제한 → ASML/장비 밸류체인 대중 매출 하향",tag:"실제"},
+  {axis:"축4 유럽·러",name:"네덜란드 정부 수출통제 발표",status:"green",trigger:"동조 강화 → 대중 EUV 차단 강화",tag:"실제"},
+  {axis:"축4 유럽·러",name:"네온가스 가격(우크라 전선 연동)",status:"green",trigger:"급등 → 웨이퍼 원가 상방",tag:"추정"},
+  {axis:"축4 유럽·러",name:"독일 자동차 칩 재고 수준",status:"green",trigger:"재고 급감 → 아날로그/MCU 수요 회복",tag:"추정"},
+  // 축5 동맹
+  {axis:"축5 동맹",name:"Chip4(한·미·일·대) 회의 결과",status:"green",trigger:"결속 강화 → 동맹 공급망 종목 우호",tag:"실제"},
+  {axis:"축5 동맹",name:"Section 232 Phase 2 협상 결과",status:"red",trigger:"광범위 관세 부과 시 OSAT/팹리스 원가 충격 → AMKR/INTC 점검",tag:"실제"},
+  {axis:"축5 동맹",name:"관세 offset 프로그램(미국 투자 시 감면) 세부",status:"amber",trigger:"수혜 기준 확정 → 미국 capex 종목 수혜 재평가",tag:"실제"},
+  {axis:"축5 동맹",name:"한·대만·일 대미 투자 합의 이행",status:"green",trigger:"이행 → 동맹 노출 종목 안정",tag:"실제"},
+  // 축6 광물
+  {axis:"축6 광물",name:"갈륨·게르마늄 가격",status:"amber",trigger:"급등 → 화합물 반도체/광전자 원가",tag:"추정"},
+  {axis:"축6 광물",name:"희토류 가격·중국 통제력",status:"amber",trigger:"통제 강화 → 장비·자석 밸류체인",tag:"추정"},
+  {axis:"축6 광물",name:"미국 핵심광물 비축량(DOE 공시)",status:"green",trigger:"비축 확대 → 공급 안보 개선",tag:"추정"},
+  // 종목
+  {axis:"종목",name:"Intel 18A 수율(연말 목표 mid-2026 조기 도달 여부)",status:"amber",trigger:"조기 도달 → INTC 관찰 비중 상향 검토 / 미달 → 하향",tag:"추정"},
+  {axis:"종목",name:"Intel Foundry 외부 매출(분기) $174M 추세",status:"red",trigger:"유의미 증가 전까지 정책 가설 '미실현'으로 분류 유지",tag:"실제"},
+  {axis:"종목",name:"Intel 14A Terafab → 실제 design-in/매출 전환",status:"amber",trigger:"매출 전환 확인 시 가설 뒷받침 등급 '강' 확정",tag:"추정"},
+  {axis:"종목",name:"NVIDIA 분기 가이던스(데이터센터)",status:"green",trigger:"둔화 → AI capex 사이클 정점 경보 → 리밸런싱",tag:"실제"},
+  // 거시
+  {axis:"거시",name:"HBM 현물가(HBM3E/HBM4 stack)",status:"amber",trigger:"급락 → 메모리 사이클 전환 → MU/메모리 비중 축소",tag:"추정"},
+  {axis:"거시",name:"2026 메모리 시장 성장률(+30% 전망 대비)",status:"green",trigger:"하향 → 사이클 둔화",tag:"추정"},
+  {axis:"거시",name:"AI capex 사이클(하이퍼스케일러 capex 가이던스)",status:"green",trigger:"꺾임 → 전 카테고리 리밸런싱 트리거",tag:"추정"},
+];
+
+const STATIC_INTEL_SCENARIOS = [
+  {name:"Bull",color:"#7a9b7a",prob:"25%",trigger:"18A 수율 60%+ 달성(Q3'26) + Terafab 매출 전환 + HPC 외부 고객 2건 이상",outcome:"Intel Foundry 외부 매출 $500M/분기 돌파. Fwd P/E 디레이팅 완화.",intc:"+40~+80%",risk:"수율 미달 시 즉각 되돌림"},
+  {name:"Base",color:"#d4a574",prob:"45%",trigger:"18A 수율 45~55% 유지 + Terafab 설계 진입(매출 미전환) + DCAI 한 자릿수 성장",outcome:"주가 $80–100 횡보. 정부 지분 오버행 지속.",intc:"0~+20%",risk:"TSMC N2 고객 이탈 방어 실패 시 Bear 전환"},
+  {name:"Bear",color:"#b86a6a",prob:"22%",trigger:"18A 수율 개선 정체 + 외부 고객 추가 확보 실패 + AI PC 사이클 부진",outcome:"DCAI 점유율 AMD 추가 잠식. Foundry 적자 지속.",intc:"-20~-40%",risk:"정부 지분 하방 지지선 존재하나 완충 한계"},
+  {name:"Breakup",color:"#a070c0",prob:"8%",trigger:"Foundry 적자 3분기 연속 확대 + 이사회 전략 변경",outcome:"IDM(제품)과 IFS(파운드리) 분리. 역설적으로 가설 강화.",intc:"-30~+50%",risk:"정부 지분 의결권 없음 → 이사회 결정에 개입 한계"},
+];
+
+const STATIC_TAIWAN = [
+  {stage:"Phase 0",name:"현상 유지",prob:"60%",cls:"p0",desc:"PLA 훈련 증가, 회색지대 압박 유지. TSMC 공급망 이상 없음.",assets:[{t:"NVDA",r:"0~+5%",note:"AI capex 펀더멘털 지배"},{t:"INTC",r:"±0",note:"대만 리스크 프리미엄 내재화"},{t:"AMAT/LRCX",r:"0~-5%",note:"수출통제 불확실성"}],action:"현 포지션 유지. 대만 ADIZ 지표 주간 모니터링."},
+  {stage:"Phase 1",name:"선택적 봉쇄",prob:"20%",cls:"p1",desc:"중국 해경 선택적 검문. TSMC 출하 50~80% 지연. 전면 교전 없음.",assets:[{t:"NVDA",r:"-15~-30%",note:"TSMC 의존 → 공급 차질"},{t:"INTC",r:"+20~+60%",note:"유일한 미 본토 첨단 논리 fab"},{t:"MU",r:"-10~-20%",note:"한국 메모리 대체로 부분 방어"},{t:"GFS",r:"+5~+15%",note:"성숙 노드 긴급 수요"}],action:"INTC 비중 상향 트리거 발동. NVDA 단기 헤지 검토."},
+  {stage:"Phase 2",name:"군사 봉쇄 / 전면 충돌",prob:"12%",cls:"p2",desc:"PLA 전면 봉쇄. 글로벌 자산 패닉. GDP -2~-3% 충격.",assets:[{t:"NVDA",r:"-40~-60%",note:"패닉 후 부분 회복"},{t:"INTC",r:"-10~+50%",note:"매크로 충격 vs 대안 프리미엄"},{t:"MU",r:"-30~-50%",note:"글로벌 수요 붕괴"},{t:"AMAT/LRCX",r:"-30~-50%",note:"신규 capex 전면 동결"}],action:"포지션 전면 재검토. 금/T-bill 헤지 비중 확대."},
+  {stage:"Phase 3",name:"장기화 / 재건",prob:"8%",cls:"p3",desc:"미국 주도 공급망 재편 가속. 리쇼어링 정책 최대치 집행.",assets:[{t:"INTC",r:"+100~+300%",note:"국가 챔피언 격상"},{t:"GFS/AMAT",r:"+30~+80%",note:"미국 내 팹 증설 수혜"},{t:"NVDA",r:"+20~+60%",note:"공급망 재편 후 AI 수요 재폭발"},{t:"SNPS/CDNS",r:"+10~+30%",note:"EDA 수요 급증"}],action:"INTC + GFS + AMAT 비중 대폭 확대. 10년 시계로 판단."},
+];
+
+const STATIC_AI_LAYERS = [
+  {layer:"L1 · 컴퓨트",desc:"AI capex 수혜 1순위 · 시장 규모 최대",stocks:[{t:"NVDA",n:"NVIDIA",note:"Rubin/Vera Rubin. HBM·CoWoS 병목·대만 의존",tag:"실제"},{t:"AMD",n:"AMD",note:"MI 시리즈. N2 대기열. 대중 매출 15% 환수 구조",tag:"실제"},{t:"AVGO",n:"Broadcom",note:"하이퍼스케일러 맞춤 ASIC. AI 백로그 $73B",tag:"추정"},{t:"INTC",n:"Intel",note:"Gaudi 4 AI가속기. Xeon=Rubin host CPU",tag:"실제"}]},
+  {layer:"L2 · 메모리",desc:"HBM이 병목 · SK하이닉스 지배",stocks:[{t:"MU",n:"Micron",note:"HBM 3위(10–21%). HBM4 NVIDIA 공급 고전. AI DC 집중",tag:"실제"}]},
+  {layer:"L3 · 네트워킹 IC",desc:"GPU 클러스터 간 고속 인터커넥트",stocks:[{t:"AVGO",n:"Broadcom",note:"이더넷 스위치 AI 클러스터 수혜. Tomahawk/Jericho",tag:"실제"},{t:"MRVL",n:"Marvell",note:"광 인터커넥트 DSP + 이더넷 PHY",tag:"실제"}]},
+  {layer:"L4 · 인터커넥트 IC",desc:"CXL/PCIe 메모리 확장 버스",stocks:[{t:"INTC",n:"Intel",note:"CXL 표준 주도. 자사 플랫폼 통합",tag:"실제"},{t:"MRVL",n:"Marvell",note:"CXL 컨트롤러",tag:"추정"}]},
+  {layer:"L5 · 파운드리·제조",desc:"리쇼어링 정책의 핵심 전장",stocks:[{t:"INTC",n:"Intel Foundry",note:"18A·14A. 외부 매출 $174M/분기. 정부 지분 9.9%",tag:"실제"},{t:"GFS",n:"GlobalFoundries",note:"성숙 노드. 관세 offset 잠재 수혜",tag:"실제"},{t:"TSMC",n:"TSMC (비미국)",note:"N2 양산·고객 ~15곳. 미국 공급망 핵심이나 본사 대만",tag:"실제"}]},
+  {layer:"L6 · 반도체 장비",desc:"WFE 사이클 = 선행지표",stocks:[{t:"AMAT",n:"Applied Materials",note:"대중 매출 비중·BIS 통제 직접 노출",tag:"실제"},{t:"LRCX",n:"Lam Research",note:"식각·증착. 메모리 capex 연동",tag:"실제"},{t:"KLAC",n:"KLA",note:"검사·계측. 수율 개선 수혜",tag:"추정"},{t:"ASML",n:"ASML (네덜란드)",note:"EUV 대체 불가. 대중 수출통제 핵심",tag:"실제"}]},
+  {layer:"L7 · EDA·설계도구",desc:"중국 봉쇄 핵심 타겟",stocks:[{t:"SNPS",n:"Synopsys",note:"관세 영향 작음. 동남아 IC설계 toolchain",tag:"실제"},{t:"CDNS",n:"Cadence",note:"EDA 양강. AI 칩 설계 수요 급증",tag:"추정"}]},
+  {layer:"L8 · 전력·냉각",desc:"AI DC 전력밀도 폭증 · 숨겨진 병목",stocks:[{t:"MPWR",n:"Monolithic Power",note:"AI 서버 전압 조정기 1위. Fwd P/E 61x",tag:"실제"},{t:"VICR",n:"Vicor",note:"고밀도 전력 모듈. AI 랙 전력 솔루션",tag:"추정"}]},
+  {layer:"L9 · OSAT·패키징",desc:"CoWoS 병목 = AI 공급 제약",stocks:[{t:"AMKR",n:"Amkor",note:"美 OSAT 2위. 동남아 익스포저 최대. 232 관세 변수",tag:"실제"}]},
+];
+
+const STATIC_CONTRARIAN = [
+  {h:"왜 Intel 부흥 베팅이 틀릴 수 있는가",b:"외부 파운드리 매출은 분기 $174M(3.2%)에 불과. Terafab·18A 테이프아웃은 모두 '미래 약속'. TSMC N2는 이미 양산·15고객·밀도 우위. 미국 선단 노드(애리조나)는 ~2028. 주가 +24%는 가설 검증이 아니다."},
+  {h:"왜 NVIDIA가 큰 폭으로 빠질 수 있는가",b:"Fwd 멀티플이 AI capex 영속 성장을 가격에 반영. 하이퍼스케일러 capex가 한 번만 꺾여도 디레이팅. 자체 ASIC(Broadcom·Google TPU·AWS Trainium) 확산은 GPU 의존도를 구조적으로 낮춘다."},
+  {h:"왜 '미국 패권 회복'이 과장일 수 있는가",b:"메모리(HBM)는 SK하이닉스 50–62% 지배. 미국이 강한 건 설계·EDA·장비지 '제조'가 아니다. '패권 회복'보다 '중국 봉쇄 + 첨단 로직 한정 리쇼어링'이 정확한 서술이다."},
+  {h:"왜 지정학 렌즈가 신호를 왜곡할 수 있는가",b:"2018–19 폭락은 메모리 사이클, 2023 급등은 생성AI였다. 둘 다 지정학으로 안 잡힌다. 지정학이 방향이고 사이클이 타이밍이다."},
+];
+
+// ══════════════════════════════════════════════════════════════
+// 헬퍼 함수
+// ══════════════════════════════════════════════════════════════
+const TAG_COLOR = {실제:"var(--accent-2)",추정:"var(--accent)",가정:"var(--ink-3)"};
+function tagSpan(t) {
+  return `<span class="tag" style="color:${TAG_COLOR[t]||TAG_COLOR.가정}">[${t}]</span>`;
+}
+function statusColor(s) {
+  return s==="red"?"var(--danger)":s==="amber"?"var(--accent)":"var(--success)";
+}
+function statusDotOpacity(s) { return s==="green"?"0.5":"1"; }
+
+// ══════════════════════════════════════════════════════════════
+// 렌더 함수
+// ══════════════════════════════════════════════════════════════
+
+function renderOverview(data) {
+  const reds   = STATIC_THRESHOLDS.filter(t=>t.status==="red").length;
+  const ambers = STATIC_THRESHOLDS.filter(t=>t.status==="amber").length;
+  const liveHypo = data?.hypothesis || [];
+  const allUp   = [...liveHypo.filter(h=>h.dir==="up"),
+    {dir:"up",w:"강",txt:"Intel 14A에 Terafab(Tesla·SpaceX·xAI) 외부 고객 신호 등장",tag:"실제",note:"Q1'26 발표. '외부 고객 0' 반박 명제 약화"},
+    {dir:"up",w:"강",txt:"CHIPS Act 첨단 로직 ~40%, 점유율 0%(2022)→20%(2030) 목표",tag:"추정",note:"명시적 제조 회귀 목표"},
+    {dir:"up",w:"강",txt:"미국 정부 Intel 보통주 9.9% 취득(주당 $20.47, $80.9억)",tag:"실제",note:"보조금→지분 전환"},
+  ];
+  const allDown = [...liveHypo.filter(h=>h.dir==="down"),
+    {dir:"down",w:"강",txt:"Intel Foundry 외부 매출 분기 $174M(파운드리 매출의 3.2%)",tag:"실제",note:"Terafab 등은 아직 매출 미전환"},
+    {dir:"down",w:"강",txt:"TSMC N2 양산 진입·고객 ~15곳·밀도/성숙도 우위, 미국 선단(애리조나)는 ~2028+",tag:"실제",note:"리쇼어링 실재하나 시간차 큼"},
+    {dir:"down",w:"강",txt:"HBM 미국(Micron) 3위(~10–21%), HBM4 NVIDIA 공급 고전",tag:"실제",note:"메모리는 정책으로 단기 역전 어려움"},
+  ];
+
+  document.getElementById("stat-grid").innerHTML = `
+    <div class="stat"><div class="stat-label">적색 임계점</div><div class="stat-val c-red">${reds}</div><div class="stat-sub">즉시 행동 검토</div></div>
+    <div class="stat"><div class="stat-label">황색 임계점</div><div class="stat-val c-amber">${ambers}</div><div class="stat-sub">모니터링</div></div>
+    <div class="stat"><div class="stat-label">뒷받침 신호</div><div class="stat-val c-green">${allUp.length}</div><div class="stat-sub">${liveHypo.filter(h=>h.dir==="up").length > 0 ? "★갱신 포함" : "가설 지지"}</div></div>
+    <div class="stat"><div class="stat-label">반박 신호</div><div class="stat-val c-blue">${allDown.length}</div><div class="stat-sub">${liveHypo.filter(h=>h.dir==="down").length > 0 ? "★갱신 포함" : "가설 한정"}</div></div>
+    <div class="stat"><div class="stat-label">임계점 총계</div><div class="stat-val c-sub">34</div><div class="stat-sub">v2-LIVE</div></div>
+  `;
+
+  const makeRows = arr => arr.map(h=>`
+    <div class="hypo-row">
+      <div class="hypo-header">
+        <span class="hypo-w" style="color:${h.w==="강"?"var(--ink)":"var(--ink-3)"}">${h.w}</span>
+        <span class="hypo-txt">${h.txt} ${tagSpan(h.tag)}${h.isNew?'<span class="new-flag">★신규</span>':''}</span>
+      </div>
+      <div class="hypo-note">${h.note||""}</div>
+    </div>`).join("");
+
+  document.getElementById("hypo-grid").innerHTML = `
+    <div class="hypo-panel">
+      <div class="hypo-title" style="color:var(--success)">▲ 가설 뒷받침 ${liveHypo.some(h=>h.dir==="up")?"<span style='color:var(--accent);font-size:9px'>★갱신</span>":""}</div>
+      ${makeRows(allUp)}
+    </div>
+    <div class="hypo-panel">
+      <div class="hypo-title" style="color:var(--accent-2)">▼ 가설 반박/한정 ${liveHypo.some(h=>h.dir==="down")?"<span style='color:var(--accent);font-size:9px'>★갱신</span>":""}</div>
+      ${makeRows(allDown)}
+    </div>`;
+}
+
+function renderThresholds(data) {
+  // 사이클 & 자체칩 갱신 신호
+  const cycleSection = document.getElementById("cycle-section");
+  const cycleGrid    = document.getElementById("cycle-grid");
+  const signals = [...(data?.cycleSignals||[]), ...(data?.customChipSignal?[data.customChipSignal]:[])];
+  if (signals.length > 0) {
+    cycleSection.style.display = "block";
+    cycleGrid.innerHTML = signals.map(s=>`
+      <div class="cycle-card ${s.status}">
+        <div class="cycle-name">${s.name} ${tagSpan(s.tag)}</div>
+        <div class="cycle-summary">${s.summary}</div>
+      </div>`).join("");
+  }
+
+  // 정적 임계점
+  const axes = ["all", ...new Set(STATIC_THRESHOLDS.map(t=>t.axis))];
+  document.getElementById("th-filter").innerHTML = axes.map(a=>`
+    <button class="th-btn${a==="all"?" active":""}" data-axis="${a}">${a==="all"?"전체("+STATIC_THRESHOLDS.length+")":a}</button>`).join("");
+
+  const renderList = (axis) => {
+    const list = axis==="all" ? STATIC_THRESHOLDS : STATIC_THRESHOLDS.filter(t=>t.axis===axis);
+    const order = {red:0,amber:1,green:2};
+    const sorted = [...list].sort((a,b)=>order[a.status]-order[b.status]);
+    document.getElementById("th-list").innerHTML = sorted.map(t=>`
+      <div class="th-item ${t.status}">
+        <div class="th-dot" style="background:${statusColor(t.status)};opacity:${statusDotOpacity(t.status)}"></div>
+        <div style="flex:1">
+          <div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap">
+            <span class="th-axis">${t.axis}</span>
+            <span class="th-name">${t.name}</span>
+            ${tagSpan(t.tag)}
+          </div>
+          <div class="th-trigger" style="color:${t.status==="green"?"var(--ink-3)":"var(--ink-2)"}">
+            <span style="color:${statusColor(t.status)};font-family:var(--mono);font-size:10px">▸ 트리거 </span>${t.trigger}
+          </div>
+        </div>
+      </div>`).join("");
+  };
+
+  renderList("all");
+  document.getElementById("th-filter").addEventListener("click", e=>{
+    if (!e.target.dataset.axis) return;
+    document.querySelectorAll(".th-btn").forEach(b=>b.classList.remove("active"));
+    e.target.classList.add("active");
+    renderList(e.target.dataset.axis);
+  });
+}
+
+function renderScenarios(data) {
+  const probs = data?.scenarioProbs || {Base:45,Bull:20,Bear:25,BlackSwan:10};
+
+  // 시장 전체
+  const mktCards = [
+    {name:"Base",cls:"base",prob:probs.Base,desc:"AI capex 견조, 관세 2단계 협상 타결, Intel 18A 점진 개선",impacts:"NVDA+·INTC+·MU+·AMAT+"},
+    {name:"Bull",cls:"bull",prob:probs.Bull,desc:"Intel 14A 외부 매출 전환 + 메모리 슈퍼사이클 지속, 리쇼어링 가속",impacts:"NVDA++·INTC++·MU++·AMAT++"},
+    {name:"Bear",cls:"bear",prob:probs.Bear,desc:"AI capex 둔화 + 관세 Phase2 광범위 부과, 사이클 정점 통과",impacts:"NVDA--·INTC-·MU--·AMAT-"},
+    {name:"Black Swan",cls:"swan",prob:probs.BlackSwan,desc:"대만해협 무력 충돌/봉쇄 — 선단 공급 마비",impacts:"NVDA---·INTC+·MU-·AMAT--"},
+  ];
+  document.getElementById("sc-market").innerHTML = `
+    <div class="sc-grid">${mktCards.map(s=>`
+      <div class="sc-card ${s.cls}">
+        <div class="sc-label" style="color:${s.cls==="bull"?"var(--success)":s.cls==="bear"||s.cls==="swan"?"var(--danger)":"var(--accent)"}">${s.name}${data?.scenarioProbs?"<span style='font-size:9px;color:var(--accent);margin-left:6px'>★갱신</span>":""}</div>
+        <div class="sc-prob">${s.prob}%</div>
+        <div class="sc-desc">${s.desc}</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px">${s.impacts}</div>
+      </div>`).join("")}
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--ink-3)">확률 합 = 100%. [가정] 값. 확률은 매주 Claude API가 시황 반영해 자동 재조정.</div>`;
+
+  // Intel 단독
+  const intelCurrent = data?.intelScenario;
+  document.getElementById("sc-intel").innerHTML = `
+    ${intelCurrent ? `
+    <div class="intel-current">
+      <div class="intel-label">★ 이번 주 현재 시나리오 (자동 갱신)</div>
+      <div class="intel-val">${intelCurrent.current}</div>
+      <div class="intel-body">${intelCurrent.rationale}</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--accent)">📌 주목 트리거: ${intelCurrent.keyTrigger}</div>
+    </div>` : ""}
+    ${STATIC_INTEL_SCENARIOS.map(s=>`
+      <div style="background:var(--bg-2);border:1px solid var(--line);border-left:3px solid ${s.color};padding:16px;margin-bottom:10px">
+        <div style="display:flex;gap:12px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-family:var(--serif);font-size:17px;color:${s.color}">${s.name}</span>
+          <span style="font-family:var(--mono);font-size:11px;color:${s.color};border:1px solid ${s.color}55;padding:1px 6px;border-radius:3px">${s.prob}</span>
+          <span style="font-family:var(--mono);font-size:13px;color:${s.color};margin-left:auto">INTC: ${s.intc}</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-2);margin-bottom:5px"><strong style="color:var(--ink)">트리거:</strong> ${s.trigger}</div>
+        <div style="font-size:12px;color:var(--ink-2);margin-bottom:5px"><strong style="color:var(--ink)">결과:</strong> ${s.outcome}</div>
+        <div style="font-size:11px;color:var(--ink-3)"><strong>리스크:</strong> ${s.risk}</div>
+      </div>`).join("")}
+    <div style="font-size:11px;color:var(--ink-3);margin-top:8px">확률 합 = 100%. [가정]. Intel 분기 실적 발표 후 재조정.</div>`;
+
+  // 대만 단계별
+  document.getElementById("sc-taiwan").innerHTML = STATIC_TAIWAN.map(s=>`
+    <div class="tw-stage ${s.cls}">
+      <div class="tw-header">
+        <span class="tw-tag">${s.stage}</span>
+        <span class="tw-name">${s.name}</span>
+        <span class="tw-prob">${s.prob}</span>
+      </div>
+      <div class="tw-desc">${s.desc}</div>
+      <div class="tw-assets">${s.assets.map(a=>`
+        <div class="tw-asset">
+          <div class="tw-asset-row">
+            <span class="tw-asset-name">${a.t}</span>
+            <span class="tw-asset-r" style="color:${a.r.startsWith("+")?'var(--success)':a.r.startsWith("-")?'var(--danger)':'var(--accent)'}">${a.r}</span>
+          </div>
+          <div class="tw-asset-note">${a.note}</div>
+        </div>`).join("")}
+      </div>
+      <div class="tw-action">▸ 행동: ${s.action}</div>
+    </div>`).join("") +
+    `<div style="font-size:11px;color:var(--ink-3);margin-top:8px">[가정] 값. "침공으로 돈 번다"가 아니라 "확률이 변할 때 자산이 어떻게 반응하나"가 트레이딩 가능한 질문.</div>`;
+}
+
+function renderLayers() {
+  document.getElementById("layers-content").innerHTML = STATIC_AI_LAYERS.map(layer=>`
+    <div class="layer-section">
+      <div class="layer-header">
+        <span class="layer-num">${layer.layer}</span>
+        <span class="layer-name">${layer.desc}</span>
+      </div>
+      <div class="stock-grid">${layer.stocks.map(s=>`
+        <div class="stock-card">
+          <div><span class="stock-ticker">${s.t}</span><span class="stock-name">${s.n}</span></div>
+          <div class="stock-note">${s.note} ${tagSpan(s.tag)}</div>
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+
+function renderNews(data) {
+  const news = data?.topNews || [];
+  let html = news.length > 0 ? news.map(n=>`
+    <div class="news-item">
+      <div class="news-headline">${n.headline} ${tagSpan(n.tag)}</div>
+      <div class="news-summary">${n.summary}</div>
+      <div class="news-implication">📌 ${n.implication}</div>
+    </div>`).join("") :
+    `<div class="loading">뉴스 데이터 없음 — 다음 주 자동 갱신 시 업데이트됩니다.</div>`;
+
+  // 자동 수집 헤드라인 (semi_news.py — Google News RSS, 최근 7일)
+  const auto = data?.autoNews || [];
+  if (auto.length > 0) {
+    const byCat = {};
+    auto.forEach(n => { (byCat[n.category] = byCat[n.category] || []).push(n); });
+    html += `<h4 style="margin-top:28px">★ 자동 수집 헤드라인 (Google News · 최근 7일)</h4>` +
+      Object.entries(byCat).map(([cat, items]) => `
+        <div style="margin-bottom:14px">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:6px">${cat}</div>
+          ${items.map(n=>`
+            <div style="padding:6px 0;border-bottom:1px solid var(--line);font-size:13px">
+              <a href="${n.link}" target="_blank" style="color:var(--ink);text-decoration:none">${n.title}</a>
+              <span style="color:var(--ink-3);font-size:11px;font-family:var(--mono)"> · ${n.source||""} · ${n.lang||""}</span>
+            </div>`).join("")}
+        </div>`).join("");
+  }
+  document.getElementById("news-list").innerHTML = html;
+}
+
+function renderBriefing(data) {
+  const list = data?.tickers || [];
+  if (list.length === 0) return;
+  const fmt = (v, suffix="%") => v==null ? `<span style="color:var(--ink-3)">—</span>`
+    : `<span style="color:${v>=0?'var(--success)':'var(--danger)'}">${v>=0?'+':''}${v.toFixed(2)}${suffix}</span>`;
+  document.getElementById("briefing-list").innerHTML = list.map(b=>`
+    <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-bottom:12px">
+      <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px">
+        <span class="stock-ticker" style="font-size:18px">${b.ticker}</span>
+        <span class="stock-name">${b.name}</span>
+        <span style="font-family:var(--mono);font-size:16px;color:var(--ink);margin-left:auto">$${b.price?.toLocaleString?.() ?? b.price}</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">${b.date}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:10px">
+        <div><div class="stat-label">1D</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.d1)}</div></div>
+        <div><div class="stat-label">7D</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.d7)}</div></div>
+        <div><div class="stat-label">30D</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.d30)}</div></div>
+        <div><div class="stat-label">YTD</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.ytd)}</div></div>
+        <div><div class="stat-label">52주 고점比</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.offHigh52w)}</div></div>
+        <div><div class="stat-label">거래량/21일평균</div><div style="font-family:var(--mono);font-size:14px">${b.volRatioPct==null?'—':b.volRatioPct.toFixed(0)+'%'}</div></div>
+        <div><div class="stat-label">공매도/유통주식</div><div style="font-family:var(--mono);font-size:14px">${b.shortPctFloat==null?'수집 불가':b.shortPctFloat.toFixed(2)+'%'}</div></div>
+        <div><div class="stat-label">Days to Cover</div><div style="font-family:var(--mono);font-size:14px">${b.shortRatio==null?'—':b.shortRatio}</div></div>
+      </div>
+      ${(b.news||[]).length>0?`
+      <div style="border-top:1px solid var(--line);padding-top:8px">
+        ${b.news.map(n=>`
+          <div style="padding:4px 0;font-size:12px">
+            <a href="${n.link}" target="_blank" style="color:var(--ink-2);text-decoration:none">▸ ${n.title}</a>
+            <span style="color:var(--ink-3);font-size:10px;font-family:var(--mono)"> · ${n.source||""}</span>
+          </div>`).join("")}
+      </div>`:""}
+    </div>`).join("");
+}
+
+function renderContrarian() {
+  document.getElementById("contra-grid").innerHTML = STATIC_CONTRARIAN.map(c=>`
+    <div class="contra-card">
+      <div class="contra-h">${c.h}</div>
+      <div class="contra-b">${c.b}</div>
+    </div>`).join("");
+}
+
+// ══════════════════════════════════════════════════════════════
+// data.json 로드 & 초기화
+// ══════════════════════════════════════════════════════════════
+
+async function loadData() {
+  let data = window.__DATA__ || null;  // build_semi.py 인라인 데이터 우선 (단일 파일 모드)
+  if (!data) {
+    try {
+      const res = await fetch("data.json?t=" + Date.now());
+      if (res.ok) data = await res.json();
+    } catch(e) {
+      console.warn("data.json 로드 실패, 초기 데이터로 렌더링:", e);
+    }
+  }
+
+  // 헤더 날짜
+  document.getElementById("meta-date").textContent = data?.updatedAt || "2026-05-30 (초기값)";
+
+  // 라이브 배너
+  if (data?.summary) {
+    const probs = data.scenarioProbs || {};
+    document.getElementById("banner-summary").textContent = data.summary;
+    document.getElementById("banner-probs").textContent =
+      `시나리오 확률 — Base ${probs.Base||45}% · Bull ${probs.Bull||20}% · Bear ${probs.Bear||25}% · Black Swan ${probs.BlackSwan||10}%`;
+    document.getElementById("live-banner").style.display = "block";
+  }
+
+  // 각 탭 렌더링
+  renderOverview(data);
+  renderThresholds(data);
+  renderScenarios(data);
+  renderLayers();
+  renderNews(data);
+  renderContrarian();
+  renderBriefing(data);
+}
+
+// ══════════════════════════════════════════════════════════════
+// 탭 전환
+// ══════════════════════════════════════════════════════════════
+document.getElementById("tabs").addEventListener("click", e=>{
+  const btn = e.target.closest(".tab");
+  if (!btn) return;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelector(`[data-panel="${btn.dataset.tab}"]`).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+// 시나리오 서브탭
+document.querySelectorAll(".sc-tab").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".sc-tab").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".sc-view").forEach(v=>v.style.display="none");
+    btn.classList.add("active");
+    const map = {market:"sc-market",intel:"sc-intel",taiwan:"sc-taiwan"};
+    document.getElementById(map[btn.dataset.sv]).style.display="block";
+  });
+});
+
+// 실행
+loadData();
+</script>
+</body>
+</html>

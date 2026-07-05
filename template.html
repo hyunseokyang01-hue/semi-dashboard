@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>반도체 투자 대시보드</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=JetBrains+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0a; --bg-2:#141414; --bg-3:#1c1c1c;
+  --ink:#ededed; --ink-2:#a3a3a3; --ink-3:#6b6b6b;
+  --line:#2a2a2a; --line-2:#3a3a3a;
+  --accent:#d4a574; --accent-2:#7da3c4;
+  --warn:#c4926b; --danger:#b86a6a; --success:#7a9b7a;
+  --serif:'Fraunces',ui-serif,Georgia,serif;
+  --sans:'IBM Plex Sans KR',-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased}
+.shell{max-width:1280px;margin:0 auto;padding:48px 36px 80px}
+@media(max-width:768px){.shell{padding:28px 18px 48px}}
+
+/* HEADER */
+.head{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:40px}
+.head-top{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.kicker{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.title{font-family:var(--serif);font-size:clamp(28px,4vw,52px);font-weight:400;line-height:1.05;letter-spacing:-0.02em;font-style:italic}
+.subtitle{font-size:13px;color:var(--ink-2);margin-top:12px;line-height:1.6}
+.meta{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);text-align:right;line-height:1.8}
+.meta strong{color:var(--ink-2);font-weight:400}
+.badge-new{font-family:var(--mono);font-size:9px;color:var(--danger);border:1px solid var(--danger)55;padding:1px 5px;border-radius:3px;margin-left:5px;letter-spacing:0.05em}
+
+/* LIVE BANNER */
+.live-banner{background:rgba(212,165,116,0.07);border:1px solid rgba(212,165,116,0.25);border-radius:8px;padding:14px 18px;margin-bottom:32px}
+.live-banner-kicker{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;margin-bottom:6px}
+.live-banner-text{font-size:14px;color:var(--ink);line-height:1.65}
+.live-banner-probs{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px}
+
+/* TABS */
+.tabs{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid var(--line);margin-bottom:40px;overflow-x:auto;-ms-overflow-style:none;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:12px 18px;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-3);background:none;border:none;cursor:pointer;border-bottom:1px solid transparent;margin-bottom:-1px;white-space:nowrap;transition:all 0.2s}
+.tab:hover{color:var(--ink)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-num{display:inline-block;margin-right:6px;font-size:10px}
+.tab.active .tab-num{color:var(--accent)}
+
+/* PANEL */
+.panel{display:none;animation:fade 0.3s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* TYPOGRAPHY */
+h2{font-family:var(--serif);font-size:30px;font-weight:400;letter-spacing:-0.01em;margin-bottom:8px;font-style:italic}
+h3{font-family:var(--serif);font-size:20px;font-weight:500;margin:28px 0 10px;letter-spacing:-0.01em}
+h4{font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-2);margin:20px 0 10px;font-weight:500}
+.lead{font-size:14px;color:var(--ink-2);max-width:680px;line-height:1.7;margin-bottom:28px}
+p{font-size:13px;color:var(--ink-2);line-height:1.7;margin-bottom:10px}
+
+/* STAT CARDS */
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:24px}
+.stat{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:14px}
+.stat-label{font-size:11px;color:var(--ink-3);letter-spacing:0.5px;margin-bottom:6px}
+.stat-val{font-family:var(--mono);font-size:26px;line-height:1;margin-bottom:4px}
+.stat-sub{font-size:11px;color:var(--ink-3)}
+.c-red{color:var(--danger)} .c-amber{color:var(--accent)} .c-green{color:var(--success)} .c-blue{color:var(--accent-2)} .c-sub{color:var(--ink-3)}
+
+/* HYPOTHESIS */
+.hypo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+@media(max-width:640px){.hypo-grid{grid-template-columns:1fr}}
+.hypo-panel{background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px}
+.hypo-title{font-family:var(--mono);font-size:11px;letter-spacing:1px;margin-bottom:10px}
+.hypo-row{padding:9px 0;border-top:1px solid var(--line)}
+.hypo-row:first-child{border-top:none}
+.hypo-header{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+.hypo-w{font-family:var(--mono);font-size:10px;border:1px solid var(--line);padding:1px 5px;border-radius:3px}
+.hypo-txt{font-size:13px;color:var(--ink);line-height:1.45;flex:1}
+.hypo-note{font-size:11px;color:var(--ink-3);margin-top:4px;line-height:1.5}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:0.3px}
+.tag-실제{color:var(--accent-2)} .tag-추정{color:var(--accent)} .tag-가정{color:var(--ink-3)}
+.new-flag{background:rgba(212,165,116,0.15);border-radius:3px;padding:1px 5px;font-size:9px;font-family:var(--mono);color:var(--accent);margin-left:4px}
+
+/* THRESHOLDS */
+.th-filter{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+.th-btn{font-size:11px;padding:5px 10px;border-radius:5px;cursor:pointer;background:transparent;color:var(--ink-3);border:1px solid var(--line);transition:all 0.15s}
+.th-btn.active{background:var(--bg-2);color:var(--ink);border-color:var(--accent)}
+.th-list{display:flex;flex-direction:column;gap:7px}
+.th-item{display:flex;gap:12px;align-items:flex-start;border-radius:7px;padding:10px 14px}
+.th-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.th-axis{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.th-name{font-size:13px;color:var(--ink)}
+.th-trigger{font-size:12px;margin-top:4px;line-height:1.5}
+.th-item.red{background:rgba(184,106,106,0.1);border:1px solid rgba(184,106,106,0.3)}
+.th-item.amber{background:rgba(196,146,107,0.08);border:1px solid rgba(196,146,107,0.2)}
+.th-item.green{background:rgba(63,90,74,0.05);border:1px solid var(--line);opacity:0.8}
+
+/* SCENARIOS */
+.sc-tabs{display:flex;gap:6px;margin-bottom:18px}
+.sc-tab{font-size:12px;padding:6px 14px;border-radius:6px;cursor:pointer;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--line)}
+.sc-tab.active{background:var(--accent);color:#1a1206;font-weight:700;border-color:var(--accent)}
+.sc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.sc-card{background:var(--bg-2);border:1px solid var(--line);padding:18px;border-top:3px solid var(--line-2)}
+.sc-card.bull{border-top-color:var(--success)}
+.sc-card.base{border-top-color:var(--accent)}
+.sc-card.bear{border-top-color:var(--danger)}
+.sc-card.swan{border-top-color:#8a4a9a}
+.sc-label{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px}
+.sc-prob{font-family:var(--mono);font-size:20px;font-weight:500;margin-bottom:8px}
+.sc-desc{font-size:12px;color:var(--ink-2);line-height:1.6}
+
+/* INTEL SCENARIO */
+.intel-current{background:rgba(212,165,116,0.08);border:1px solid rgba(212,165,116,0.3);border-radius:8px;padding:16px;margin-bottom:16px}
+.intel-label{font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.1em;margin-bottom:6px}
+.intel-val{font-family:var(--serif);font-size:22px;color:var(--ink);margin-bottom:8px}
+.intel-body{font-size:13px;color:var(--ink-2);line-height:1.6}
+
+/* TAIWAN */
+.tw-stage{background:var(--bg-2);border-left:3px solid var(--line-2);padding:18px 22px;margin-bottom:10px;border:1px solid var(--line)}
+.tw-stage.p0{border-left-color:var(--ink-3)}
+.tw-stage.p1{border-left-color:var(--accent)}
+.tw-stage.p2{border-left-color:var(--warn)}
+.tw-stage.p3{border-left-color:var(--danger)}
+.tw-header{display:flex;gap:12px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap}
+.tw-tag{font-family:var(--mono);font-size:10px;color:var(--ink-3)}
+.tw-name{font-family:var(--serif);font-size:17px;color:var(--ink)}
+.tw-prob{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.tw-desc{font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:10px}
+.tw-assets{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-bottom:10px}
+.tw-asset{background:var(--bg-3);padding:10px 12px}
+.tw-asset-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:3px}
+.tw-asset-name{font-family:var(--mono);font-size:12px;color:var(--ink);font-weight:500}
+.tw-asset-r{font-family:var(--mono);font-size:12px}
+.tw-asset-note{font-size:11px;color:var(--ink-3);line-height:1.4}
+.tw-action{font-family:var(--mono);font-size:11px;color:var(--accent);border-top:1px solid var(--line);padding-top:8px;margin-top:4px}
+
+/* STOCKS / LAYERS */
+.layer-section{margin-bottom:28px}
+.layer-header{display:flex;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid var(--line-2);margin-bottom:10px;flex-wrap:wrap}
+.layer-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:0.1em;min-width:80px}
+.layer-name{font-family:var(--serif);font-size:17px;color:var(--ink)}
+.layer-desc{font-size:12px;color:var(--ink-3);margin-left:auto}
+.stock-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.stock-card{background:var(--bg-2);border:1px solid var(--line);padding:13px 15px}
+.stock-ticker{font-family:var(--mono);font-size:15px;color:var(--ink);font-weight:500}
+.stock-name{font-size:11px;color:var(--ink-3);margin-left:8px}
+.stock-note{font-size:12px;color:var(--ink-2);margin-top:5px;line-height:1.5}
+
+/* CYCLE / CUSTOM CHIP */
+.cycle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:20px}
+.cycle-card{background:var(--bg-2);border:1px solid var(--line);border-radius:7px;padding:14px 16px}
+.cycle-card.red{border-left:3px solid var(--danger)}
+.cycle-card.amber{border-left:3px solid var(--accent)}
+.cycle-card.green{border-left:3px solid var(--success)}
+.cycle-name{font-size:13px;color:var(--ink);margin-bottom:5px}
+.cycle-summary{font-size:12px;color:var(--ink-2);line-height:1.5}
+
+/* NEWS */
+.news-item{background:var(--bg-2);border:1px solid var(--line);border-radius:7px;padding:16px 18px;margin-bottom:10px}
+.news-headline{font-family:var(--serif);font-size:16px;color:var(--ink);margin-bottom:6px}
+.news-summary{font-size:13px;color:var(--ink-2);line-height:1.6;margin-bottom:6px}
+.news-implication{font-size:12px;color:var(--accent);font-style:italic}
+
+/* CONTRARIAN */
+.contra-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.contra-grid{grid-template-columns:1fr}}
+.contra-card{background:var(--bg-2);border:1px solid rgba(184,106,106,0.3);border-radius:8px;padding:16px}
+.contra-h{font-family:var(--serif);font-size:15px;color:var(--danger);line-height:1.3;margin-bottom:8px}
+.contra-b{font-size:13px;color:var(--ink);line-height:1.65}
+
+/* NOTE */
+.note{background:var(--bg-2);border:1px solid var(--line);border-left:2px solid var(--warn);padding:16px 20px;font-size:13px;line-height:1.7;color:var(--ink-2);margin:20px 0}
+.note.danger{border-left-color:var(--danger)}
+.note.info{border-left-color:var(--accent-2)}
+
+/* LOADING / ERROR */
+.loading{text-align:center;padding:60px;color:var(--ink-3);font-family:var(--mono);font-size:13px}
+.err{text-align:center;padding:40px;color:var(--danger);font-family:var(--mono);font-size:13px}
+
+/* FOOTER */
+.foot{margin-top:60px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;letter-spacing:0.05em;color:var(--ink-3);line-height:1.8}
+.foot strong{color:var(--ink-2);font-weight:400}
+
+@media(max-width:640px){
+  .hypo-grid{grid-template-columns:1fr}
+  .sc-grid{grid-template-columns:1fr 1fr}
+  .contra-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<!-- HEADER -->
+<header class="head">
+  <div class="head-top">
+    <div>
+      <div class="kicker">Semiconductor · Decision Dashboard · Auto-Updated</div>
+      <h1 class="title">반도체 투자<br>의사결정 대시보드</h1>
+      <p class="subtitle">목적: 거래 트리거 + 분기 리밸런싱 · 매주 월요일 KST 09:00 자동 갱신</p>
+    </div>
+    <div class="meta">
+      <strong>DATA</strong> <span id="meta-date">로딩 중…</span><br>
+      <strong>SOURCE</strong> Claude API + Web Search<br>
+      <strong>AUTO</strong> GitHub Actions → Netlify<br>
+      <br>
+      <span style="color:var(--accent-2)">[실제]</span> 확인 사실<br>
+      <span style="color:var(--accent)">[추정]</span> 애널 추정<br>
+      <span style="color:var(--ink-3)">[가정]</span> 시나리오 가정
+    </div>
+  </div>
+</header>
+
+<!-- LIVE BANNER (data.json 로드 후 채워짐) -->
+<div class="live-banner" id="live-banner" style="display:none">
+  <div class="live-banner-kicker">★ 이번 주 시황 요약 · Claude API + 웹검색 자동 갱신</div>
+  <div class="live-banner-text" id="banner-summary"></div>
+  <div class="live-banner-probs" id="banner-probs"></div>
+</div>
+
+<!-- TABS -->
+<nav class="tabs" id="tabs">
+  <button class="tab active" data-tab="overview"><span class="tab-num">01</span>종합</button>
+  <button class="tab" data-tab="threshold"><span class="tab-num">02</span>임계점</button>
+  <button class="tab" data-tab="scenario"><span class="tab-num">03</span>시나리오</button>
+  <button class="tab" data-tab="layers"><span class="tab-num">04</span>AI 레이어</button>
+  <button class="tab" data-tab="news"><span class="tab-num">05</span>주간 뉴스</button>
+  <button class="tab" data-tab="contra"><span class="tab-num">06</span>반대의견</button>
+  <button class="tab" data-tab="briefing"><span class="tab-num">07</span>종목 브리핑</button>
+</nav>
+
+<!-- 01 OVERVIEW -->
+<section class="panel active" data-panel="overview">
+  <h2>종합 — 작업가설 점검표</h2>
+  <p class="lead">가설: '미국이 아시아에 빼앗긴 반도체 제조 패권을 회복하려 한다.' 결론이 아니라 검증 대상.</p>
+  <div class="stat-grid" id="stat-grid">
+    <div class="loading">데이터 로딩 중…</div>
+  </div>
+  <div style="background:var(--bg-2);border:1px solid rgba(212,165,116,0.35);border-radius:8px;padding:14px 18px;margin-bottom:14px" id="judge-box" style="display:none">
+    <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:1px;margin-bottom:6px">현재 종합 판단</div>
+    <div style="font-size:14px;color:var(--ink);line-height:1.7" id="judge-text"></div>
+  </div>
+  <div class="hypo-grid" id="hypo-grid"></div>
+  <div style="margin-top:16px;padding:12px 14px;border:1px dashed var(--line);border-radius:7px;color:var(--ink-3);font-size:12px;line-height:1.6">
+    ⚠ 의사결정 원칙: 각 임계점에 행동(매수/매도/리밸런싱)이 연결돼 있다. 트리거 없는 지표는 정보 수집 취미일 뿐이다.<br>
+    운영 리듬 — 매주 월: 자동 갱신 확인 / 매주 금: 반대가설 점검 / 분기: 시나리오 재보정
+  </div>
+</section>
+
+<!-- 02 THRESHOLDS -->
+<section class="panel" data-panel="threshold">
+  <h2>임계점 알람 — 거래·리밸런싱 트리거</h2>
+  <p class="lead">34개 임계점 신호등. ★사이클(3개) + ★자체칩(1개) 매주 자동 갱신.</p>
+
+  <!-- 자동 갱신 사이클 신호 -->
+  <div id="cycle-section" style="display:none;margin-bottom:20px">
+    <h4>★ 자동 갱신 — 사이클 선행지표 & 자체칩</h4>
+    <div class="cycle-grid" id="cycle-grid"></div>
+  </div>
+
+  <!-- 정적 임계점 -->
+  <div class="th-filter" id="th-filter"></div>
+  <div class="th-list" id="th-list"></div>
+  <div style="margin-top:12px;font-size:11px;color:var(--ink-3)">
+    ★사이클·★자체칩 축은 매주 자동 갱신. 나머지는 매주 월요일 직접 점검 후 상태 판단.
+  </div>
+</section>
+
+<!-- 03 SCENARIOS -->
+<section class="panel" data-panel="scenario">
+  <h2>시나리오 매트릭스</h2>
+  <p class="lead">단일 예측이 아니라 확률 분포. 확률은 매주 자동 재조정.</p>
+  <div class="sc-tabs">
+    <button class="sc-tab active" data-sv="market">시장 전체</button>
+    <button class="sc-tab" data-sv="intel">Intel 단독 ★</button>
+    <button class="sc-tab" data-sv="taiwan">대만 단계별 ★</button>
+  </div>
+  <div id="sc-market" class="sc-view active-sv"></div>
+  <div id="sc-intel" class="sc-view" style="display:none"></div>
+  <div id="sc-taiwan" class="sc-view" style="display:none"></div>
+</section>
+
+<!-- 04 AI LAYERS -->
+<section class="panel" data-panel="layers">
+  <h2>AI 인프라 9레이어 분류</h2>
+  <p class="lead">AI 데이터센터를 구성하는 9개 레이어. 레이어별 AI capex 수혜 직접도와 주요 미국 플레이어. 매수 추천 아님.</p>
+  <div id="layers-content"></div>
+</section>
+
+<!-- 05 NEWS -->
+<section class="panel" data-panel="news">
+  <h2>주간 핵심 뉴스</h2>
+  <p class="lead">이번 주 반도체·지정학 핵심 뉴스 3개. 매주 자동 갱신.</p>
+  <div id="news-list">
+    <div class="loading">뉴스 로딩 중…</div>
+  </div>
+</section>
+
+<!-- 06 CONTRARIAN -->
+<section class="panel" data-panel="contra">
+  <h2>반대 의견 보드</h2>
+  <p class="lead">확증편향 자동화 방지. 보고 싶지 않은 의견을 일부러 노출. 본 뒤 본인 베팅 명제를 재평가하라.</p>
+  <div class="contra-grid" id="contra-grid"></div>
+</section>
+
+<!-- 07 TICKER BRIEFING (run_semi.py 자동 갱신) -->
+<section class="panel" data-panel="briefing">
+  <h2>종목 브리핑 — 자동 갱신</h2>
+  <p class="lead">semi_fetch.py의 TICKERS에 적힌 종목별 시세·공매도·뉴스. run_semi.py 실행 시 갱신. (미국 종목 기준 — 한국 전용 지표 없음)</p>
+  <div id="briefing-list">
+    <div class="loading">데이터 없음 — run_semi.py 실행 시 생성됩니다.</div>
+  </div>
+</section>
+
+<footer class="foot">
+  <strong>DATA</strong> Claude API (claude-sonnet-4-6) + Web Search · GitHub Actions 자동 갱신 · Netlify 호스팅<br>
+  <strong>DISCLAIMER</strong> 매수 추천 아님. 투자 의사결정은 본인 책임.
+</footer>
+</div>
+
+<script>
+// build_semi.py가 data.json을 여기 인라인 → 이메일 첨부(단일 파일)에서도 동작
+window.__DATA__ = /*__INLINE_DATA__*/ null;
+</script>
+
+<script>
+// ══════════════════════════════════════════════════════════════
+// 정적 데이터 (data.json으로 갱신되지 않는 고정 콘텐츠)
+// ══════════════════════════════════════════════════════════════
+
+const STATIC_THRESHOLDS = [
+  // 축1 미·중
+  {axis:"축1 미·중",name:"BIS Federal Register 신규 수출통제 건수(월)",status:"amber",trigger:"신규 통제 → 장비주(AMAT/LRCX/KLAC) 대중 매출 비중 점검 후 비중 축소 검토",tag:"실제"},
+  {axis:"축1 미·중",name:"China Select Committee 청문 일정",status:"green",trigger:"강경 결의 → 대중 노출 큰 종목 단기 변동성 대비",tag:"실제"},
+  {axis:"축1 미·중",name:"중국 상무부 보복성 수출통제(갈륨·게르마늄·희토류)",status:"amber",trigger:"통제 강화 → 소재 의존 종목 헤지",tag:"실제"},
+  {axis:"축1 미·중",name:"NVIDIA/AMD 대중 칩 매출 15% 정부 환수 구조 변동",status:"amber",trigger:"구조 변경 → NVDA/AMD 가이던스 재계산",tag:"실제"},
+  // 축2 대만
+  {axis:"축2 대만",name:"대만 ADIZ 진입 PLA 항공기·함정 일일 횟수",status:"amber",trigger:"급증 → TSMC 의존 팹리스(NVDA/AMD) 단기 리스크 프리미엄 확대 베팅",tag:"실제"},
+  {axis:"축2 대만",name:"미 7함대 대만해협 항행 빈도",status:"green",trigger:"긴장 고조 시 시나리오 매트릭스 'Black Swan' 가중",tag:"추정"},
+  {axis:"축2 대만",name:"TSMC N2 Baoshan 가동률(웨이퍼/월)",status:"green",trigger:"차질 → AI 가속기 공급 병목 → 가격 상방",tag:"실제"},
+  {axis:"축2 대만",name:"TSMC 애리조나 선단 노드 일정(2팹/3팹/4팹)",status:"amber",trigger:"추가 지연 → 리쇼어링 가설 반박 신호 누적",tag:"실제"},
+  // 축3 한반도
+  {axis:"축3 한반도",name:"한국 산업부 대중 반도체 수출 통계(월)",status:"green",trigger:"급감 → 메모리 사이클 둔화 신호",tag:"실제"},
+  {axis:"축3 한반도",name:"SK하이닉스/삼성 HBM4 NVIDIA 인증 진척",status:"amber",trigger:"Micron 탈락/지연 → MU 비중 점검, 삼성 점유율 상방",tag:"추정"},
+  {axis:"축3 한반도",name:"평택 P5 / 이천 팹 증설 진척(위성·공시)",status:"green",trigger:"증설 가속 → 메모리 공급 과잉 선행 경보",tag:"추정"},
+  {axis:"축3 한반도",name:"북한 도발 빈도(미사일/핵)",status:"green",trigger:"고조 → 한반도 리스크 프리미엄(단기 노이즈)",tag:"실제"},
+  // 축4 유럽·러
+  {axis:"축4 유럽·러",name:"ASML 대중국 수출 라이선스 상태",status:"amber",trigger:"추가 제한 → ASML/장비 밸류체인 대중 매출 하향",tag:"실제"},
+  {axis:"축4 유럽·러",name:"네덜란드 정부 수출통제 발표",status:"green",trigger:"동조 강화 → 대중 EUV 차단 강화",tag:"실제"},
+  {axis:"축4 유럽·러",name:"네온가스 가격(우크라 전선 연동)",status:"green",trigger:"급등 → 웨이퍼 원가 상방",tag:"추정"},
+  {axis:"축4 유럽·러",name:"독일 자동차 칩 재고 수준",status:"green",trigger:"재고 급감 → 아날로그/MCU 수요 회복",tag:"추정"},
+  // 축5 동맹
+  {axis:"축5 동맹",name:"Chip4(한·미·일·대) 회의 결과",status:"green",trigger:"결속 강화 → 동맹 공급망 종목 우호",tag:"실제"},
+  {axis:"축5 동맹",name:"Section 232 Phase 2 협상 결과",status:"red",trigger:"광범위 관세 부과 시 OSAT/팹리스 원가 충격 → AMKR/INTC 점검",tag:"실제"},
+  {axis:"축5 동맹",name:"관세 offset 프로그램(미국 투자 시 감면) 세부",status:"amber",trigger:"수혜 기준 확정 → 미국 capex 종목 수혜 재평가",tag:"실제"},
+  {axis:"축5 동맹",name:"한·대만·일 대미 투자 합의 이행",status:"green",trigger:"이행 → 동맹 노출 종목 안정",tag:"실제"},
+  // 축6 광물
+  {axis:"축6 광물",name:"갈륨·게르마늄 가격",status:"amber",trigger:"급등 → 화합물 반도체/광전자 원가",tag:"추정"},
+  {axis:"축6 광물",name:"희토류 가격·중국 통제력",status:"amber",trigger:"통제 강화 → 장비·자석 밸류체인",tag:"추정"},
+  {axis:"축6 광물",name:"미국 핵심광물 비축량(DOE 공시)",status:"green",trigger:"비축 확대 → 공급 안보 개선",tag:"추정"},
+  // 종목
+  {axis:"종목",name:"Intel 18A 수율(연말 목표 mid-2026 조기 도달 여부)",status:"amber",trigger:"조기 도달 → INTC 관찰 비중 상향 검토 / 미달 → 하향",tag:"추정"},
+  {axis:"종목",name:"Intel Foundry 외부 매출(분기) $174M 추세",status:"red",trigger:"유의미 증가 전까지 정책 가설 '미실현'으로 분류 유지",tag:"실제"},
+  {axis:"종목",name:"Intel 14A Terafab → 실제 design-in/매출 전환",status:"amber",trigger:"매출 전환 확인 시 가설 뒷받침 등급 '강' 확정",tag:"추정"},
+  {axis:"종목",name:"NVIDIA 분기 가이던스(데이터센터)",status:"green",trigger:"둔화 → AI capex 사이클 정점 경보 → 리밸런싱",tag:"실제"},
+  // 거시
+  {axis:"거시",name:"HBM 현물가(HBM3E/HBM4 stack)",status:"amber",trigger:"급락 → 메모리 사이클 전환 → MU/메모리 비중 축소",tag:"추정"},
+  {axis:"거시",name:"2026 메모리 시장 성장률(+30% 전망 대비)",status:"green",trigger:"하향 → 사이클 둔화",tag:"추정"},
+  {axis:"거시",name:"AI capex 사이클(하이퍼스케일러 capex 가이던스)",status:"green",trigger:"꺾임 → 전 카테고리 리밸런싱 트리거",tag:"추정"},
+];
+
+const STATIC_INTEL_SCENARIOS = [
+  {name:"Bull",color:"#7a9b7a",prob:"25%",trigger:"18A 수율 60%+ 달성(Q3'26) + Terafab 매출 전환 + HPC 외부 고객 2건 이상",outcome:"Intel Foundry 외부 매출 $500M/분기 돌파. Fwd P/E 디레이팅 완화.",intc:"+40~+80%",risk:"수율 미달 시 즉각 되돌림"},
+  {name:"Base",color:"#d4a574",prob:"45%",trigger:"18A 수율 45~55% 유지 + Terafab 설계 진입(매출 미전환) + DCAI 한 자릿수 성장",outcome:"주가 $80–100 횡보. 정부 지분 오버행 지속.",intc:"0~+20%",risk:"TSMC N2 고객 이탈 방어 실패 시 Bear 전환"},
+  {name:"Bear",color:"#b86a6a",prob:"22%",trigger:"18A 수율 개선 정체 + 외부 고객 추가 확보 실패 + AI PC 사이클 부진",outcome:"DCAI 점유율 AMD 추가 잠식. Foundry 적자 지속.",intc:"-20~-40%",risk:"정부 지분 하방 지지선 존재하나 완충 한계"},
+  {name:"Breakup",color:"#a070c0",prob:"8%",trigger:"Foundry 적자 3분기 연속 확대 + 이사회 전략 변경",outcome:"IDM(제품)과 IFS(파운드리) 분리. 역설적으로 가설 강화.",intc:"-30~+50%",risk:"정부 지분 의결권 없음 → 이사회 결정에 개입 한계"},
+];
+
+const STATIC_TAIWAN = [
+  {stage:"Phase 0",name:"현상 유지",prob:"60%",cls:"p0",desc:"PLA 훈련 증가, 회색지대 압박 유지. TSMC 공급망 이상 없음.",assets:[{t:"NVDA",r:"0~+5%",note:"AI capex 펀더멘털 지배"},{t:"INTC",r:"±0",note:"대만 리스크 프리미엄 내재화"},{t:"AMAT/LRCX",r:"0~-5%",note:"수출통제 불확실성"}],action:"현 포지션 유지. 대만 ADIZ 지표 주간 모니터링."},
+  {stage:"Phase 1",name:"선택적 봉쇄",prob:"20%",cls:"p1",desc:"중국 해경 선택적 검문. TSMC 출하 50~80% 지연. 전면 교전 없음.",assets:[{t:"NVDA",r:"-15~-30%",note:"TSMC 의존 → 공급 차질"},{t:"INTC",r:"+20~+60%",note:"유일한 미 본토 첨단 논리 fab"},{t:"MU",r:"-10~-20%",note:"한국 메모리 대체로 부분 방어"},{t:"GFS",r:"+5~+15%",note:"성숙 노드 긴급 수요"}],action:"INTC 비중 상향 트리거 발동. NVDA 단기 헤지 검토."},
+  {stage:"Phase 2",name:"군사 봉쇄 / 전면 충돌",prob:"12%",cls:"p2",desc:"PLA 전면 봉쇄. 글로벌 자산 패닉. GDP -2~-3% 충격.",assets:[{t:"NVDA",r:"-40~-60%",note:"패닉 후 부분 회복"},{t:"INTC",r:"-10~+50%",note:"매크로 충격 vs 대안 프리미엄"},{t:"MU",r:"-30~-50%",note:"글로벌 수요 붕괴"},{t:"AMAT/LRCX",r:"-30~-50%",note:"신규 capex 전면 동결"}],action:"포지션 전면 재검토. 금/T-bill 헤지 비중 확대."},
+  {stage:"Phase 3",name:"장기화 / 재건",prob:"8%",cls:"p3",desc:"미국 주도 공급망 재편 가속. 리쇼어링 정책 최대치 집행.",assets:[{t:"INTC",r:"+100~+300%",note:"국가 챔피언 격상"},{t:"GFS/AMAT",r:"+30~+80%",note:"미국 내 팹 증설 수혜"},{t:"NVDA",r:"+20~+60%",note:"공급망 재편 후 AI 수요 재폭발"},{t:"SNPS/CDNS",r:"+10~+30%",note:"EDA 수요 급증"}],action:"INTC + GFS + AMAT 비중 대폭 확대. 10년 시계로 판단."},
+];
+
+const STATIC_AI_LAYERS = [
+  {layer:"L1 · 컴퓨트",desc:"AI capex 수혜 1순위 · 시장 규모 최대",stocks:[{t:"NVDA",n:"NVIDIA",note:"Rubin/Vera Rubin. HBM·CoWoS 병목·대만 의존",tag:"실제"},{t:"AMD",n:"AMD",note:"MI 시리즈. N2 대기열. 대중 매출 15% 환수 구조",tag:"실제"},{t:"AVGO",n:"Broadcom",note:"하이퍼스케일러 맞춤 ASIC. AI 백로그 $73B",tag:"추정"},{t:"INTC",n:"Intel",note:"Gaudi 4 AI가속기. Xeon=Rubin host CPU",tag:"실제"}]},
+  {layer:"L2 · 메모리",desc:"HBM이 병목 · SK하이닉스 지배",stocks:[{t:"MU",n:"Micron",note:"HBM 3위(10–21%). HBM4 NVIDIA 공급 고전. AI DC 집중",tag:"실제"}]},
+  {layer:"L3 · 네트워킹 IC",desc:"GPU 클러스터 간 고속 인터커넥트",stocks:[{t:"AVGO",n:"Broadcom",note:"이더넷 스위치 AI 클러스터 수혜. Tomahawk/Jericho",tag:"실제"},{t:"MRVL",n:"Marvell",note:"광 인터커넥트 DSP + 이더넷 PHY",tag:"실제"}]},
+  {layer:"L4 · 인터커넥트 IC",desc:"CXL/PCIe 메모리 확장 버스",stocks:[{t:"INTC",n:"Intel",note:"CXL 표준 주도. 자사 플랫폼 통합",tag:"실제"},{t:"MRVL",n:"Marvell",note:"CXL 컨트롤러",tag:"추정"}]},
+  {layer:"L5 · 파운드리·제조",desc:"리쇼어링 정책의 핵심 전장",stocks:[{t:"INTC",n:"Intel Foundry",note:"18A·14A. 외부 매출 $174M/분기. 정부 지분 9.9%",tag:"실제"},{t:"GFS",n:"GlobalFoundries",note:"성숙 노드. 관세 offset 잠재 수혜",tag:"실제"},{t:"TSMC",n:"TSMC (비미국)",note:"N2 양산·고객 ~15곳. 미국 공급망 핵심이나 본사 대만",tag:"실제"}]},
+  {layer:"L6 · 반도체 장비",desc:"WFE 사이클 = 선행지표",stocks:[{t:"AMAT",n:"Applied Materials",note:"대중 매출 비중·BIS 통제 직접 노출",tag:"실제"},{t:"LRCX",n:"Lam Research",note:"식각·증착. 메모리 capex 연동",tag:"실제"},{t:"KLAC",n:"KLA",note:"검사·계측. 수율 개선 수혜",tag:"추정"},{t:"ASML",n:"ASML (네덜란드)",note:"EUV 대체 불가. 대중 수출통제 핵심",tag:"실제"}]},
+  {layer:"L7 · EDA·설계도구",desc:"중국 봉쇄 핵심 타겟",stocks:[{t:"SNPS",n:"Synopsys",note:"관세 영향 작음. 동남아 IC설계 toolchain",tag:"실제"},{t:"CDNS",n:"Cadence",note:"EDA 양강. AI 칩 설계 수요 급증",tag:"추정"}]},
+  {layer:"L8 · 전력·냉각",desc:"AI DC 전력밀도 폭증 · 숨겨진 병목",stocks:[{t:"MPWR",n:"Monolithic Power",note:"AI 서버 전압 조정기 1위. Fwd P/E 61x",tag:"실제"},{t:"VICR",n:"Vicor",note:"고밀도 전력 모듈. AI 랙 전력 솔루션",tag:"추정"}]},
+  {layer:"L9 · OSAT·패키징",desc:"CoWoS 병목 = AI 공급 제약",stocks:[{t:"AMKR",n:"Amkor",note:"美 OSAT 2위. 동남아 익스포저 최대. 232 관세 변수",tag:"실제"}]},
+];
+
+const STATIC_CONTRARIAN = [
+  {h:"왜 Intel 부흥 베팅이 틀릴 수 있는가",b:"외부 파운드리 매출은 분기 $174M(3.2%)에 불과. Terafab·18A 테이프아웃은 모두 '미래 약속'. TSMC N2는 이미 양산·15고객·밀도 우위. 미국 선단 노드(애리조나)는 ~2028. 주가 +24%는 가설 검증이 아니다."},
+  {h:"왜 NVIDIA가 큰 폭으로 빠질 수 있는가",b:"Fwd 멀티플이 AI capex 영속 성장을 가격에 반영. 하이퍼스케일러 capex가 한 번만 꺾여도 디레이팅. 자체 ASIC(Broadcom·Google TPU·AWS Trainium) 확산은 GPU 의존도를 구조적으로 낮춘다."},
+  {h:"왜 '미국 패권 회복'이 과장일 수 있는가",b:"메모리(HBM)는 SK하이닉스 50–62% 지배. 미국이 강한 건 설계·EDA·장비지 '제조'가 아니다. '패권 회복'보다 '중국 봉쇄 + 첨단 로직 한정 리쇼어링'이 정확한 서술이다."},
+  {h:"왜 지정학 렌즈가 신호를 왜곡할 수 있는가",b:"2018–19 폭락은 메모리 사이클, 2023 급등은 생성AI였다. 둘 다 지정학으로 안 잡힌다. 지정학이 방향이고 사이클이 타이밍이다."},
+];
+
+// ══════════════════════════════════════════════════════════════
+// 헬퍼 함수
+// ══════════════════════════════════════════════════════════════
+const TAG_COLOR = {실제:"var(--accent-2)",추정:"var(--accent)",가정:"var(--ink-3)"};
+function tagSpan(t) {
+  return `<span class="tag" style="color:${TAG_COLOR[t]||TAG_COLOR.가정}">[${t}]</span>`;
+}
+function statusColor(s) {
+  return s==="red"?"var(--danger)":s==="amber"?"var(--accent)":"var(--success)";
+}
+function statusDotOpacity(s) { return s==="green"?"0.5":"1"; }
+
+// ══════════════════════════════════════════════════════════════
+// 렌더 함수
+// ══════════════════════════════════════════════════════════════
+
+function renderOverview(data) {
+  const reds   = STATIC_THRESHOLDS.filter(t=>t.status==="red").length;
+  const ambers = STATIC_THRESHOLDS.filter(t=>t.status==="amber").length;
+  const liveHypo = data?.hypothesis || [];
+  const allUp   = [...liveHypo.filter(h=>h.dir==="up"),
+    {dir:"up",w:"강",txt:"Intel 14A에 Terafab(Tesla·SpaceX·xAI) 외부 고객 신호 등장",tag:"실제",note:"Q1'26 발표. '외부 고객 0' 반박 명제 약화"},
+    {dir:"up",w:"강",txt:"CHIPS Act 첨단 로직 ~40%, 점유율 0%(2022)→20%(2030) 목표",tag:"추정",note:"명시적 제조 회귀 목표"},
+    {dir:"up",w:"강",txt:"미국 정부 Intel 보통주 9.9% 취득(주당 $20.47, $80.9억)",tag:"실제",note:"보조금→지분 전환"},
+  ];
+  const allDown = [...liveHypo.filter(h=>h.dir==="down"),
+    {dir:"down",w:"강",txt:"Intel Foundry 외부 매출 분기 $174M(파운드리 매출의 3.2%)",tag:"실제",note:"Terafab 등은 아직 매출 미전환"},
+    {dir:"down",w:"강",txt:"TSMC N2 양산 진입·고객 ~15곳·밀도/성숙도 우위, 미국 선단(애리조나)는 ~2028+",tag:"실제",note:"리쇼어링 실재하나 시간차 큼"},
+    {dir:"down",w:"강",txt:"HBM 미국(Micron) 3위(~10–21%), HBM4 NVIDIA 공급 고전",tag:"실제",note:"메모리는 정책으로 단기 역전 어려움"},
+  ];
+
+  document.getElementById("stat-grid").innerHTML = `
+    <div class="stat"><div class="stat-label">적색 임계점</div><div class="stat-val c-red">${reds}</div><div class="stat-sub">즉시 행동 검토</div></div>
+    <div class="stat"><div class="stat-label">황색 임계점</div><div class="stat-val c-amber">${ambers}</div><div class="stat-sub">모니터링</div></div>
+    <div class="stat"><div class="stat-label">뒷받침 신호</div><div class="stat-val c-green">${allUp.length}</div><div class="stat-sub">${liveHypo.filter(h=>h.dir==="up").length > 0 ? "★갱신 포함" : "가설 지지"}</div></div>
+    <div class="stat"><div class="stat-label">반박 신호</div><div class="stat-val c-blue">${allDown.length}</div><div class="stat-sub">${liveHypo.filter(h=>h.dir==="down").length > 0 ? "★갱신 포함" : "가설 한정"}</div></div>
+    <div class="stat"><div class="stat-label">임계점 총계</div><div class="stat-val c-sub">34</div><div class="stat-sub">v2-LIVE</div></div>
+  `;
+
+  const makeRows = arr => arr.map(h=>`
+    <div class="hypo-row">
+      <div class="hypo-header">
+        <span class="hypo-w" style="color:${h.w==="강"?"var(--ink)":"var(--ink-3)"}">${h.w}</span>
+        <span class="hypo-txt">${h.txt} ${tagSpan(h.tag)}${h.isNew?'<span class="new-flag">★신규</span>':''}</span>
+      </div>
+      <div class="hypo-note">${h.note||""}</div>
+    </div>`).join("");
+
+  document.getElementById("hypo-grid").innerHTML = `
+    <div class="hypo-panel">
+      <div class="hypo-title" style="color:var(--success)">▲ 가설 뒷받침 ${liveHypo.some(h=>h.dir==="up")?"<span style='color:var(--accent);font-size:9px'>★갱신</span>":""}</div>
+      ${makeRows(allUp)}
+    </div>
+    <div class="hypo-panel">
+      <div class="hypo-title" style="color:var(--accent-2)">▼ 가설 반박/한정 ${liveHypo.some(h=>h.dir==="down")?"<span style='color:var(--accent);font-size:9px'>★갱신</span>":""}</div>
+      ${makeRows(allDown)}
+    </div>`;
+}
+
+function renderThresholds(data) {
+  // 사이클 & 자체칩 갱신 신호
+  const cycleSection = document.getElementById("cycle-section");
+  const cycleGrid    = document.getElementById("cycle-grid");
+  const signals = [...(data?.cycleSignals||[]), ...(data?.customChipSignal?[data.customChipSignal]:[])];
+  if (signals.length > 0) {
+    cycleSection.style.display = "block";
+    cycleGrid.innerHTML = signals.map(s=>`
+      <div class="cycle-card ${s.status}">
+        <div class="cycle-name">${s.name} ${tagSpan(s.tag)}</div>
+        <div class="cycle-summary">${s.summary}</div>
+      </div>`).join("");
+  }
+
+  // 정적 임계점
+  const axes = ["all", ...new Set(STATIC_THRESHOLDS.map(t=>t.axis))];
+  document.getElementById("th-filter").innerHTML = axes.map(a=>`
+    <button class="th-btn${a==="all"?" active":""}" data-axis="${a}">${a==="all"?"전체("+STATIC_THRESHOLDS.length+")":a}</button>`).join("");
+
+  const renderList = (axis) => {
+    const list = axis==="all" ? STATIC_THRESHOLDS : STATIC_THRESHOLDS.filter(t=>t.axis===axis);
+    const order = {red:0,amber:1,green:2};
+    const sorted = [...list].sort((a,b)=>order[a.status]-order[b.status]);
+    document.getElementById("th-list").innerHTML = sorted.map(t=>`
+      <div class="th-item ${t.status}">
+        <div class="th-dot" style="background:${statusColor(t.status)};opacity:${statusDotOpacity(t.status)}"></div>
+        <div style="flex:1">
+          <div style="display:flex;gap:8px;align-items:baseline;flex-wrap:wrap">
+            <span class="th-axis">${t.axis}</span>
+            <span class="th-name">${t.name}</span>
+            ${tagSpan(t.tag)}
+          </div>
+          <div class="th-trigger" style="color:${t.status==="green"?"var(--ink-3)":"var(--ink-2)"}">
+            <span style="color:${statusColor(t.status)};font-family:var(--mono);font-size:10px">▸ 트리거 </span>${t.trigger}
+          </div>
+        </div>
+      </div>`).join("");
+  };
+
+  renderList("all");
+  document.getElementById("th-filter").addEventListener("click", e=>{
+    if (!e.target.dataset.axis) return;
+    document.querySelectorAll(".th-btn").forEach(b=>b.classList.remove("active"));
+    e.target.classList.add("active");
+    renderList(e.target.dataset.axis);
+  });
+}
+
+function renderScenarios(data) {
+  const probs = data?.scenarioProbs || {Base:45,Bull:20,Bear:25,BlackSwan:10};
+
+  // 시장 전체
+  const mktCards = [
+    {name:"Base",cls:"base",prob:probs.Base,desc:"AI capex 견조, 관세 2단계 협상 타결, Intel 18A 점진 개선",impacts:"NVDA+·INTC+·MU+·AMAT+"},
+    {name:"Bull",cls:"bull",prob:probs.Bull,desc:"Intel 14A 외부 매출 전환 + 메모리 슈퍼사이클 지속, 리쇼어링 가속",impacts:"NVDA++·INTC++·MU++·AMAT++"},
+    {name:"Bear",cls:"bear",prob:probs.Bear,desc:"AI capex 둔화 + 관세 Phase2 광범위 부과, 사이클 정점 통과",impacts:"NVDA--·INTC-·MU--·AMAT-"},
+    {name:"Black Swan",cls:"swan",prob:probs.BlackSwan,desc:"대만해협 무력 충돌/봉쇄 — 선단 공급 마비",impacts:"NVDA---·INTC+·MU-·AMAT--"},
+  ];
+  document.getElementById("sc-market").innerHTML = `
+    <div class="sc-grid">${mktCards.map(s=>`
+      <div class="sc-card ${s.cls}">
+        <div class="sc-label" style="color:${s.cls==="bull"?"var(--success)":s.cls==="bear"||s.cls==="swan"?"var(--danger)":"var(--accent)"}">${s.name}${data?.scenarioProbs?"<span style='font-size:9px;color:var(--accent);margin-left:6px'>★갱신</span>":""}</div>
+        <div class="sc-prob">${s.prob}%</div>
+        <div class="sc-desc">${s.desc}</div>
+        <div style="font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:8px">${s.impacts}</div>
+      </div>`).join("")}
+    </div>
+    <div style="margin-top:10px;font-size:11px;color:var(--ink-3)">확률 합 = 100%. [가정] 값. 확률은 매주 Claude API가 시황 반영해 자동 재조정.</div>`;
+
+  // Intel 단독
+  const intelCurrent = data?.intelScenario;
+  document.getElementById("sc-intel").innerHTML = `
+    ${intelCurrent ? `
+    <div class="intel-current">
+      <div class="intel-label">★ 이번 주 현재 시나리오 (자동 갱신)</div>
+      <div class="intel-val">${intelCurrent.current}</div>
+      <div class="intel-body">${intelCurrent.rationale}</div>
+      <div style="margin-top:8px;font-size:12px;color:var(--accent)">📌 주목 트리거: ${intelCurrent.keyTrigger}</div>
+    </div>` : ""}
+    ${STATIC_INTEL_SCENARIOS.map(s=>`
+      <div style="background:var(--bg-2);border:1px solid var(--line);border-left:3px solid ${s.color};padding:16px;margin-bottom:10px">
+        <div style="display:flex;gap:12px;align-items:baseline;margin-bottom:8px;flex-wrap:wrap">
+          <span style="font-family:var(--serif);font-size:17px;color:${s.color}">${s.name}</span>
+          <span style="font-family:var(--mono);font-size:11px;color:${s.color};border:1px solid ${s.color}55;padding:1px 6px;border-radius:3px">${s.prob}</span>
+          <span style="font-family:var(--mono);font-size:13px;color:${s.color};margin-left:auto">INTC: ${s.intc}</span>
+        </div>
+        <div style="font-size:12px;color:var(--ink-2);margin-bottom:5px"><strong style="color:var(--ink)">트리거:</strong> ${s.trigger}</div>
+        <div style="font-size:12px;color:var(--ink-2);margin-bottom:5px"><strong style="color:var(--ink)">결과:</strong> ${s.outcome}</div>
+        <div style="font-size:11px;color:var(--ink-3)"><strong>리스크:</strong> ${s.risk}</div>
+      </div>`).join("")}
+    <div style="font-size:11px;color:var(--ink-3);margin-top:8px">확률 합 = 100%. [가정]. Intel 분기 실적 발표 후 재조정.</div>`;
+
+  // 대만 단계별
+  document.getElementById("sc-taiwan").innerHTML = STATIC_TAIWAN.map(s=>`
+    <div class="tw-stage ${s.cls}">
+      <div class="tw-header">
+        <span class="tw-tag">${s.stage}</span>
+        <span class="tw-name">${s.name}</span>
+        <span class="tw-prob">${s.prob}</span>
+      </div>
+      <div class="tw-desc">${s.desc}</div>
+      <div class="tw-assets">${s.assets.map(a=>`
+        <div class="tw-asset">
+          <div class="tw-asset-row">
+            <span class="tw-asset-name">${a.t}</span>
+            <span class="tw-asset-r" style="color:${a.r.startsWith("+")?'var(--success)':a.r.startsWith("-")?'var(--danger)':'var(--accent)'}">${a.r}</span>
+          </div>
+          <div class="tw-asset-note">${a.note}</div>
+        </div>`).join("")}
+      </div>
+      <div class="tw-action">▸ 행동: ${s.action}</div>
+    </div>`).join("") +
+    `<div style="font-size:11px;color:var(--ink-3);margin-top:8px">[가정] 값. "침공으로 돈 번다"가 아니라 "확률이 변할 때 자산이 어떻게 반응하나"가 트레이딩 가능한 질문.</div>`;
+}
+
+function renderLayers() {
+  document.getElementById("layers-content").innerHTML = STATIC_AI_LAYERS.map(layer=>`
+    <div class="layer-section">
+      <div class="layer-header">
+        <span class="layer-num">${layer.layer}</span>
+        <span class="layer-name">${layer.desc}</span>
+      </div>
+      <div class="stock-grid">${layer.stocks.map(s=>`
+        <div class="stock-card">
+          <div><span class="stock-ticker">${s.t}</span><span class="stock-name">${s.n}</span></div>
+          <div class="stock-note">${s.note} ${tagSpan(s.tag)}</div>
+        </div>`).join("")}
+      </div>
+    </div>`).join("");
+}
+
+function renderNews(data) {
+  const news = data?.topNews || [];
+  let html = news.length > 0 ? news.map(n=>`
+    <div class="news-item">
+      <div class="news-headline">${n.headline} ${tagSpan(n.tag)}</div>
+      <div class="news-summary">${n.summary}</div>
+      <div class="news-implication">📌 ${n.implication}</div>
+    </div>`).join("") :
+    `<div class="loading">뉴스 데이터 없음 — 다음 주 자동 갱신 시 업데이트됩니다.</div>`;
+
+  // 자동 수집 헤드라인 (semi_news.py — Google News RSS, 최근 7일)
+  const auto = data?.autoNews || [];
+  if (auto.length > 0) {
+    const byCat = {};
+    auto.forEach(n => { (byCat[n.category] = byCat[n.category] || []).push(n); });
+    html += `<h4 style="margin-top:28px">★ 자동 수집 헤드라인 (Google News · 최근 7일)</h4>` +
+      Object.entries(byCat).map(([cat, items]) => `
+        <div style="margin-bottom:14px">
+          <div style="font-family:var(--mono);font-size:11px;color:var(--accent);margin-bottom:6px">${cat}</div>
+          ${items.map(n=>`
+            <div style="padding:6px 0;border-bottom:1px solid var(--line);font-size:13px">
+              <a href="${n.link}" target="_blank" style="color:var(--ink);text-decoration:none">${n.title}</a>
+              <span style="color:var(--ink-3);font-size:11px;font-family:var(--mono)"> · ${n.source||""} · ${n.lang||""}</span>
+            </div>`).join("")}
+        </div>`).join("");
+  }
+  document.getElementById("news-list").innerHTML = html;
+}
+
+function renderBriefing(data) {
+  const list = data?.tickers || [];
+  if (list.length === 0) return;
+  const fmt = (v, suffix="%") => v==null ? `<span style="color:var(--ink-3)">—</span>`
+    : `<span style="color:${v>=0?'var(--success)':'var(--danger)'}">${v>=0?'+':''}${v.toFixed(2)}${suffix}</span>`;
+  document.getElementById("briefing-list").innerHTML = list.map(b=>`
+    <div style="background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:16px 18px;margin-bottom:12px">
+      <div style="display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px">
+        <span class="stock-ticker" style="font-size:18px">${b.ticker}</span>
+        <span class="stock-name">${b.name}</span>
+        <span style="font-family:var(--mono);font-size:16px;color:var(--ink);margin-left:auto">$${b.price?.toLocaleString?.() ?? b.price}</span>
+        <span style="font-family:var(--mono);font-size:10px;color:var(--ink-3)">${b.date}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin-bottom:10px">
+        <div><div class="stat-label">1D</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.d1)}</div></div>
+        <div><div class="stat-label">7D</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.d7)}</div></div>
+        <div><div class="stat-label">30D</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.d30)}</div></div>
+        <div><div class="stat-label">YTD</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.ytd)}</div></div>
+        <div><div class="stat-label">52주 고점比</div><div style="font-family:var(--mono);font-size:14px">${fmt(b.offHigh52w)}</div></div>
+        <div><div class="stat-label">거래량/21일평균</div><div style="font-family:var(--mono);font-size:14px">${b.volRatioPct==null?'—':b.volRatioPct.toFixed(0)+'%'}</div></div>
+        <div><div class="stat-label">공매도/유통주식</div><div style="font-family:var(--mono);font-size:14px">${b.shortPctFloat==null?'수집 불가':b.shortPctFloat.toFixed(2)+'%'}</div></div>
+        <div><div class="stat-label">Days to Cover</div><div style="font-family:var(--mono);font-size:14px">${b.shortRatio==null?'—':b.shortRatio}</div></div>
+      </div>
+      ${(b.news||[]).length>0?`
+      <div style="border-top:1px solid var(--line);padding-top:8px">
+        ${b.news.map(n=>`
+          <div style="padding:4px 0;font-size:12px">
+            <a href="${n.link}" target="_blank" style="color:var(--ink-2);text-decoration:none">▸ ${n.title}</a>
+            <span style="color:var(--ink-3);font-size:10px;font-family:var(--mono)"> · ${n.source||""}</span>
+          </div>`).join("")}
+      </div>`:""}
+    </div>`).join("");
+}
+
+function renderContrarian() {
+  document.getElementById("contra-grid").innerHTML = STATIC_CONTRARIAN.map(c=>`
+    <div class="contra-card">
+      <div class="contra-h">${c.h}</div>
+      <div class="contra-b">${c.b}</div>
+    </div>`).join("");
+}
+
+// ══════════════════════════════════════════════════════════════
+// data.json 로드 & 초기화
+// ══════════════════════════════════════════════════════════════
+
+async function loadData() {
+  let data = window.__DATA__ || null;  // build_semi.py 인라인 데이터 우선 (단일 파일 모드)
+  if (!data) {
+    try {
+      const res = await fetch("data.json?t=" + Date.now());
+      if (res.ok) data = await res.json();
+    } catch(e) {
+      console.warn("data.json 로드 실패, 초기 데이터로 렌더링:", e);
+    }
+  }
+
+  // 헤더 날짜
+  document.getElementById("meta-date").textContent = data?.updatedAt || "2026-05-30 (초기값)";
+
+  // 라이브 배너
+  if (data?.summary) {
+    const probs = data.scenarioProbs || {};
+    document.getElementById("banner-summary").textContent = data.summary;
+    document.getElementById("banner-probs").textContent =
+      `시나리오 확률 — Base ${probs.Base||45}% · Bull ${probs.Bull||20}% · Bear ${probs.Bear||25}% · Black Swan ${probs.BlackSwan||10}%`;
+    document.getElementById("live-banner").style.display = "block";
+  }
+
+  // 각 탭 렌더링
+  renderOverview(data);
+  renderThresholds(data);
+  renderScenarios(data);
+  renderLayers();
+  renderNews(data);
+  renderContrarian();
+  renderBriefing(data);
+}
+
+// ══════════════════════════════════════════════════════════════
+// 탭 전환
+// ══════════════════════════════════════════════════════════════
+document.getElementById("tabs").addEventListener("click", e=>{
+  const btn = e.target.closest(".tab");
+  if (!btn) return;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".panel").forEach(p=>p.classList.remove("active"));
+  btn.classList.add("active");
+  document.querySelector(`[data-panel="${btn.dataset.tab}"]`).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+// 시나리오 서브탭
+document.querySelectorAll(".sc-tab").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".sc-tab").forEach(b=>b.classList.remove("active"));
+    document.querySelectorAll(".sc-view").forEach(v=>v.style.display="none");
+    btn.classList.add("active");
+    const map = {market:"sc-market",intel:"sc-intel",taiwan:"sc-taiwan"};
+    document.getElementById(map[btn.dataset.sv]).style.display="block";
+  });
+});
+
+// 실행
+loadData();
+</script>
+</body>
+</html>
