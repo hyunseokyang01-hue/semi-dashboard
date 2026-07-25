@@ -42,7 +42,10 @@ def send_semi_email(html_path=HTML_PATH, to=None):
     msg["From"] = GMAIL_USER
     msg["To"] = to
     msg["Subject"] = subject
-    msg.attach(MIMEText(f"{subject} 첨부파일을 확인하세요.", "plain", "utf-8"))
+    msg.attach(MIMEText(
+        f"{subject} 첨부파일을 확인하세요.\n"
+        "웹 버전: https://hyunseokyang01-hue.github.io/semi-dashboard/",
+        "plain", "utf-8"))
 
     with open(html_path, "rb") as f:
         part = MIMEBase("text", "html")
