@@ -24,7 +24,16 @@ TICKERS = [
     "MRVL",   # Marvell
     "GFS",    # GlobalFoundries
     "AMKR",   # Amkor — OSAT
+    "ARM",    # Arm Holdings — 서버 CPU 구조변화(x86→ARM) 축
+    "SMCI",   # Super Micro — AI·일반 서버 OEM (CPU 수요 최종 수요처)
+    "DELL",   # Dell — 서버 OEM (일반 서버 교체 사이클)
+    "VRT",    # Vertiv — 데이터센터 전력·냉각 (capex 사이클 확인용)
 ]
+
+# ── AI·CPU 상관 추적 바스켓 (대시보드 08 탭용) ─────────────────
+# 질문: AI 기술 발달(GPU 중심 투자)이 CPU 수요 증가로 이어지는가
+GPU_BASKET = ["NVDA", "AVGO", "MRVL"]   # AI 가속기·ASIC 진영
+CPU_BASKET = ["INTC", "AMD", "ARM"]     # CPU 진영
 
 
 def _pct(series, n):
@@ -92,7 +101,35 @@ def fetch_one_briefing(ticker):
     }
 
 
+def fetch_ai_cpu_metrics():
+    """AI·CPU 상관 정량 지표 (주간, 최근 6개월).
+    - GPU/CPU 바스켓: 각 티커 종가를 첫 주=100으로 지수화 후 동일가중 평균
+    - AMD/INTC 비율: x86 서버 점유율 이동 프록시 (가격 비율이라 기간 무관 비교 가능)
+    실패 시 예외 raise → run_semi에서 재시도/스킵 (기존 aiCpu 값은 build가 보존)."""
+    tickers = sorted(set(GPU_BASKET + CPU_BASKET))
+    df = yf.download(tickers, period="6mo", interval="1wk",
+                     auto_adjust=True, progress=False)["Close"]
+    df = df.dropna(how="all").ffill().dropna()
+    if df.empty or len(df) < 2:
+        raise ValueError("AI·CPU 바스켓: 주간 종가 다운로드 실패/부족")
+    idx = df / df.iloc[0] * 100
+    gpu = idx[GPU_BASKET].mean(axis=1)
+    cpu = idx[CPU_BASKET].mean(axis=1)
+    ratio = df["AMD"] / df["INTC"]
+    return {
+        "dates": [d.strftime("%Y-%m-%d") for d in df.index],
+        "gpuIdx": [round(float(v), 2) for v in gpu],
+        "cpuIdx": [round(float(v), 2) for v in cpu],
+        "amdIntcRatio": [round(float(v), 3) for v in ratio],
+        "gpuBasket": GPU_BASKET,
+        "cpuBasket": CPU_BASKET,
+    }
+
+
 if __name__ == "__main__":
     import json
     b = fetch_one_briefing("NVDA")
     print(json.dumps(b, ensure_ascii=False, indent=2))
+    m = fetch_ai_cpu_metrics()
+    print(json.dumps({k: (v[-3:] if isinstance(v, list) else v) for k, v in m.items()},
+                     ensure_ascii=False, indent=2))

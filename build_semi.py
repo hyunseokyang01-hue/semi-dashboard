@@ -5,9 +5,10 @@ build_semi.py — data.json 갱신 + 대시보드 HTML 생성 (Step B)
 
 동작:
 1. data.json이 있으면 읽어서 '정성 섹션' 키는 그대로 보존
-   (summary, scenarioProbs, hypothesis, cycleSignals, customChipSignal, intelScenario, topNews
-    → Claude API/수동으로 갱신하는 영역. 이 스크립트는 건드리지 않음)
-2. 정량 키만 덮어씀: updatedAt, tickers(종목 브리핑), autoNews(RSS 헤드라인)
+   (summary, scenarioProbs, hypothesis, cycleSignals, customChipSignal, intelScenario, topNews,
+    aiCpuSignals → Claude API/수동으로 갱신하는 영역. history(주간 누적)도 보존)
+2. 정량 키만 덮어씀: updatedAt, tickers(종목 브리핑), autoNews(RSS 헤드라인),
+   aiCpu(GPU vs CPU 바스켓 — 인자로 받은 경우만)
 3. template.html의 /*__INLINE_DATA__*/ null 자리에 data.json을 인라인
    → semi_dashboard.html (이메일 첨부용 단일 파일. fetch 불필요)
 """
@@ -21,8 +22,10 @@ TEMPLATE_PATH = os.path.join(BASE, "template.html")
 OUT_PATH = os.path.join(BASE, "index.html")  # GitHub Pages 서빙 + 이메일 첨부 겸용
 
 # 이 스크립트가 절대 덮어쓰지 않는 키 (정성 섹션 — 수동/Claude 갱신 영역)
+# history(주간 누적)도 이 스크립트는 건드리지 않음 (semi_qual.py 관할)
 QUALITATIVE_KEYS = ("summary", "scenarioProbs", "hypothesis",
-                    "cycleSignals", "customChipSignal", "intelScenario", "topNews")
+                    "cycleSignals", "customChipSignal", "intelScenario", "topNews",
+                    "aiCpuSignals")
 
 
 def load_existing():
@@ -32,13 +35,15 @@ def load_existing():
     return {}
 
 
-def build(briefings, macro_news):
+def build(briefings, macro_news, ai_cpu=None):
     data = load_existing()
 
     # 정량 키 갱신 (정성 키는 load_existing() 값 그대로 유지)
     data["updatedAt"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
     data["tickers"] = briefings
     data["autoNews"] = macro_news
+    if ai_cpu is not None:  # None이면 기존 aiCpu 보존 (수집 실패/단독 재생성 시)
+        data["aiCpu"] = ai_cpu
 
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)

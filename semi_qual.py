@@ -2,8 +2,9 @@
 semi_qual.py — 정성 섹션 자동 갱신 (Step A-3, 주간)
 용도: Claude API(웹검색 포함)로 data.json의 정성 키를 갱신
   갱신 키: summary, scenarioProbs, hypothesis, cycleSignals,
-           customChipSignal, intelScenario, topNews
-  (정량 키 tickers/autoNews는 건드리지 않음 — build_semi.py 관할)
+           customChipSignal, intelScenario, topNews, aiCpuSignals
+  추가: history 키에 주간 스냅샷 1건 append (추세 추적용 누적)
+  (정량 키 tickers/autoNews/aiCpu는 건드리지 않음 — build_semi.py 관할)
 
 실행: run_semi.py 이후 실행 (data.json의 정량 데이터를 컨텍스트로 사용)
   python semi_qual.py
@@ -30,12 +31,15 @@ except ImportError:
 MODEL = "claude-opus-4-8"
 
 QUAL_KEYS = ("summary", "scenarioProbs", "hypothesis", "cycleSignals",
-             "customChipSignal", "intelScenario", "topNews")
+             "customChipSignal", "intelScenario", "topNews", "aiCpuSignals")
 
 # 대시보드의 작업가설 프레임 (template.html 종합 탭과 동일한 관점 유지용)
 FRAME = """작업가설: '미국이 아시아에 빼앗긴 반도체 제조 패권을 회복하려 한다.' — 결론이 아니라 검증 대상.
 6개 축: 미·중 수출통제 / 대만·TSMC / 한반도 메모리(HBM) / 유럽·러 / 동맹(관세·Chip4) / 핵심광물.
-핵심 종목: INTC(리쇼어링 가설 핵심), NVDA, AMD, MU, TSM, AMAT/LRCX/ASML(장비), GFS, AMKR."""
+핵심 종목: INTC(리쇼어링 가설 핵심), NVDA, AMD, MU, TSM, AMAT/LRCX/ASML(장비), GFS, AMKR.
+
+추적 축 2: 'AI 기술 발달이 CPU 수요 증가로 이어지는가' — GPU 중심 AI 투자가
+호스트 CPU·CPU 추론·일반 서버 교체로 파급되는지 관찰. 관련 종목: INTC, AMD, ARM, SMCI, DELL, VRT."""
 
 SCHEMA_DESC = """{
   "summary": "이번 주 반도체 시황 3~4문장 요약 (한국어)",
@@ -50,7 +54,16 @@ SCHEMA_DESC = """{
   "intelScenario": {"current": "Bull|Base|Bear|Breakup 중 현재 판단", "rationale": "근거 2~3문장", "keyTrigger": "이번 주 주목할 트리거 1개"},
   "topNews": [  // 이번 주 핵심 뉴스 3개
     {"headline": "제목(한국어)", "summary": "2~3문장 요약", "implication": "투자 시사점 1문장", "tag": "실제"|"추정"}
-  ]
+  ],
+  "aiCpuSignals": {  // 추적 축 2: AI 발달 → CPU 수요 파급 신호 4개 (신호등)
+    "signals": [
+      {"name": "서버 CPU 점유율 (AMD vs Intel vs ARM)", "status": "red"|"amber"|"green", "summary": "현황 1~2문장", "tag": "실제"|"추정"},
+      {"name": "AI 서버 호스트 CPU attach", "status": "...", "summary": "AI 서버 1대당 CPU 탑재·수요 동향", "tag": "..."},
+      {"name": "CPU 기반 AI 추론 확산", "status": "...", "summary": "소형모델·온프레미스 CPU 추론이 수요 동력인지", "tag": "..."},
+      {"name": "일반 서버 교체 사이클", "status": "...", "summary": "AI에 밀렸던 일반 서버 수요 회복 여부", "tag": "..."}
+    ],
+    "verdict": "AI 발달이 CPU 수요로 이어지는지 한 줄 종합판단 (green=파급 확산 / amber=혼재 / red=GPU 독식·CPU 소외)"
+  }
 }"""
 
 
@@ -71,7 +84,8 @@ def build_prompt(data):
 [이번 주 주가 스냅샷 — 로컬 수집 데이터]
 {quant}
 
-웹검색으로 최근 7일의 반도체·지정학 핵심 동향(수출통제, TSMC/대만, HBM/메모리 가격, Intel 파운드리 진척, 관세, 하이퍼스케일러 capex)을 확인한 뒤,
+웹검색으로 최근 7일의 반도체·지정학 핵심 동향(수출통제, TSMC/대만, HBM/메모리 가격, Intel 파운드리 진척, 관세, 하이퍼스케일러 capex)과
+AI·CPU 상관 동향(서버 CPU 점유율 — Mercury Research 등, AI 서버 호스트 CPU, CPU 추론, 일반 서버 교체 수요)을 확인한 뒤,
 아래 스키마의 JSON **하나만** 출력하세요. 코드펜스·설명 없이 순수 JSON만 출력합니다.
 모든 텍스트 값은 한국어. 확인된 사실은 tag "실제", 애널리스트 추정은 "추정"으로 구분하세요.
 scenarioProbs 합계는 반드시 100.
@@ -91,6 +105,26 @@ def extract_json(text):
     if start == -1 or end == -1:
         raise ValueError("응답에서 JSON을 찾지 못함")
     return json.loads(text[start:end + 1])
+
+
+def append_history(data):
+    """주간 스냅샷을 history 키에 누적 (같은 날 재실행 시 그날 엔트리 교체).
+    가격은 티커별 원값을 저장 → 나중에 어떤 상대 지표든 재계산 가능."""
+    ai = data.get("aiCpu") or {}
+    ratio_arr = ai.get("amdIntcRatio") or []
+    entry = {
+        "date": datetime.date.today().isoformat(),
+        "prices": {b["ticker"]: b.get("price") for b in data.get("tickers", [])},
+        "scenarioProbs": data.get("scenarioProbs"),
+        "amdIntcRatio": ratio_arr[-1] if ratio_arr else None,
+        "cycleStatuses": [s.get("status") for s in data.get("cycleSignals", [])],
+        "aiCpuStatuses": [s.get("status")
+                          for s in (data.get("aiCpuSignals") or {}).get("signals", [])],
+    }
+    hist = [h for h in data.get("history", []) if h.get("date") != entry["date"]]
+    hist.append(entry)
+    data["history"] = hist
+    return len(hist)
 
 
 def run():
@@ -128,10 +162,11 @@ def run():
     for k in QUAL_KEYS:
         data[k] = qual[k]
     data["qualUpdatedAt"] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
+    n_hist = append_history(data)
 
     with open(DATA_PATH, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-    print(f"저장: {DATA_PATH} (정성 키 {len(QUAL_KEYS)}개 갱신)")
+    print(f"저장: {DATA_PATH} (정성 키 {len(QUAL_KEYS)}개 갱신 / history {n_hist}주 누적)")
     print(f"  사용량: in={response.usage.input_tokens} out={response.usage.output_tokens}")
 
     # HTML 재생성 (정량 데이터는 기존 값 그대로)

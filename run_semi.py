@@ -13,7 +13,7 @@ run_semi.py — 반도체 대시보드 오케스트레이터 (Step A → B → C
 import sys
 import time
 
-from semi_fetch import TICKERS, fetch_one_briefing
+from semi_fetch import TICKERS, fetch_one_briefing, fetch_ai_cpu_metrics
 from semi_news import fetch_macro_news, fetch_ticker_news
 
 
@@ -56,6 +56,14 @@ def run_all(tickers):
     macro = macro or []
     print(f"  수집: {len(macro)}건")
 
+    print(f"\n[AI·CPU 바스켓 지표]")
+    ai_cpu, aerr = _with_retry(fetch_ai_cpu_metrics, label="AI·CPU 바스켓")
+    if aerr is not None:
+        failed.append(("AI·CPU바스켓", f"{type(aerr).__name__}: {aerr}"))
+        ai_cpu = None  # build가 기존 aiCpu 값 보존
+    else:
+        print(f"  수집: 주간 {len(ai_cpu['dates'])}개 포인트 (GPU {ai_cpu['gpuBasket']} vs CPU {ai_cpu['cpuBasket']})")
+
     print("\n=== 결과 요약 ===")
     print(f"종목 성공: {len(briefings)}/{len(tickers)}")
     if failed:
@@ -64,7 +72,7 @@ def run_all(tickers):
             print(f"  - {who}: {why}")
     else:
         print("전부 성공")
-    return briefings, macro, failed
+    return briefings, macro, ai_cpu, failed
 
 
 if __name__ == "__main__":
@@ -73,12 +81,12 @@ if __name__ == "__main__":
     arg_tickers = [a.upper() for a in args if not a.startswith("--")]
     tickers = arg_tickers if arg_tickers else TICKERS
 
-    briefings, macro, failed = run_all(tickers)
+    briefings, macro, ai_cpu, failed = run_all(tickers)
 
     if briefings:
         print(f"\n=== Step B: HTML 갱신 시작 → {[b['ticker'] for b in briefings]} ===")
         from build_semi import build
-        out_path = build(briefings, macro)
+        out_path = build(briefings, macro, ai_cpu)
         print("=== Step B 완료 ===")
 
         if no_email:

@@ -227,6 +227,7 @@ p{font-size:13px;color:var(--ink-2);line-height:1.7;margin-bottom:10px}
   <button class="tab" data-tab="news"><span class="tab-num">05</span>주간 뉴스</button>
   <button class="tab" data-tab="contra"><span class="tab-num">06</span>반대의견</button>
   <button class="tab" data-tab="briefing"><span class="tab-num">07</span>종목 브리핑</button>
+  <button class="tab" data-tab="aicpu"><span class="tab-num">08</span>AI·CPU</button>
 </nav>
 
 <!-- 01 OVERVIEW -->
@@ -308,6 +309,17 @@ p{font-size:13px;color:var(--ink-2);line-height:1.7;margin-bottom:10px}
   <h2>종목 브리핑 — 자동 갱신</h2>
   <p class="lead">semi_fetch.py의 TICKERS에 적힌 종목별 시세·공매도·뉴스. run_semi.py 실행 시 갱신. (미국 종목 기준 — 한국 전용 지표 없음)</p>
   <div id="briefing-list">
+    <div class="loading">데이터 없음 — run_semi.py 실행 시 생성됩니다.</div>
+  </div>
+</section>
+
+<!-- 08 AI·CPU 상관 추적 (semi_fetch.fetch_ai_cpu_metrics + semi_qual.aiCpuSignals 자동 갱신) -->
+<section class="panel" data-panel="aicpu">
+  <h2>AI·CPU 상관 추적</h2>
+  <p class="lead">추적 질문: AI 기술 발달(GPU 중심 투자)이 CPU 수요 증가로 이어지는가.
+  정량 — GPU 진영(NVDA·AVGO·MRVL) vs CPU 진영(INTC·AMD·ARM) 주간 상대강도 + AMD/INTC 비율.
+  정성 — 파급 신호 4개 신호등. 매주 자동 갱신, history에 주간 누적.</p>
+  <div id="aicpu-content">
     <div class="loading">데이터 없음 — run_semi.py 실행 시 생성됩니다.</div>
   </div>
 </section>
@@ -655,6 +667,98 @@ function renderBriefing(data) {
     </div>`).join("");
 }
 
+function lineChartSVG(dates, seriesList, {height=230, pad=36, fmt=(v=>v.toFixed(0))}={}) {
+  // 의존성 없는 인라인 SVG 라인차트 (dates: x축 라벨, seriesList: [{vals,color,label}])
+  const w = 760, h = height;
+  const all = seriesList.flatMap(s=>s.vals).filter(v=>v!=null&&isFinite(v));
+  if (all.length < 2) return "";
+  let min = Math.min(...all), max = Math.max(...all);
+  const span = (max-min)||1; min -= span*0.06; max += span*0.06;
+  const x = i => pad + i*(w-pad*2)/(dates.length-1);
+  const y = v => h-pad - (v-min)*(h-pad*2)/((max-min)||1);
+  const grid = [0,0.25,0.5,0.75,1].map(f=>{
+    const v = min+(max-min)*f, yy = y(v);
+    return `<line x1="${pad}" y1="${yy}" x2="${w-pad}" y2="${yy}" stroke="var(--line)" stroke-width="1"/>
+            <text x="${pad-6}" y="${yy+3}" text-anchor="end" font-size="9" fill="var(--ink-3)" font-family="var(--mono)">${fmt(v)}</text>`;
+  }).join("");
+  const xTicks = [0, Math.floor((dates.length-1)/2), dates.length-1].map(i=>
+    `<text x="${x(i)}" y="${h-pad+14}" text-anchor="middle" font-size="9" fill="var(--ink-3)" font-family="var(--mono)">${dates[i].slice(2)}</text>`).join("");
+  const paths = seriesList.map(s=>
+    `<polyline fill="none" stroke="${s.color}" stroke-width="2" points="${s.vals.map((v,i)=>v==null?"":`${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ")}"/>`).join("");
+  const legend = seriesList.map(s=>
+    `<span style="font-family:var(--mono);font-size:10px;color:${s.color};margin-right:14px">━ ${s.label}</span>`).join("");
+  return `<div style="background:var(--bg-2);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:14px">
+    <div style="margin-bottom:6px">${legend}</div>
+    <svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto;display:block">${grid}${xTicks}${paths}</svg></div>`;
+}
+
+function renderAiCpu(data) {
+  const el = document.getElementById("aicpu-content");
+  const ai = data?.aiCpu, q = data?.aiCpuSignals;
+  if (!ai && !q) return;  // 데이터 없으면 안내문 유지
+  let html = "";
+
+  // ① 이번 주 종합 판단 (정성)
+  if (q?.verdict) {
+    html += `<div style="background:var(--bg-2);border:1px solid rgba(212,165,116,0.35);border-radius:8px;padding:14px 18px;margin-bottom:18px">
+      <div style="font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:1px;margin-bottom:6px">★ 이번 주 종합 판단 — AI → CPU 파급 (자동 갱신)</div>
+      <div style="font-size:14px;color:var(--ink);line-height:1.7">${q.verdict}</div></div>`;
+  }
+
+  // ② GPU vs CPU 바스켓 상대강도 (주간, 6개월, 시작=100)
+  if (ai?.dates?.length > 1) {
+    const gpuLast = ai.gpuIdx[ai.gpuIdx.length-1], cpuLast = ai.cpuIdx[ai.cpuIdx.length-1];
+    html += `<h4>정량 ① — GPU 진영 vs CPU 진영 상대강도 (6개월 · 시작=100 · 동일가중)</h4>`;
+    html += lineChartSVG(ai.dates, [
+      {vals:ai.gpuIdx, color:"var(--accent)",  label:`GPU 진영 ${ai.gpuBasket.join("·")} (현재 ${gpuLast.toFixed(1)})`},
+      {vals:ai.cpuIdx, color:"var(--success)", label:`CPU 진영 ${ai.cpuBasket.join("·")} (현재 ${cpuLast.toFixed(1)})`},
+    ]);
+    const gap = gpuLast - cpuLast;
+    html += `<div style="font-size:12px;color:var(--ink-2);margin:-6px 0 18px">현재 격차 <span style="font-family:var(--mono);color:${gap>0?'var(--accent)':'var(--success)'}">${gap>0?'GPU':'CPU'} +${Math.abs(gap).toFixed(1)}p</span>
+      — CPU선이 GPU선을 따라붙으면 'AI→CPU 파급' 가설 지지, 벌어지면 GPU 독식.</div>`;
+
+    html += `<h4>정량 ② — AMD/INTC 가격 비율 (x86 서버 점유율 이동 프록시)</h4>`;
+    html += lineChartSVG(ai.dates, [
+      {vals:ai.amdIntcRatio, color:"var(--accent-2)", label:`AMD÷INTC (현재 ${ai.amdIntcRatio[ai.amdIntcRatio.length-1].toFixed(2)})`},
+    ], {fmt:(v=>v.toFixed(1))});
+    html += `<div style="font-size:12px;color:var(--ink-2);margin:-6px 0 18px">상승=AMD 우위 심화, 하락=Intel 회복. 리쇼어링 가설(INTC)과 교차 검증용.</div>`;
+  }
+
+  // ③ 파급 신호 4개 (정성 신호등 — cycle-card 재사용)
+  if (q?.signals?.length) {
+    html += `<h4>★ 자동 갱신 — AI → CPU 수요 파급 신호</h4>
+      <div class="cycle-grid">${q.signals.map(s=>`
+        <div class="cycle-card ${s.status}">
+          <div class="cycle-name">${s.name} ${tagSpan(s.tag)}</div>
+          <div class="cycle-summary">${s.summary}</div>
+        </div>`).join("")}</div>`;
+  }
+
+  // ④ 주간 누적 기록 (history — 매주 1행씩 쌓임)
+  const hist = data?.history || [];
+  if (hist.length > 0) {
+    const dot = s => `<span style="color:${statusColor(s)}">●</span>`;
+    html += `<h4 style="margin-top:24px">주간 누적 기록 (${hist.length}주)</h4>
+      <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:12px">
+      <tr style="font-family:var(--mono);font-size:10px;color:var(--ink-3);text-align:left">
+        <th style="padding:6px 8px;border-bottom:1px solid var(--line)">날짜</th>
+        <th style="padding:6px 8px;border-bottom:1px solid var(--line)">AMD/INTC</th>
+        <th style="padding:6px 8px;border-bottom:1px solid var(--line)">Base%</th>
+        <th style="padding:6px 8px;border-bottom:1px solid var(--line)">사이클 신호</th>
+        <th style="padding:6px 8px;border-bottom:1px solid var(--line)">AI·CPU 신호</th></tr>
+      ${[...hist].reverse().slice(0,12).map(hh=>`<tr>
+        <td style="padding:6px 8px;border-bottom:1px solid var(--line);font-family:var(--mono)">${hh.date}</td>
+        <td style="padding:6px 8px;border-bottom:1px solid var(--line);font-family:var(--mono)">${hh.amdIntcRatio==null?"—":hh.amdIntcRatio.toFixed(2)}</td>
+        <td style="padding:6px 8px;border-bottom:1px solid var(--line);font-family:var(--mono)">${hh.scenarioProbs?.Base??"—"}</td>
+        <td style="padding:6px 8px;border-bottom:1px solid var(--line)">${(hh.cycleStatuses||[]).map(dot).join(" ")}</td>
+        <td style="padding:6px 8px;border-bottom:1px solid var(--line)">${(hh.aiCpuStatuses||[]).map(dot).join(" ")}</td></tr>`).join("")}
+      </table></div>
+      <div style="font-size:11px;color:var(--ink-3);margin-top:8px">매주 월요일 자동 실행 시 1행씩 누적. 시간이 쌓일수록 상관관계 추세 판단 근거가 강해진다.</div>`;
+  }
+
+  el.innerHTML = html;
+}
+
 function renderContrarian() {
   document.getElementById("contra-grid").innerHTML = STATIC_CONTRARIAN.map(c=>`
     <div class="contra-card">
@@ -698,6 +802,7 @@ async function loadData() {
   renderNews(data);
   renderContrarian();
   renderBriefing(data);
+  renderAiCpu(data);
 }
 
 // ══════════════════════════════════════════════════════════════
