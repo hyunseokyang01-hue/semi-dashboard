@@ -1,247 +1,247 @@
 {
-  "updatedAt": "2026-11-09 05:30",
+  "updatedAt": "2026-11-14 10:29",
   "tickers": [
     {
       "ticker": "NVDA",
       "name": "NVIDIA Corporation",
-      "date": "2026-11-06",
-      "price": 186.64,
-      "d1": 2.7753266061345316,
-      "d7": -8.795934349924806,
-      "d30": -19.021171967443063,
-      "ytd": -0.9389855389488888,
-      "offHigh52w": -21.986291964459348,
-      "volume": 179722400,
-      "volRatioPct": 154.7975602643498,
-      "shortPctFloat": 1.2999999,
-      "shortRatio": 2.84,
+      "date": "2026-11-13",
+      "price": 162.85,
+      "d1": -2.009745645841854,
+      "d7": -12.746460224995193,
+      "d30": -25.033370479935748,
+      "ytd": -13.565758345703504,
+      "offHigh52w": -31.930278229253418,
+      "volume": 363819700,
+      "volRatioPct": 177.8379246782952,
+      "shortPctFloat": 1.21,
+      "shortRatio": 2.71,
       "news": [
         {
-          "title": "Jensen Huang Just Handed Nvidia Shareholders a Warning No Earnings Report Can Fix - 24/7 Wall St.",
-          "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPUXliaGQyLUNnU2wxZ1pMSF9VYUE4MFpjQ3NONTJyaUxjU01QUEJONGVsZ2tGVXk4RHAzTUlNRUdzOU55QXd6dGlhb1Nlbm9Dcmk5ZVBlUmdfY1h3eU1rbGE4SWFyWHFqREpnSm50cUhXcnlwVXF4Q01WZ2x2aUo1d3gyWEh0MlNGc3lQUFBkTF90N1dlMnhRaFIzdlBpQkd5SXdkSlJsajdEZHJSQW9jN1ktSHVGVnFIcmoxZDgzMWc2eEk?oc=5",
-          "pub": "Sun, 08 Nov 2026 21:38:00 GMT",
-          "source": "24/7 Wall St."
+          "title": "Nvidia director sold nearly $1B in stock weeks before the Jensen Huang scandal broke — and no trading plan was flagged - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQLTktc1RQNWQxUnRyQXVkcVRpYUtRSUV6Y2dXX0lpYmduS2Q5NHBLXzc1Q2trUktLdi1RMGs4ekJycno1Q0pSTWpna29rV1p2LWNkVkhDQ2RuNmNHaGxHdkZTSEh2czQtS1RfVnFCb29DNU04a2ZjYnZXQ05nZlI3MThaQVZUTlFEMmliVmJ3R1FycnBtRFV6UndwNA?oc=5",
+          "pub": "Fri, 13 Nov 2026 16:00:00 GMT",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Nvidia Stock Is Down 25%—What Investors Should Watch Next - Forbes",
-          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOYS1nNEdMXzlvTWJEQVhlQVdlZVd0bkxaekwxWmJFZXI1N2UzenRrVDBjVFRGdy13MGRpOTdUeW5EcXVlUUdyUk1ONWRIczlicktaMVRZeGZTZGRFajhaaHg4VlFWb24weFdfakpqVVhQV0pXeHQ1NW1UaHhlN0plQjZHaEpiY1JuTTBUUTRwYlV4X0FZVEVKOTZJVmR2QzdoUFVQSDFNZ0JPR2NUdEYw?oc=5",
-          "pub": "Fri, 06 Nov 2026 12:55:49 GMT",
-          "source": "Forbes"
+          "title": "Equities close lower as Nvidia drop outweighs energy gains - Reuters",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxQY01YWkJBY3Roa2hlWkVsbHhpcHplMm5NX09pWEJlMC1rWTY1ZDJoTUh0elc0WTZvdmpDOXJhS04tN2J5Y0N4NmZPdGk0aUhKdVZLT2RMSTk4S2EyZEJMYzY3WnpMMklfRjF3ZEJXZzU3d1VBTmlWS3Y1cllaYURseVQ4Nl93RFVLOXB4M1J6bnM1YVQ5QXBaSDZCOXEwUQ?oc=5",
+          "pub": "Thu, 12 Nov 2026 09:37:00 GMT",
+          "source": "Reuters"
         },
         {
-          "title": "Nvidia Shares Dip on Robinhood as Huang Affair Spurs Board Probe - Bloomberg.com",
-          "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOdnRpX0RPT3RRQ3p4THN2ZXU2MHVWRjVrTjBteEM2cEV3RXZuU1pPQWdOdXNrZkZxcWZRdUhMWVdkWjJyM1BaVHQ1UVMzX1M3eGFEQzdpWWpPaDA4d20xSHVtWERFLVlMSHZwdWJNYUZSUHRtOEQtLXRsWWEyUU5UTlhpbkhIYnViNE1jY0g0R1l1ZGhWa25ZX2F6ZWYyRng4ZXVSd2FNQlRzendmSVJSb2RXeDR0dw?oc=5",
-          "pub": "Mon, 09 Nov 2026 03:56:00 GMT",
-          "source": "Bloomberg.com"
+          "title": "Nvidia stock suffers longest weekly losing streak since 2012 as market value sinks by $1.7 trillion - CNBC",
+          "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1DR2p3RENoZjJmOGRjTWRtaHZvSmtBVDRVUTRoMGFNNDB6Y1k4Y1J0T2xvTFF2ZENxZndVZVllTTZwc0dtNnRadFBGQVg2TmdUbkVUeXJ3Y0o2SmlBb1VLdXpkWndDMWdRZk9rSjhvaVphTENR0gF6QVVfeXFMUDJHWXl4WTl2eHVOV05LM0d1U1p3WHl5WjNsYkNjSDFpenJxODdDUm5hbU5YamhIQkF4RFVSVWluQ1FySERjQnA0X2o5Zms4Qzk4eF83akdEVEZKa094bjVzLVRsQ2U1SE5ZZmt0ODZmeGFyblptMWJsbkE?oc=5",
+          "pub": "Fri, 13 Nov 2026 05:51:34 GMT",
+          "source": "CNBC"
         }
       ]
     },
     {
       "ticker": "INTC",
       "name": "Intel Corporation",
-      "date": "2026-11-06",
-      "price": 56.28,
-      "d1": 7.712916324013164,
-      "d7": -14.416063030677106,
-      "d30": -47.44116752249168,
-      "ytd": 42.915178397151045,
-      "offHigh52w": -60.0681156489305,
-      "volume": 173770300,
-      "volRatioPct": 123.51703537151867,
-      "shortPctFloat": 2.7999999,
-      "shortRatio": 1.36,
+      "date": "2026-11-13",
+      "price": 59.66,
+      "d1": -2.5163413338712193,
+      "d7": 6.0056878845537565,
+      "d30": -37.44364251939768,
+      "ytd": 51.49821795133713,
+      "offHigh52w": -57.66993130838429,
+      "volume": 102322800,
+      "volRatioPct": 70.91116365186197,
+      "shortPctFloat": 2.8800000999999997,
+      "shortRatio": 1.34,
       "news": [
         {
-          "title": "Intel Stock’s (INTC) Deep Sell-Off Shows Signs of an Overreaction - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOQTRoejd3WC10dGotXzdNSFp1VVdyeUROaXNFYV91b1paY3RkbWp0dUlzTmg2NnFrZ01YZzZkcktMdjhkSS1GNzUxR216YXJGcnR5dU9lYWFWclRNUHFmT05fdE8wS3BSSUxhUHd5a01fRFZtVTh0LUR4cjQ0UXZ4QVJNMG5wNmtUeWZlZG5LQmpWTVVfZ2c?oc=5",
-          "pub": "Fri, 06 Nov 2026 21:33:00 GMT",
-          "source": "Yahoo Finance"
+          "title": "Intel: Why I'm Turning Bullish After The Crash - Seeking Alpha",
+          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPb29rdmJ6Qnp1dHFLOXBoWDFraHU1R2NmRHpRV2JzSGpubXBVODdwRFY4T01hc2p2ckVGVloxLWVBeVY5aFdnaFRTTDZDU1ZDQnEyRUpOTnpZNkw1UVBkYlJYZHgwTXVDQWJPZXJKZzdLWFIzUDl1WnVINjZ3SS0wMkt0ODNFVi00aXdjVl93?oc=5",
+          "pub": "Wed, 11 Nov 2026 07:40:48 GMT",
+          "source": "Seeking Alpha"
         },
         {
-          "title": "Amtech, Intel, Applied Materials, AMD, and KLA Corporation shares are soaring, what you need to know - Barchart.com",
-          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOZlRzT0hwY3dZNU5Ia0E0bHI0NkpCTDVsOFc4Z09ieWpVdFJBUm9Ca3BwM3VTNV9iaVNlUk1hVFlYdU9DZkIwcW9JLVNlM09xMjliTmlkUS05T2RKYjVoN0Nhd0M3aWs3YUwwbE5Yc1JJTi00WW91N0lWcURVNzFEY0hqeEdVYzZjdlN1cXJkZE5mT0NxNEh1MEZEdXdqZDNFSEZ1ZW9qNTZIUmhtZE13aGNOeWlpZFlhaWtyQXUtUW9lZWpLeG1fRmxRUERqeFgxS2ZhQ09R?oc=5",
-          "pub": "Fri, 06 Nov 2026 15:40:43 GMT",
-          "source": "Barchart.com"
-        },
-        {
-          "title": "Intel Shares Rise 6% To Intraday High After Key Trading Signal - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOSDJaSjd6a2RqNHJxV2kwVUxRMG5lWEltcEs5eVozdm9rVlFQTTlUSmZDM1pCS1hGLUVVUHpBMWE5dy1PRF9YN3pfeUZ2LWxNV0E3alFJTXJ6bmtSdlM2dkl4c1h6NExCZU9VZ3F1T3Rjb0k3UEtGT0xRX2J3QWwwMVQzVko1QmRTcUtwTUtQQmJzLW4wN2Y0eC1vdDd5Z0VJbHVQX291MEhoR01pNlVtRlJEWXZhVFND?oc=5",
-          "pub": "Thu, 05 Nov 2026 20:00:27 GMT",
+          "title": "Intel Shares Climb Nearly 4% After Key Trading Signal - Benzinga",
+          "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNOGhmclNXMmpnZDlId2g5ZXpoRVhYRmdmR3Nzc3lad2YxWHdaVDlWTWxtbTBxempZMFFpRG9sWk5WVkFiQXFZWWR3Y0Y1VjBJVzZENkRER3F1WDRsNXJCbTZDYVVUc2JnbExoUnlYU3VLeE5YNUNqUVJ5TDJrUXhZZEFXcFlzdnVfY2p3ekVnTVRCa2dJZUlGWDltV3JaaW5TRllVMmNPdkQ1UVlI?oc=5",
+          "pub": "Wed, 11 Nov 2026 21:04:46 GMT",
           "source": "Benzinga"
+        },
+        {
+          "title": "Why is Intel stock rallying today? - Investing.com",
+          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOQ2M1VWtmOXc3S1o5clMydVcxX3lCSElNQi15VlMwblpxbUdOMk1jX1dGU0dpb1hia0g2aElIOWFpSjMtQ3UtTTYtTFBRT2pDUnhVZGwtLWladEJ2QVhrTHBWN2V3NGNiLUpOOTRFWmZWWENQblN5czdGSmNaWDF4RVlSakIxUWRCeVp1b3p6M3FXM0djc1JrS3JHYw?oc=5",
+          "pub": "Wed, 11 Nov 2026 15:54:04 GMT",
+          "source": "Investing.com"
         }
       ]
     },
     {
       "ticker": "AMD",
       "name": "Advanced Micro Devices, Inc.",
-      "date": "2026-11-06",
-      "price": 449.04,
-      "d1": 11.038579456522978,
-      "d7": -11.045954951749215,
-      "d30": -27.653539046894547,
-      "ytd": 100.93972617892528,
-      "offHigh52w": -30.85522152664586,
-      "volume": 45682000,
-      "volRatioPct": 169.65262948471386,
-      "shortPctFloat": 2.33,
-      "shortRatio": 1.74,
+      "date": "2026-11-13",
+      "price": 534.06,
+      "d1": -8.754483393650691,
+      "d7": 18.933722473677193,
+      "d30": -5.010402128799674,
+      "ytd": 138.98509627300987,
+      "offHigh52w": -17.763541065462096,
+      "volume": 49163200,
+      "volRatioPct": 144.15188662398165,
+      "shortPctFloat": 2.3599999,
+      "shortRatio": 1.91,
       "news": [
         {
-          "title": "Advanced Micro Devices, Inc. (AMD) stock price, news, quote and history - Yahoo Finance Australia",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE5zQU82NDA0LUZ3MzFqYV9TTVRvSV9ZTU12TEhvVGhGVXhiQkdpVXlON1FVQVF3NVh6NTk3U1g4X1piOEtudEEwdjg5d3N0elRJ?oc=5",
-          "pub": "Fri, 06 Nov 2026 21:00:01 GMT",
-          "source": "Yahoo Finance Australia"
+          "title": "Stocks making the biggest moves Friday: Nvidia, Cisco Systems, AMD, Apple, Modine & more - CNBC",
+          "link": "https://news.google.com/rss/articles/CBMihAFBVV95cUxONGpzZlFyYTRrZm9kc1N2dFNQd0tfV2g3YXhpSDBqdlRnREpDcGVxQlpDc0hraVZQc251RjltY3JOTlRaU2p4MHdFZlpsVTNKUUJDX05UX1VseGlBekZROUVZRmFtUU9jQ0duM3pneE5wYVZ2bFA2eFVKam5HWDA2Qks4QzPSAYoBQVVfeXFMTUdRRVhGQ2IxWXE4ZHlzT0o0N05faGJaSFRJM1BOVW5kY2FZbEJ5c05jY2RSY0dmNTVKY2RSWENCdXVmcDNxcEttTjkzemNNUmNxZERDaThrTDZxMm9IeE1PcHR0cUFmMU9KYl9oelZkQlJGWW5BM1FkR3ZEa1RHQ3poTUlBUXlpNk13?oc=5",
+          "pub": "Fri, 13 Nov 2026 18:27:04 GMT",
+          "source": "CNBC"
         },
         {
-          "title": "Why is Advanced Micro Devices stock surging today? - Investing.com",
-          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQNkpabWZYUEI2eUlKcHl1WWtmeWZtanBkWWVwaWpXZzZGandRanRObkVZSjg3bkx0aHlIWWVYT0tncEU3UGRfZ1RKZGpXLVgyYTZfSk9qLVlQd2Z3Um5WTWtRWmNMV1NtY0ZvVUNLQ0lreEtPZHlXczNXOE8zcnByNWdZc2Vzc3dvMmkyWnFCT0pvbGNfaGNkVGxaZjdRUFB2RW5ZR2xKMGxPYkJVREM4Zw?oc=5",
-          "pub": "Fri, 06 Nov 2026 17:16:00 GMT",
-          "source": "Investing.com"
+          "title": "Why Advanced Micro Devices Stock Is Down Today - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOVEFLanBoU3haWmJMX3Y5aVNYcVdjSnI2LTJPYlNFTUFoMGdxQnB0UFpKV2pmalBMd1ZNSS1kZTVBSzBWQXJhY2Y2TjJYbFcydE5LODRqX3BXRWJ3RmstN0YzTFZVS2Y0OWM3OVhwNWtJWWhLRkJmZHdTdFA4Tl8yVU90cEg0YUhMN19KUHlHa05oNWRRUmVTSzVjN1N3Zw?oc=5",
+          "pub": "Fri, 13 Nov 2026 18:45:02 GMT",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Advanced Micro Devices Inc (AMD) Stock Down 17.3% but Still Over - GuruFocus",
-          "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPTW5ETEI2UEhtLVdUOXhRcFZ3TWtyS21vMWVkY0NoWExTZTMwekxlNXA3WlFIWFk3UkppcU54NjZpYnlaWjJ3MUJjY21FUWNHX0hVSW5TOEU3cmJ0WjJPeVBGdGxUY2Q4UnR4R3pBb093MW9SenFxNk5pYjdWaGJrdjFKNnR5UnByd1RMcUV3Y0ZBTWVwMHN1U05VZEp2cTdqMFpkaVQzVDVMemJFSUpvN2tzdU5ZX3Nkam1IZg?oc=5",
-          "pub": "Thu, 05 Nov 2026 23:46:40 GMT",
-          "source": "GuruFocus"
+          "title": "How to Play AMD Stock as Google Picks EPYC for Its Next-Gen TPUs - Barchart.com",
+          "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSHhROUlmYVBZV2NyTXp4YmF3SmUwT1EybVZVcVRrYWdGZGFOaVBrSW9FVmFnY0Q2WkliT0hkV252ZmhGLTQ5aXdFTlZJS08yTEFINlBhZkJvT05pSU16T2FtdV8za2hnR2FMWDN6YzNrbFNQQlh1N3lhYXhENFE3dUZja3BLd1NCWF9DaUZhMk9RWWphMEVDQjBBSk5vbWFucDhKZGlKbnptQU9Y?oc=5",
+          "pub": "Fri, 13 Nov 2026 14:00:04 GMT",
+          "source": "Barchart.com"
         }
       ]
     },
     {
       "ticker": "MU",
       "name": "Micron Technology, Inc.",
-      "date": "2026-11-06",
-      "price": 690.0,
-      "d1": 5.120429104876623,
-      "d7": -22.01098541762385,
-      "d30": -33.37691203929721,
-      "ytd": 118.91593336992594,
-      "offHigh52w": -43.124797565320186,
-      "volume": 44765100,
-      "volRatioPct": 149.01842703254948,
-      "shortPctFloat": 2.0,
-      "shortRatio": 0.85,
+      "date": "2026-11-13",
+      "price": 778.31,
+      "d1": -2.5211668780698027,
+      "d7": 12.79855037081068,
+      "d30": -16.4221891541934,
+      "ytd": 146.9339993720063,
+      "offHigh52w": -35.84559613321714,
+      "volume": 27792200,
+      "volRatioPct": 90.67893584086367,
+      "shortPctFloat": 2.07,
+      "shortRatio": 0.86,
       "news": [
         {
-          "title": "Micron: Why I Added $5,000 Worth Of Shares During The Selloff (Rating Downgrade) - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQRVUwam11U3lCbXRBRlRUQ1JVTHJwZm9NdmZYN0xCWC00azIxNkVoTDZtT2I5RUJmNW1DRlBsbmxOa3ExNEFWTDZ1R0pvRVU4ZkdOblBWOFIzRVVvOEFnWWRidnR3YnpGdXYwb1RjNGgzLV91WUY0bklkYS1PVzhIS093aE9VZlVRWnd5NnB3THozRENSclZVTGNXXzNMSllz?oc=5",
-          "pub": "Sun, 08 Nov 2026 14:30:00 GMT",
+          "title": "Why Micron Stock Was Sliding Today - The Motley Fool",
+          "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQWm51RHk0MnZpTDZrTWFTR0l5RDJyTVBFWFBEQTNoVHZmQUNxLS1lMTlyNzJKajJkd1RHOW1LRVBPaFR5djF1aUJEV0ZxamlhTTZOUUhBSXVEenMzRVN1S05qZ282V3ZYa0xIa0FJVE52c1NNN08xbEUxaFQ2VXZldkN5cw?oc=5",
+          "pub": "Fri, 13 Nov 2026 16:58:00 GMT",
+          "source": "The Motley Fool"
+        },
+        {
+          "title": "Micron Technology climbs 13% as one-month slide reverses (MU:NASDAQ) - Seeking Alpha",
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPSExVYU1oeW91UFFKa2VQNUx1ekRnOGFlVThvR3lGTmtxZnhQSXRsaHl4eG1YV2VGTkdxN0pZOWJmQnl5WTVXWDBaYy1IYjc4cTJ1MDZHVXAtbnZtRF96eXZfSnFVNWVwNl9iYlo1bXBjeV9XcHZmNGotRlJNNEt4al9wSWw0bTFGQXZUMGFfQXprVHhyeFNWM0lEdWJvUUFTRTM0?oc=5",
+          "pub": "Wed, 11 Nov 2026 18:54:28 GMT",
           "source": "Seeking Alpha"
         },
         {
-          "title": "Micron Technology Stock Is Surging Friday: What's Going On? - Micron Technology (NASDAQ:MU) - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQajV3dEFsT2JWRVlVa25XTVk3M1ZqTm5uaGM3aTRib3RyWGVLMEkyWmJTbXVfY01iSUZreFlPVkswbV9mYWowVUJxVjNiVkpubkxnZVR3MzFEOVdObjFWRVp3VGhhN2VYdFlPbmRQb0VLVFVpdEY3SUllT0gtMmFZdHltc1FBSmtoTEhyUUpEellOdjhVOFZXdnN4bTA1RDBNMFk0Z2xxOGRwalNzSEE?oc=5",
-          "pub": "Fri, 06 Nov 2026 12:04:21 GMT",
+          "title": "Micron Shares Gain 1.5% Premarket - Micron Technology (NASDAQ:MU) - Benzinga",
+          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQREhId3o0Tkdvd00wZFpwZ25rQmVidXFieXZwU3Ata0JMTEpJM2w2TTNEVm10ZkFnSmMxZXEzT1AxRG5yUjR5Z0FGWkhzR2tpaDJLXzMyckxVUWpwTWJXRE9wVGFlNjl3bnZud0kxNjYyRTFsRVB6WkxsZzlhVkYySndNQ0Vxa29HeHBnZ2dTbV9CLVMzTTRBbVB0TWlSMzI4RlJBa2pYZHJkdlhXQmhN?oc=5",
+          "pub": "Wed, 11 Nov 2026 08:29:13 GMT",
           "source": "Benzinga"
-        },
-        {
-          "title": "Micron Stock Has Lost Over 40% Since Its June Record. I'd Still Buy It. - The Motley Fool",
-          "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNQkFPWXhXak1JUWpfOHNxa1BNR0diSllLc3B3ZEtNZHYxakxYY0RFakJWRk9lMkY3Yk5sZUYtaEp2c2pCR0dIdlFCWWh3RmhKb2xVZElVeFc5aXlHQkNNS09xQlB6X1JCY3RoYThhQTRTS1ZDdDluQXc0ODB5OGxMOVRPVlJGM2hsRnBOM09MVlBqWHUzQ0lzWDBPWVpSTElPR2NPQ1UyMUlWV3g2ZEV1cQ?oc=5",
-          "pub": "Fri, 06 Nov 2026 05:53:00 GMT",
-          "source": "The Motley Fool"
         }
       ]
     },
     {
       "ticker": "AVGO",
       "name": "Broadcom Inc.",
-      "date": "2026-11-06",
-      "price": 293.69,
-      "d1": 0.7409198611305179,
-      "d7": -9.93314078283094,
-      "d30": -18.451160522081555,
-      "ytd": -15.048438531976949,
-      "offHigh52w": -38.80630753937634,
-      "volume": 32379300,
-      "volRatioPct": 137.46286796947683,
-      "shortPctFloat": 1.1400000000000001,
-      "shortRatio": 2.31,
+      "date": "2026-11-13",
+      "price": 347.01,
+      "d1": -4.761767560506658,
+      "d7": 18.155200000332506,
+      "d30": 0.7783298864088017,
+      "ytd": 0.3746873559480557,
+      "offHigh52w": -27.696470285561713,
+      "volume": 31602000,
+      "volRatioPct": 117.08033256049208,
+      "shortPctFloat": 1.11,
+      "shortRatio": 2.33,
       "news": [
         {
-          "title": "Broadcom Is Still Down 22% in the Past Month: Is AVGO Stock Really on a Road to Recovery? - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPUUFYTmF4dVF1LWZCME9nNmtPYWRPN2tEQlNVSkR4QVc1ek9YYUIzbmNnM25XTkFyNTJLOXkwQWVpT2NfRWlyS0ZkeXVYSmVRMldhT0hGUUZQSFJkUXltczk1WWd0bWk1ZWFGQVB6MURSWVpDN0E4YmRnSU5uc1c2bFo3U0h0Mk93QjhnT2oxX0p2UllPRUpJ?oc=5",
-          "pub": "Fri, 06 Nov 2026 20:03:19 GMT",
+          "title": "Nvidia Turmoil Lifts AMD, Broadcom on Bets for Business Gains - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPRk1PbmFRUG90eDd2Z181b0h4QWRmblNCZHN5bVhsTENzQWpRQkdQWUVkMHlsWXRJZXEyajVheUxHRHg4UU1RLVotbHRjQWlPTXE0TnRpM0gxMnFxYjZMcHR0VVdvSTBvc2xLVHVTeHp3TE5JVzBrdEhGVHFHRTZkaTZmeGZmeGhyTUd0RlFOSlphTXRQbEYyXzln?oc=5",
+          "pub": "Thu, 12 Nov 2026 02:56:00 GMT",
           "source": "Yahoo Finance"
         },
         {
-          "title": "Broadcom And The AI Panic: The Market Has Lost Its Mind (NASDAQ:AVGO) - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNdkhNVFdtRjd0Q29MQ3hRbmdzSkFCaEhveFFCMjFyT3hsLXdva1cyNGx0cE1RSEptZ1ZGVHA1VmZTQm1Yd0lMbTl5dHg2WG9QQlVxSG5zdzZyS0JuVldiUFVfcFVLUDFRUjRCdnJwNHVPQmxfQkVjWjhobzgyOUhCaGlpTUtqd2ZieVlmbnpiV3BBT0NFV01udE4zOA?oc=5",
-          "pub": "Fri, 06 Nov 2026 14:15:53 GMT",
-          "source": "Seeking Alpha"
+          "title": "Why Broadcom Stock Dove Today - The Motley Fool",
+          "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE1pd0JzVG5vMHNWU1djeEhmNGpfNFg0VHkwMTN1RkpzWjkyVkt2SzRhd2pqcWdOYlhGekJIb21majJkeGduYk5nUlVVRlJuM2hoY2F5djFSc2Z3N2t3SWEzM0hhMTR3dUZCZm5rUDQ0RlVHMmxjQU1XeGtmcy0?oc=5",
+          "pub": "Fri, 13 Nov 2026 18:00:00 GMT",
+          "source": "The Motley Fool"
         },
         {
-          "title": "Broadcom Stock Is Surging Friday: What's Going On? - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNRWJuSWtPLWQ1LTdiX1hUbDY1TXM1UXJKRnpOMDhBTldfV1F4dmFjOHVzamdBRnF3RVBLY0ZCeXRsQWtQWlE2NThERWNEV2JIaDlzMldPQVlFYnd0Z2ljUERkSkxKZWdTM2VkcHlJbXU0Y1pFakxWS3NadEw5V3JpUGpwcUJMOWpBMUN5S3luc0QyWEdJWmx0WVFIZGpVei1IV1E?oc=5",
-          "pub": "Fri, 06 Nov 2026 14:17:38 GMT",
-          "source": "Benzinga"
+          "title": "Broadcom Stock Outlook: Is Wall Street Bullish or Bearish? - Barchart.com",
+          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNSU5kYk1BTmktMDFvSDBFTk1LUWpYMWJ4bUlQT2ExZUVlZjVZbFJQUVo0SWZjT3BXUVlMSzQyQU55U1F0ZzRfS2VjWElHRVRTTFBIc0lrNmRBR0FtUUZ5dFhGa1phMzc4azA5OG5NSWRPRllmeDhfOVhrRGtpYUhNZ2dfMTZzakQwYWR3amNDeXZsX3RfM292NEk0aXVXZk0yb2c?oc=5",
+          "pub": "Thu, 12 Nov 2026 11:07:19 GMT",
+          "source": "Barchart.com"
         }
       ]
     },
     {
       "ticker": "TSM",
       "name": "Taiwan Semiconductor Manufactur",
-      "date": "2026-11-06",
-      "price": 375.44,
-      "d1": 6.326818451354366,
-      "d7": -7.556694179801305,
-      "d30": -18.02440873232274,
-      "ytd": 18.391804663046642,
-      "offHigh52w": -22.71716511417331,
-      "volume": 23801300,
-      "volRatioPct": 164.6086115439069,
-      "shortPctFloat": 0.61000003,
-      "shortRatio": 2.79,
+      "date": "2026-11-13",
+      "price": 398.73,
+      "d1": -1.6671137169476324,
+      "d7": 6.203390260353703,
+      "d30": -5.570157256050178,
+      "ytd": 25.73611034257106,
+      "offHigh52w": -17.923009261940713,
+      "volume": 10712000,
+      "volRatioPct": 73.49530362814288,
+      "shortPctFloat": 0.66000004,
+      "shortRatio": 2.78,
       "news": [
         {
           "title": "Taiwan Semiconductor Manufactur (TSM) Stock Forecasts - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQU241b0xoOWFLMWx3UzJKT0FhNjR5RXJGbFY5LWxjVzFoM2Ezdm03U3hfRVh3LThvRzJyVWJjVW5nWG16RkN0a2p3LVJLR0JFTEtLVUpBWTVuWThuNUV2R3RtWnV2aHU1cUFrT25uZXllb1dzc3VVdkxEZF9FTzlGRUw2XzVjX2c5N0JRSw?oc=5",
-          "pub": "Fri, 06 Nov 2026 04:45:20 GMT",
+          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPd3RBYXRLRkYybXlwaHhOSWF0WUtFcnZzZ3pVXzdMeXRYcFU3anlxWjRmaEtoeHFoSWVJUnlSOVFOenREcWJFdm13aGk1R1Y1M3BVZWZqWnp3ZnJybjFFWDQzb1oybnJkdFNBd3FpdUozS21aUVJrcEFKMWw3X0JBUEdVMUpyb2c3a2VUYw?oc=5",
+          "pub": "Wed, 11 Nov 2026 01:24:19 GMT",
           "source": "Yahoo Finance"
         },
         {
-          "title": "Taiwan Semiconductor Manufactur (TSM) Stock forecasts - Yahoo Finance UK",
-          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNLUVoSVNJYVJRX0Y0dTFGaF93TmN6ZjZHMXl1VmdpbjE2ekJzNS0zZU0tdWxtUTB6dWtuSUVRdTdkNEMybHhWTWc3cjVROWhmY29Bb2UwNGxEU21MMmtLWUQ4X2lTX0pxT2tMTVBXX2xKMWtYNGFuRW0tek5lVVJQRTFIblN2MXdoYTZQRkYtRHM?oc=5",
-          "pub": "Sat, 07 Nov 2026 12:37:06 GMT",
+          "title": "TAIWAN SEMICONDUCTOR MANUFACTUR (TSMC.BA) recent insider transactions - Yahoo Finance UK",
+          "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE1VQzdDZklETjN0bEs5WVBiUFFXOTAwT2dnUlZTbXpIUVFKU0JDX2FhZlI2TFJaUVI4TzBwZTQtV1ZiMzdEUFJyLUVIQXB1Y2c5UUlLVnY5RXBzT084ZVJoZkRHV0JOWkwzX0hGOWVmdlJwZw?oc=5",
+          "pub": "Wed, 11 Nov 2026 09:50:40 GMT",
           "source": "Yahoo Finance UK"
         },
         {
-          "title": "Taiwan Semiconductor Manufactur (TSM) Stock forecasts - Yahoo Finance Singapore",
-          "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNVmdDYnBLWndRZWYtUUctNm5LbUZoeFptenppMlVacDZjQXk3Y21lckdlRGFuTWxZVDNDdHpRajJfd3Nzb0QxV3M1U1R5ajVaeXdWNngxc2xJWFpISDNVc2N3eDBtQ3ZUajhLTE9tT3pROVdlNlcyRmxxZlZBeFZscm5VZEFMQS1TNjc0TTlyczBHZw?oc=5",
-          "pub": "Fri, 06 Nov 2026 13:55:54 GMT",
-          "source": "Yahoo Finance Singapore"
+          "title": "Taiwan Semiconductor Manufactur (TSM) Stock forecasts - Yahoo Finance UK",
+          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxPYmxKRUtIc2ZiaE54ZnRyc09uOTVLRVNUaDVDWU5rdDhCUU93SlVRcGZKSFUzXzA4SHFBbmdqLUhyaFZ4ZzlrQUtpSHNuR3A0ZWpEV2J3cnNwSjVFQVcwcUtNNW0tS1QzX1pCVkxjRG5zV1BJX09qMWJHbU5uVVc1MnAzbmNTOWFjOGF4MGluNnM?oc=5",
+          "pub": "Fri, 13 Nov 2026 06:27:24 GMT",
+          "source": "Yahoo Finance UK"
         }
       ]
     },
     {
       "ticker": "AMAT",
       "name": "Applied Materials, Inc.",
-      "date": "2026-11-06",
-      "price": 332.72,
-      "d1": 4.2192642821309745,
-      "d7": -14.706861405257465,
-      "d30": -34.705732983023296,
-      "ytd": 24.188553538568257,
-      "offHigh52w": -53.93142758049348,
-      "volume": 9458100,
-      "volRatioPct": 115.53463681528953,
-      "shortPctFloat": 1.79,
-      "shortRatio": 2.14,
+      "date": "2026-11-13",
+      "price": 370.5,
+      "d1": -2.74314526110373,
+      "d7": 11.354892594580225,
+      "d30": -13.839214998288218,
+      "ytd": 38.290030407635456,
+      "offHigh52w": -48.70039066240209,
+      "volume": 11937400,
+      "volRatioPct": 140.2493080836308,
+      "shortPctFloat": 1.83,
+      "shortRatio": 2.04,
       "news": [
         {
-          "title": "Dear Applied Materials Stock Fans, Mark Your Calendars for November 12 - Barchart.com",
-          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQMk5aU29haXB3azEtanB4aU81VkYzaHllUnMyQy1kcGpWMVI0MmZDcDM2QVM5UF9YVmN5SlVIV3pSRjA5WEVONzZFbWszSUdNbEVCT0ZCQ3lNdnRhZTVEUXh4bGM5eXZCamZOOW00RmpuOHcyN2NkRDcwQVE3ZHUwNlAySzdzZ0FDRFQyYWI1QWJIdmlleDB3RUNQd3N1dnYtT29UVHB3YmtXX0lld0ZpU2xiTQ?oc=5",
-          "pub": "Sun, 08 Nov 2026 19:30:03 GMT",
-          "source": "Barchart.com"
+          "title": "Applied Materials Stock (AMAT) Rises After Topping Q4 Estimates - TipRanks",
+          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPWWJWb2ZWRTdjYVZIWjdnR2dPVVNmN1Nyc0h1TFZWSWh3b01NSEhBd1NwSUl1MjI5a1RkQTV5aGdkcTFyMExZTjB5VWtJdG9SZmxEbnFWaTNjSWxmdFVqUzdqLUNEVzBKdk5QX3RONnIxTGhYV1pneUZZNU5OVXN3aUFoWGV4b0N3Vk1sZFU3Vk1CbTFa?oc=5",
+          "pub": "Thu, 12 Nov 2026 21:09:13 GMT",
+          "source": "TipRanks"
         },
         {
-          "title": "Applied Materials: A Consequential Earnings Preview For The Whole Market (Rating Upgrade) - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPaEdtQ1RLUWdmRjRtU3RtZTJuUldwUWVjVW4tZDNCV2UxR2dLMjNvck1Yd3EzWHd3WmRITS12Y21xVC15Q3dFUVY2MWtWOWVNcDlfXzA0T2JXVjl5MVh0S3g4bk9BdkNXVGFQWnI4Zk1Cb1BqallQeDVrSzNBNEdXZjJzd3JQMGVsTUhMVWo4X1RjVlE3Q0FvNVBodVpqTUhmZkRMS0hZX3RrY3d4Tmo4X01vRQ?oc=5",
-          "pub": "Sat, 07 Nov 2026 22:22:00 GMT",
-          "source": "Seeking Alpha"
+          "title": "Applied Materials Inc (AMAT) (Q4 2026) Earnings Call Highlights: Record $10. ... - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOYzhZTUc3UGpLVmdhZ1Bma2pTZWJINFJqYW5fc05jTXlYLUNiZGc2UzFMWmYzZ2F1US10cFB2bmdnQWlETzFqUkFKNlp6YVBIUHVLR0ZKdDBVQm9DYjBleHV2TVdnUGF0b2tQWDk0cGtzMXdPV0I5dDhOdUExUkFGay11bm9lYjFIVzQtQnctT2J1QWRNSUNBeWVB?oc=5",
+          "pub": "Fri, 13 Nov 2026 05:31:20 GMT",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Applied Materials Inc. stock outperforms competitors on strong trading day - MarketWatch",
-          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxObGN2Rm55S0t2VmE2YjJ0Slc2QUVGeW15NG5hN0ZNU2kyYTVoQm05ZkkzemduOU5sem96blkydHlZQXF5M3d3NHRpdDRSQmNGOU1NY2pXd1FZMXNHZFlCTVhJVlg4ZHAySjhFdE9Cc2s2ZnRZZlozeUtucWkzSjY2WF9KemtabVFpWnlTd3R1SlM2ckdKeVFveWhoeDF3dmlncWhhS3k1S2JMRnRETG5ZcG1aZG9yeHpoQjF6RDZWTEd1WXVSNmFoUTUxXzZXUQ?oc=5",
-          "pub": "Fri, 06 Nov 2026 21:32:00 GMT",
+          "title": "Applied Materials Inc. stock outperforms competitors despite losses on the day - MarketWatch",
+          "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPLWRCMzRMbkZzSnlUbTVNdmVZZG8yUGRCaHRkUGxxMVBQazBkcEgwLXVMaDZCbmNxYmNTUzAwY1dENmxLYXN6ZFFKemZ6VGZ1dzJpUjEzZkxycTNNaVdac1hsQVl5SVp0ZXZqbFFPV0szcGZkU2szdndnbmVHeUxMenoweEVSY1F1UlZoZXRXdVZJUVpyd2RQOEg5d2hrak9tLS1kWWhnSUFOY2haQ2Q1Zm0taTRueGtJbjlvQ3VDOEVWZHdZQm9KdjE4LUpYZWw3b1h3REx6YlZGeXBEY29KZ3ZxdUdHMU5jS0lF?oc=5",
+          "pub": "Fri, 13 Nov 2026 21:32:00 GMT",
           "source": "MarketWatch"
         }
       ]
@@ -249,336 +249,356 @@
     {
       "ticker": "LRCX",
       "name": "Lam Research Corporation",
-      "date": "2026-11-06",
-      "price": 200.44,
-      "d1": 8.228944786334512,
-      "d7": -16.17247211335218,
-      "d30": -37.47777387596663,
-      "ytd": 8.632254528247362,
-      "offHigh52w": -53.69512000213758,
-      "volume": 17947900,
-      "volRatioPct": 138.95133019207722,
-      "shortPctFloat": 2.27,
-      "shortRatio": 3.15,
+      "date": "2026-11-13",
+      "price": 225.92,
+      "d1": -3.362135619553963,
+      "d7": 12.712031239865663,
+      "d30": -18.57564869653553,
+      "ytd": 22.441620660448546,
+      "offHigh52w": -47.808829191227,
+      "volume": 11025600,
+      "volRatioPct": 80.63789365536816,
+      "shortPctFloat": 2.21,
+      "shortRatio": 2.66,
       "news": [
         {
-          "title": "Lam Research Corporation Announces $25 Billion Share Repurchase Authorization and Declares Quarterly Dividend - Lam Research Newsroom",
-          "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxOUms2Mmx3akx6OXk5eVBsT1UyemQ2bG1WbzhwUmVNMjY2SEFqSHZUY084RXdCcDZiN3k2Z0Z4RkNiQ2pYV25Ma1pBekZ6dUlGbEZkb2Q3bzlRVkRlekJFSnlKYnRuN3FtOE5ncVhmM3dhMTZud0pFVThzWkktSV84T04zSlVaOENIcUJ6ckxXYkdfbXd3dkN2STlGRlZqOC0wa3htM2lON3hzWXpwXzY0TWZoblBkZ3VwSE9mR2N6NzlQbGg1UzN0NFRRSWNxRUx4LVZuSVJKSXNtUjZLZDU1Z0ZBbGM0dmc?oc=5",
-          "pub": "Thu, 05 Nov 2026 21:08:57 GMT",
-          "source": "Lam Research Newsroom"
+          "title": "Lam Research (LRCX) Lost About 34% in a Month. Here’s Why Bernstein’s Rasgon Still Likes It - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPUDFLQVMtT05MYnRWWlJCbnh1LS1NX1FIWk1YNnoxUERiYUViRHJYZ2R5XzlneXBrcVNNSDR0NjVUYnBBNUNRaUxHME52YkhyaGlKU3NuM0h0c3dEdkxWYVlINmo0RHRGcmZFUkJWNWVzc3Vud0VCTHl4M1RURzg5UjRKT2lpS2ZFRTN3b0ZEbTRFX2hT?oc=5",
+          "pub": "Thu, 12 Nov 2026 23:15:52 GMT",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Lam Research Corp. stock outperforms competitors despite losses on the day - MarketWatch",
-          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxQMzBfdEVobEFiLVAyVmU3SllBQThPQ2N6cmphemtyNkJ6MHJyaWdLYkREUEg3RktNOTF4QWswaEg1aWc1d3lfMzVuQ1gtRjUxaUx2eDBVQzBGczREeVFvSzNleDM2eGprU3M1bG0ycjY3OUlzcWFDRmZNTW13ay15cTRJQldnajFzRHZDWF8tOE5Yc0lGbVZJUkRkZ2lEYW5IRW05eUFJWWNfSnJIWjl2cWFxR180d2dnRzRpc09BMzNJNHo1UXczOF93bUZ1dw?oc=5",
-          "pub": "Thu, 05 Nov 2026 21:30:00 GMT",
-          "source": "MarketWatch"
-        },
-        {
-          "title": "Why Is Lam Research Stock Soaring Friday? - Lam Research (NASDAQ:LRCX) - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxNdmdFaTE0Q1Y5ZXpMaHdYNnY3U2FfQzlFdDd3V3YxR1lfV3kxQkV5UF91bG45RHJmcjFqWUxwRmtGUmdJWDBHSmc2a1JxTGdOcHIxN0I0MFFTSGs4WjJPWFVfcTZzNC1BM04ySUpDemZZV0FVeTkzVUdFLW1INVNZQWI2eWlFQ3dxcS1ZaEFaUEdNYkZWR3ZaTVJEOEFFY05iQjVORVRGWQ?oc=5",
-          "pub": "Fri, 06 Nov 2026 13:58:56 GMT",
+          "title": "What's Going On With Lam Research Stock Friday? - Benzinga",
+          "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxONnhxVURpbUUteXEwYzFnb0xydDZpXy0wb015YkpDYUd0NzB6ZGhPZXE1Umpnb3RSRXQ5WS1ZbTl3U3oyNExOMXU4RThpaGpQVXEycFJGbkdPaWE1QXVnMlBHclA5ckhxREZWU2Jta0N4RXA3dEdFRk9jR3Bub3F5SEFCckc5OE4yOFpFMVRHWUdHU0psM3hEMFhXbWExR2lrd3c?oc=5",
+          "pub": "Fri, 13 Nov 2026 16:59:54 GMT",
           "source": "Benzinga"
+        },
+        {
+          "title": "Lam Research Corp. stock underperforms Wednesday when compared to competitors despite daily gains - MarketWatch",
+          "link": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxNdHNzZFgtaEJSZWJzbWF1X21PYjB0b19iT2FMeEdSX3BqVWU0cmVucFJaVTJCb1pVN1plenkwM21nZjBONXZOMkszQ1d0TnNBOTVtWGNJckpGeU90N245VkZYWUJsSm84OFRPOU5LVHVYcEhkLWh1SjdjTWhGZUJfN1dKeHgtVTBIZ015dXBXclJOa0N3TEJTUmdrU1hzcktPMlVGQ3h3b1lqS2U0VTFfSktWTVFhaEdjZUdpV1UtYXFkVkdZVDJPZ3ROc2pTdTBsMVUwaXpsWU8tRmhHMkxsdG1CSHV2NWhhRnpRMA?oc=5",
+          "pub": "Wed, 11 Nov 2026 21:30:00 GMT",
+          "source": "MarketWatch"
         }
       ]
     },
     {
       "ticker": "ASML",
       "name": "ASML Holding N.V. - New York Re",
-      "date": "2026-11-06",
-      "price": 1424.75,
-      "d1": 5.019715797030999,
-      "d7": -9.013986985974975,
-      "d30": -19.389897892944262,
-      "ytd": 23.174728877498694,
-      "offHigh52w": -28.19714454576645,
-      "volume": 1903600,
-      "volRatioPct": 111.37405239447136,
-      "shortPctFloat": 0.33999999999999997,
-      "shortRatio": 0.88,
+      "date": "2026-11-13",
+      "price": 1495.16,
+      "d1": -0.13091542053358385,
+      "d7": 4.9419220340191305,
+      "d30": -9.671988477166316,
+      "ytd": 29.26194158578792,
+      "offHigh52w": -24.64870804659588,
+      "volume": 1364400,
+      "volRatioPct": 80.70689373496555,
+      "shortPctFloat": 0.3,
+      "shortRatio": 0.75,
       "news": []
     },
     {
       "ticker": "MRVL",
       "name": "Marvell Technology, Inc.",
-      "date": "2026-11-06",
-      "price": 141.2,
-      "d1": 5.728186987400963,
-      "d7": -28.105905633243655,
-      "d30": -48.57975462134032,
-      "ytd": 58.22586378738394,
-      "offHigh52w": -55.35641506004079,
-      "volume": 33456800,
-      "volRatioPct": 119.00800576718773,
-      "shortPctFloat": 3.2800000000000002,
-      "shortRatio": 1.24,
+      "date": "2026-11-13",
+      "price": 156.76,
+      "d1": -4.676194943212153,
+      "d7": 11.019828537459087,
+      "d30": -35.01907190460663,
+      "ytd": 75.6620826786672,
+      "offHigh52w": -50.436768546682366,
+      "volume": 23688400,
+      "volRatioPct": 79.51091784579572,
+      "shortPctFloat": 3.4799999999999995,
+      "shortRatio": 1.18,
       "news": [
         {
-          "title": "Why Marvell Stock Is Falling Today - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOa3E1NlpCYmtYTkdlb0FubmFmZHkxaElxYS1lSVR4ZlF1WnhlMjA3Z2lCUDBvU0x5YW1tWkZvSk1Sd00tMWZBMF8tTnREOG13Z0FyY2dzOFVVUWtjVlJrQTA4dUUtZUh3V0JjeGFtQjMxWkpwUlM1MkVmdlRnenhXVjZaakdwRHFodm5FS2FrQkRQbXFsdWw2dkFiMmk?oc=5",
-          "pub": "Thu, 05 Nov 2026 20:05:02 GMT",
+          "title": "What's Going On With Marvell Technology Stock Wednesday? - Benzinga",
+          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQc1BFOGNEYzFQQ0NXV1B0OEN0bXpTRDA0b2hMa3hWOE8yR095NENZZEdONHJnalBNeTZlenk3MDQyVExnT19XMTJQODkyd0NGUTV1MjNxTW54Yk5DNmVTN0FhYThVQUdRWm5WMnUzMjdxYXFQMTczWkJMLVAyajZHZ19NdkdJTkFUeGMwcHFSeFl2cE0zdG9JdDlvZWRpS1lreVBCWmxBVDhCUjFqZ1E?oc=5",
+          "pub": "Wed, 11 Nov 2026 15:56:38 GMT",
+          "source": "Benzinga"
+        },
+        {
+          "title": "What Is Going on With Marvell Tech Stock on Friday? - TradingView",
+          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPcW5qZElFX3Yyc3piWTVpNTF0Ti1Tb2plb3dFa2VyYWRIdzdGMnVKSGl6bkcxOENYMTRWSWhxRHpaWWdVU1lTQm1PXzRlUXdRMHNwZTYzQkQxX0R5MFpZTUxKSXljNHhBbU92X1pid3paQ2JSWG5oLVBKelgzbldhWHFvdk4tXzFhU3hXa0NGeWlCZ0xNZW5xV1JPTEVkX0JwYzQxNHVDeEdsWDVWbmc?oc=5",
+          "pub": "Fri, 13 Nov 2026 16:53:11 GMT",
+          "source": "TradingView"
+        },
+        {
+          "title": "Marvell Technology, Inc. (MRVL) is Attracting Investor Attention: Here is What You Should Know - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQQlZURGo0T0RqS09icGlLMFRTNzNKUXM2QVFOVkRBVk1HeUY5c2VnRkYwN2hFRFJ6MkZzR3paR3hzYjNjbk9RbVZiejhrRkV0YTY0NGdYMVJneFVoU0oyOElwbTNtdWhIMEhONTZrZU5JSVByMlR3ZXJxZGpENjd5bWdDNUpOWXlza0VHc0FWM1pPZDFERDZ0djRsdnFrRU9NRWlvUUh3?oc=5",
+          "pub": "Thu, 12 Nov 2026 13:00:04 GMT",
           "source": "Yahoo Finance"
-        },
-        {
-          "title": "Marvell Technology: This Once-Hot AI Stock Now Looks Deeply Undervalued - Morningstar",
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaG1kX0tvX1FhWVNtR2ptc0hhSnh6b1NtdzQ4eUlmd2cyZDQ4V1d5X29IOUtZVmo2Wi0yY0tYMXA0TlhVRDJlbF8tSlFjeTZoVk1zSWFjY1FRenhSYk9WQ3NDSjFYOVhjeDNNdW1WSEhFT3BqUHR5OGxjOG1IOVIxVTNhYkVVV1B4cnVFWjlRcjRGMjRwTTd0VG9VSQ?oc=5",
-          "pub": "Tue, 03 Nov 2026 07:15:52 GMT",
-          "source": "Morningstar"
-        },
-        {
-          "title": "Marvell Technology: Against Sentiment Again - Rerating From Sell To Buy - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQOWdQQzFmbHZKM1ZjZWFUdUtxalgwZjRmQURBZTRYZUhPNkk4ZWhMaHlzeUlGOTU0VXVyRlRGSGg2RHc4SkpLX2lERHBBNWhoSFgzZ21kN3liVHlvZi01X0lwdzRBYTBZV1NmZHpzTjF4MlVkV1lHVmswN2ROdDg1MHR6cjZFV2ZGTTl3ZS1EeVhVSHdrN05CemsxNWdvZnpDVmxvcGl6cFlKeFdUUFE?oc=5",
-          "pub": "Sat, 07 Nov 2026 11:01:00 GMT",
-          "source": "Seeking Alpha"
         }
       ]
     },
     {
       "ticker": "GFS",
       "name": "GlobalFoundries Inc.",
-      "date": "2026-11-06",
-      "price": 38.62,
-      "d1": 6.21561684157339,
-      "d7": -7.828168197006624,
-      "d30": -21.75851204550927,
-      "ytd": 5.160542239445665,
-      "offHigh52w": -56.90007800897793,
-      "volume": 5023700,
-      "volRatioPct": 77.37629241395092,
-      "shortPctFloat": 15.98,
-      "shortRatio": 1.63,
+      "date": "2026-11-13",
+      "price": 41.47,
+      "d1": -2.6982584232804974,
+      "d7": 7.379602194823964,
+      "d30": -14.950773896172798,
+      "ytd": 12.920971922636593,
+      "offHigh52w": -53.71947521976105,
+      "volume": 2780600,
+      "volRatioPct": 50.39309872258018,
+      "shortPctFloat": 14.850000999999999,
+      "shortRatio": 1.39,
       "news": [
         {
-          "title": "To cover taxes, GlobalFoundries (GFS) withholds 11,213 shares from CFO Sam Franklin. - Stock Titan",
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPV2xKczNBVmRjN0ItTHZWeFp2a1FaRE9SWXI0elZVQlRxa0QzdEVSR0pRUTJPdVFoUWZlc1BVc29adFNSTXg0MVFockFWLVpweV8xZERLX3NISEMxLWdWaVpqRi13OGpQLVZNdDVERGFDaWRUdkwtVXRhRnhHaGtYYUZGaF9UZ2ZQVVBmZEl4MldtOHl4VVZrUjk0NlpFcHRVSVFZQ0x3NDRWNUFQZW5DaDhn?oc=5",
-          "pub": "Sat, 07 Nov 2026 01:21:00 GMT",
+          "title": "GlobalFoundries Inc. (GFS) Stock Forecasts - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNUER3ODl6ZVEwcUNMMmhmUkZwSnpwWHRyS3hiUk9iTWFMQU5ESTJ2RFF3VjVxSHBxcm5qMTh4S1otSXNMY3NIWU95d2NWNG1JbVJ0ZWxyR1Y3Z2pMWWdVS1NHa2hHTjhqcl9VbDNUTVdkUXE2VTFkQmp0Q1htbXZuSElCR1dPZFNk?oc=5",
+          "pub": "Mon, 09 Nov 2026 13:43:26 GMT",
+          "source": "Yahoo Finance"
+        },
+        {
+          "title": "After selling 335 shares, GLOBALFOUNDRIES (GFS) legal chief holds 6,784 shares directly. - Stock Titan",
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNUDN3VnZjREs2bHlJTThrTnFqVmtfazZZWUJQNU5hZ09tWTdSZWwwekN5dl9fcThVYVpHRjdKMm8xclRNV0x0M0dxZVE1SGt5cExfbmM5S2RBMkRMbHNVMmN3ZGI2NFBNd3NrUUNvV3F5UFg2d3JFaUtoeTVZRVpNMGtxcUlaQXRHLUZjZUNWZVRGZnBKUFNaajFaeUlqSmMtbGhrLXZOSHpjeGpCd2dxVmpn?oc=5",
+          "pub": "Fri, 13 Nov 2026 22:04:24 GMT",
           "source": "Stock Titan"
+        },
+        {
+          "title": "Is It Too Late to Buy GLOBALFOUNDRIES Inc (GFS) After 5.5% Rally? GF Value Says Undervalued - GuruFocus",
+          "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNWVd6M21uNGJQcXRSNThBZ2NNb0V0ZnRBOXQ1M00ydmo1ckZEU0xta3hSTmJtQjg1M29oTE5MNy1YTW5xMkdtUU5EdE9xd01OUG54ME40YWtYUUY5QzNyRVlVeTRoaGZRamVCbXlyVXV6anZpRTNlSWM2alo2ZE1RVnc3anYtTWQ3U3RpZnRqSVRXaGN3ZzY5S2Zoel95aUZnd0xZeU9fVVFSTmhtVDl0Z2llazhNYkQ1Yks5bVB4a19USW8?oc=5",
+          "pub": "Wed, 11 Nov 2026 23:47:52 GMT",
+          "source": "GuruFocus"
         }
       ]
     },
     {
       "ticker": "AMKR",
       "name": "Amkor Technology, Inc.",
-      "date": "2026-11-06",
-      "price": 32.82,
-      "d1": 7.64184959395493,
-      "d7": -16.911393177660205,
-      "d30": -35.6470594219133,
-      "ytd": -23.158268726695795,
-      "offHigh52w": -64.85259487050772,
-      "volume": 7213300,
-      "volRatioPct": 122.16860765210657,
-      "shortPctFloat": 16.450001,
-      "shortRatio": 2.76,
+      "date": "2026-11-13",
+      "price": 36.11,
+      "d1": -2.7209007289751064,
+      "d7": 10.024378263617661,
+      "d30": -18.024968817772034,
+      "ytd": -15.455355368542333,
+      "offHigh52w": -61.32928603048124,
+      "volume": 2152100,
+      "volRatioPct": 36.474004440402005,
+      "shortPctFloat": 20.719999,
+      "shortRatio": 2.38,
       "news": [
         {
-          "title": "Amkor Technology, Inc. (AMKR) Stock Price, News, Quote & History - Yahoo! Finance Canada",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE94cllHNTFiUjlldTBDdE8yYWJ0WkU4eEJNZnZGTURzc2xqWXVrclM2bHd2NHZFMDZLV19aMVNLMTBIWTFnT1hTRzlVSzh2UlR4Q2c?oc=5",
-          "pub": "Sat, 07 Nov 2026 04:01:18 GMT",
-          "source": "Yahoo! Finance Canada"
+          "title": "Here is What to Know Beyond Why Amkor Technology, Inc. (AMKR) is a Trending Stock - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxPdEd1WEl2bjNmOTFkRTZFLVlGQk1CWHpsTUcyMHBZcGU3cVpFQzUyQWdSUGNWbnotRHQ1d0xBWndpNjd4dnZsVUNVQmtXOFB3Q1hnaWZ6M0hsR2ZpY2FzbjZkeGk2WlBEYVliLVJ4VXZYTTRSRDdrTEhIYUFtYTBab0wxb0c2QmhtYXBpQ1IwWnk4MFNqZ0dhblk1NHhydw?oc=5",
+          "pub": "Fri, 13 Nov 2026 13:00:05 GMT",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "Amkor Technology, Inc. (AMKR) stock price, news, quote and history - Yahoo Finance UK",
-          "link": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5mWEo0V3BiVnBDMlBfS1d2S1lILWF4QW9uSVJOTTFSWXNwUnA0YlRlbkNRc3o1UEFqUjYzQU5VNzVkcWVtT0RRdXN4bmNTMVNrR2c?oc=5",
-          "pub": "Sat, 07 Nov 2026 00:08:55 GMT",
+          "title": "Amkor Technology, Inc. (AMKR23.BK) stock price, news, quote and history - Yahoo Finance UK",
+          "link": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE1KUllKZVZTcGZnekUyQ1pLSkw5UU1vZTZiY1pJQk1MNzNjWTJHYnFQSWhmRERLU0Y1eWMxSm9lVFV4TFA0ODhXWXA4bGxWMVFscHVEd2Q3UzY?oc=5",
+          "pub": "Tue, 10 Nov 2026 02:14:58 GMT",
           "source": "Yahoo Finance UK"
         },
         {
-          "title": "Amkor Technology, Inc. (Coinbase Tokenized Stock) - CryptoRank",
-          "link": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5CUUxFYWlPQmtPS0w2bWNSaWQtRXI5Wl9XZXc4ZDhmVGJoWWdFZzBtZmFHVktMU1BmaE4tby16b0hNUkFpMzdqSFBkc0hENExNNGtrM094QjJtLUphdXdqNXRIUHhWdVdBT002X2wzb2NnM1NJQS1LZm4zRDR5QQ?oc=5",
-          "pub": "Sun, 08 Nov 2026 22:57:01 GMT",
-          "source": "CryptoRank"
+          "title": "Amkor Technology CFO Megan Faust sells $35,000 in common stock By Investing.com - Investing.com Canada",
+          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOenl0dGpCdWdpcjdmUGIxYVVnanlEVUYwMWktU1ROMm1xNEJIenRFb204LUFrV2dwaHl3RFY5Y2h1Q3hpa1pSbERqWTZvT3h5aFkyVDUzb09YM281RloxNGhEYlh2dzU3ellhb3l4MTB1MUFCcEdMX3VyRXdYRDJKX2lac19OeFUtUlBva1FtWVpkWkhNR283dDRsQTdkVlM0MFRlT3dFWkcwT3MwY2ZqV040aHF3NFBTWkEtdWZ3?oc=5",
+          "pub": "Fri, 13 Nov 2026 08:01:51 GMT",
+          "source": "Investing.com Canada"
         }
       ]
     },
     {
       "ticker": "ARM",
       "name": "Arm Holdings plc",
-      "date": "2026-11-06",
-      "price": 174.62,
-      "d1": 4.738479989588296,
-      "d7": -15.220666076475442,
-      "d30": -36.56871310362396,
-      "ytd": 52.20081060568933,
-      "offHigh52w": -60.26487086139278,
-      "volume": 6507700,
-      "volRatioPct": 112.3106230261033,
-      "shortPctFloat": 12.020000999999999,
-      "shortRatio": 3.0,
+      "date": "2026-11-13",
+      "price": 190.53,
+      "d1": -4.630093130703616,
+      "d7": 9.111215271442518,
+      "d30": -22.165936514983244,
+      "ytd": 66.0681541048542,
+      "offHigh52w": -56.644517707188605,
+      "volume": 5491800,
+      "volRatioPct": 95.71327794975642,
+      "shortPctFloat": 10.71,
+      "shortRatio": 3.29,
       "news": [
         {
-          "title": "Arm Holdings plc (ARM) Stock Price, News, Quote & History - Yahoo! Finance Canada",
-          "link": "https://news.google.com/rss/articles/CBMiUEFVX3lxTFAyeER6a21ibHl2VXFmY1cydUhIN0wxd0dvVzd3QkIwS0gxZU9PcHJKN0IxMUY3bWZnaWVPQjJjcjNVQ3F6NzFPQndWWlNtZWUy?oc=5",
-          "pub": "Fri, 06 Nov 2026 22:22:50 GMT",
-          "source": "Yahoo! Finance Canada"
+          "title": "Arm Holdings (NASDAQ: ARM) CEO Considered For Top Industry Leadership Role - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOb1E3Smp2VFM1VEpsVUNpV1FZSUw4eVhFT19qX1NXMzRqQ1poc3hZSkRCeHpPczBBODNyamtKMjJrNXlBaFZEOUFESVdhZWdZd2NCNzNJMkdGUWVkMkQ2T19UbjB2c0FOMHgwX0twLTZZcjFJc3ZqUVZDUTJIR0FjYXl5RTdkSzR3dHA4V20wMnZpU2JpS0VV?oc=5",
+          "pub": "Fri, 13 Nov 2026 20:10:31 GMT",
+          "source": "Yahoo Finance"
         },
         {
-          "title": "ARM Stock Quote Price and Forecast - CNN",
-          "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBiM05XWHp1em9fQ3o1ZUlBbENhRUJqOERhbUxkNE1SSzJZVzE0ZDJuMUhMcXNTa0N0RHk5VXJFYlJSUXhZR1pLaVNhZ3E4bmc?oc=5",
-          "pub": "Fri, 06 Nov 2026 08:02:18 GMT",
-          "source": "CNN"
+          "title": "ARM Stock Gains 4% Since Q2 Earnings: Is it a Buy or Hold Now? - TradingView",
+          "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOV3FKcVc4ZHFGNmZrSVJCNlB2WFZLUGpYb0ttMEh0Si1vODZiN2hCRFEyaXlqbWp2c0d4NVdUdXcyTTV0bVpYa3NLdUdydjZMOHR6dzZNVGJUTkcxV0RuZmtGXzFEenA5c1liNHM0ZDZ5WGszWHVZUFlTdENpR1cwVzlObTZ4eXB3Qk1tbE12RHF3Q3AzaDljbnVtcG1GOGRvRWF0bWdZc2t6Y3BJWEluTVg1eDB2QQ?oc=5",
+          "pub": "Fri, 13 Nov 2026 17:41:00 GMT",
+          "source": "TradingView"
         },
         {
-          "title": "Arm Shares Slip Despite Q2 Double-Beat: Details (CORRECTED) - Benzinga",
-          "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQd0pnSXJWQ3VaQ1k3ZW5OUXRta0VQbVFOdFNaSWtZNEVPWVNHeDRsajVJM3BxQ0lHX2szSkNCeFpkeXV4d294RW9JM3YwdVNCLS1rZnpEZkh2T0N4cFRSc1VpNnJORVlOa0RjUkxVTGNDR1BnQnpyLTNuaUZPMjRCeUZ6akVVWDdGWUVla29RQzU3WlFxTk9nNTg1RzdBTU9oYndYZG9n?oc=5",
-          "pub": "Thu, 05 Nov 2026 13:30:00 GMT",
-          "source": "Benzinga"
+          "title": "Arm Holdings PLC Stock (ARM) Opened Down by 3.25% on Nov 13: Drivers Behind the Movement - TradingKey",
+          "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQUm5Zc28tb2hpbVJVRHF4NXNzUjV4OC1NV00yMzJ5ZnREUWFqN091ZmFHbzdiOGdsak13QmJhclVoZDhHQ3lPY25vd19QOG51WFBZa2VSWnlNTVZnUDNOeFVUM3JlNXBQeHhFWS1rTEVFSHpMTV9aV1hFNEpEQlJZNnRBNUg3UktHZlE?oc=5",
+          "pub": "Fri, 13 Nov 2026 14:47:18 GMT",
+          "source": "TradingKey"
         }
       ]
     },
     {
       "ticker": "SMCI",
       "name": "Super Micro Computer, Inc.",
-      "date": "2026-11-06",
-      "price": 28.76,
-      "d1": 6.203841617093553,
-      "d7": -12.716238048681095,
-      "d30": -32.756605281585216,
-      "ytd": -7.105939666174555,
-      "offHigh52w": -42.674902773498665,
-      "volume": 36999700,
-      "volRatioPct": 89.89636496415224,
-      "shortPctFloat": 13.54,
-      "shortRatio": 2.28,
+      "date": "2026-11-13",
+      "price": 26.87,
+      "d1": -0.4446051608091417,
+      "d7": -6.57162508556044,
+      "d30": -23.425475285295107,
+      "ytd": -13.210589038067866,
+      "offHigh52w": -46.442093243157345,
+      "volume": 45243100,
+      "volRatioPct": 94.37334833869132,
+      "shortPctFloat": 12.68,
+      "shortRatio": 2.15,
       "news": [
         {
-          "title": "Super Micro Computer (SMCI) Makes the List of the Cheapest AI Data Center Stocks - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNS1BVNTlFOElwU0JOaFM5RDBGZjd6Y29IYnpTMjQxSVdmdHg1dndiUzJ4OTQ1aEZhMVpleDRETDQ1QlpvSy1sQjZMZDNvQklsRUoxTkxLN3NSYVI2MW9MRHc3RFR0dEFqRTI3b1ZZOF9MTjVkeHcyYTZIRG5Nb045djVaamF1T0lmRGFhNFVPWExzVDAxcG11WDh1dw?oc=5",
-          "pub": "Fri, 06 Nov 2026 23:33:35 GMT",
+          "title": "Super Micro Stock Falls as DOJ Probes Smuggling Allegations - Barron's",
+          "link": "https://news.google.com/rss/articles/CBMigAFBVV95cUxNUU5xdzdDaDRfaGRad25xQjVXLWtySXQzS2g2azV6LWVLTFpiVEtsald1c2g4ZlFMQzhacG5RZnpVMHJaNEZ3Z0F5azBHMzdfb3RzOEc2ZE4wajZsNE4zNFpVajNDWm5FN0hUdElad0JkTThENGhERmxuRnBSb1R3WA?oc=5",
+          "pub": "Thu, 12 Nov 2026 20:19:00 GMT",
+          "source": "Barron's"
+        },
+        {
+          "title": "Why Super Micro Stock Rebounded After Hours Following an 11% Drop amid DOJ Probe Reports - TipRanks",
+          "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxORjVtdVkya0tzcF9NNDRNcUdtVFhERzUtckVRbjh6QWpORF9aNXk4a0dubVFhaVRMbjA3eTBKajlnUENGS242TlNCNW9QRHVDN3pCN1FfWkZSbWM0SXR1NnR1dEd1MWxIX1Q3emtjVDZ0bXFSZUxWcDZJRGJiVjRXek5mbXhyb1RqZzJTNW0ycXJTNUhOdW1UU2FZeVYtQQ?oc=5",
+          "pub": "Fri, 13 Nov 2026 09:49:46 GMT",
+          "source": "TipRanks"
+        },
+        {
+          "title": "Super Micro stock plunges, analyst sees 140% upside - Yahoo Finance",
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQMHFxdHpiQl9tNkpPTV9wZTlBVUpCRmcxWnZZLWtWdk9NQVZuY0JvLWJJNnk3d2FPUmUwanVpRXFkeHRpM2hNcDhTaUtORW9lcU5jeGxmVUh0TlREalh6aUVkcE9DTnAwTGc0UjhUcVd4aHNVTllnWTRkekdrLXdtQWdMeWdWNGJXRkdzSE9Mdzg0UmtPaThQUlZUV1ZGcUU?oc=5",
+          "pub": "Fri, 13 Nov 2026 17:16:42 GMT",
           "source": "Yahoo Finance"
-        },
-        {
-          "title": "Form 4 Super Micro Computer Inc For: 8 November By Investing.com - Investing.com UK",
-          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPUWdidFlKVG0yN1RyaWV6NW1SNTE2UGJXM2FTbWtVR2VEdHNkT0lPNVM5TmdLMlhrTzJsVjhrWElFdjd3TVgtbEtrRklCX0RUX3JhUzMwREJMV2hFZnA1eGdPSmpxQzZZMzZUVGhCOXBQb3IteV9SMk44MGZDUVFWelY3NjZSWldqT3pXVjYtZXdPQl9FQ1ljSlQxQzFBcl9CT0JrUjZUdlpvcW8?oc=5",
-          "pub": "Mon, 09 Nov 2026 01:46:00 GMT",
-          "source": "Investing.com UK"
-        },
-        {
-          "title": "Super Micro Computer: My Sell Call Worked, Now I'm Buying (Rating Upgrade) - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOMzRoMW84LW8xZE9mcDZsZU0xSnVvem43cC1TaDB4NHY2YTN4NXVrMGhzOC1Wa1Fsa0VDcnRnSXlhZmVlenRXb0xMRnNUNjVpcTdldHNIc1V1bmRkUVFyU3NVYkVJMVhuYzB2N21rTWVJd2I3ZkZ5ZjNqclFVS0xpaDQ1a1hMczBiZEV1ZEh6dGxaR1BmQnVTcndLMUpmdDVYYjJxcHIyNjVBMUVOU1Rr?oc=5",
-          "pub": "Sat, 07 Nov 2026 18:27:00 GMT",
-          "source": "Seeking Alpha"
         }
       ]
     },
     {
       "ticker": "DELL",
       "name": "Dell Technologies Inc.",
-      "date": "2026-11-06",
-      "price": 328.53,
-      "d1": 3.6666545653057936,
-      "d7": -22.57129195591717,
-      "d30": -42.74038724927277,
-      "ytd": 159.77653988531267,
-      "offHigh52w": -44.08819041426154,
-      "volume": 8589100,
-      "volRatioPct": 114.94681901897181,
-      "shortPctFloat": 4.2299999999999995,
-      "shortRatio": 1.59,
+      "date": "2026-11-13",
+      "price": 344.53,
+      "d1": -7.17730788713734,
+      "d7": 4.870179301570765,
+      "d30": -27.119871385110926,
+      "ytd": 172.42813959603893,
+      "offHigh52w": -41.36518503668325,
+      "volume": 9598200,
+      "volRatioPct": 131.22470716298352,
+      "shortPctFloat": 3.5700000000000003,
+      "shortRatio": 1.63,
       "news": [
         {
-          "title": "Dell Technologies Inc. Cl C stock falls Thursday, underperforms market - MarketWatch",
-          "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxOOVEtOHpvdGxFLW1WN2R3c2NUTXBDQWkyRXNqYlp3X2YycnBBYTRwNEo2elNPWl82bTVPeE5Pd0dXUndPWFNRNEs0eVBZWkM1YkxpZ3o1OXlNX0hUWHU0djMtOE5uYVhrOWdJd3dRLVdDcUplOS1rM1VnTkhyUi1zOWo4LXoyZG1nMHpaZmVtN2t2TER4cDM0dmdwOTVSQ2x3eUJWUENTNTZSR05CSVBtUkE4Y3pMVndmdVE5aVlQdnNrRXh3S0hN?oc=5",
-          "pub": "Thu, 05 Nov 2026 21:30:00 GMT",
-          "source": "MarketWatch"
+          "title": "Not Nvidia. Not Micron. This Artificial Intelligence (AI) Stock Will Be 2027’s Biggest Winner After the Latest Tech Sell-Off - The Motley Fool",
+          "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxQRU1IeW81VlhpbzZhNmR3VVFHYUU2WEt3clFPZk5CaDdZWllfMWtfY095ZThtRkhqMlIyVDBtb2lZRFNMeEE2dnp1VVQ1cFFjaFdURVJ1NXZTbkhfM3lDR2JObEtwZEdhc0NPWWFSdFpPd1VobGFnYmhFQnQtQ0xYNG45VmFmNmxtdHg0c2tiU0d0Ti1sVVJkTUl4RS1fYUNSTmJrWHdTd2NaQjlCYzJ5anFwWFF2WkgtYnpUbm1BOVdDLWNMb2ZrRjRpamM1dGVVYWpXU0RrWjMzeDlTQzF5RWNoYWgzMVNCRElZRnBWQzlSZ3AybFE?oc=5",
+          "pub": "Fri, 13 Nov 2026 15:44:00 GMT",
+          "source": "The Motley Fool"
         },
         {
-          "title": "Dell Technologies and HPE Stocks Join the Tech Rebound Today - TipRanks",
-          "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxQOFhfV3NuVjZ5Y3ZnNjIyOGJnZkg5SVRBUU9KSDNxYVc0RTBoRU1SZHRyZEhjRUlYM29hdGttcjV0emhEWjNnOW0tal9XcFhtbW1sRXI1NVUxRzIzaEpjMnd2cEUtMzdBWThoTlp2dWQyZkRLVjBidWw3SlVwZE9WaHNZMkQ0MUN1djZsbnl4dWp2OS1k?oc=5",
-          "pub": "Sat, 07 Nov 2026 00:39:57 GMT",
-          "source": "TipRanks"
-        },
-        {
-          "title": "Dell Technologies drops 15% amid tech sector selloff (DELL:NYSE) - Seeking Alpha",
-          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQUGR4R2t3Tk9JMDdRY1lIZ1JVRmdYbFNHYjFMd1Z1SEY4UU9GT2VfcWstTWFQd2gwNmQ1TzFwRHFBOW95MUd2R1dKSFA5RHJkVDNxU1paZTB6b2YtMHE3VDlsX016T1A3QTlyNktFbkgyZ0wyajJfYktPX1RJeUhDT2h0REM4XzR4TVhabTJ0WHd2Y2M?oc=5",
-          "pub": "Thu, 05 Nov 2026 21:45:54 GMT",
+          "title": "Tech rally takes Dell Technologies higher by 14% (DELL:NYSE) - Seeking Alpha",
+          "link": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOaExkNEdLWlNwMkxqdHNqa1hPdnNVZndONUZEVG5kTnEwbjdYbmNqSVRFVFRVRGY4SlUzN0NyTDFyTUtWZWpYLTZZWFZrMDduZTZFejFkZEtHUEhpcG8xNHhzbF9sUmdHUzVic1I2YXNJaTM1WmJCLW9RMU5ZLTdDaG5sWldhZkZHSElEWER3?oc=5",
+          "pub": "Wed, 11 Nov 2026 18:06:31 GMT",
           "source": "Seeking Alpha"
+        },
+        {
+          "title": "Is Dell Stock Priced Right Against Its Peers? - Trefis",
+          "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPRFBhMzhCemlLREF3NERsWllEUFlpNWt5SWxLem1CSXB1Yzd2aVZFckwzNVczUDlSUjNnVFhtUWdLai1nN2JTVzAtWHQ3NDJ3OWVuUGtNRXpMMFdiVW5hTWJqcGhZTDEzSUxrMHdMZjlEMlpPNERkbURGVjlxcHV6SXVvWmJpVmRzSVpOYmlOSXluNzAwcktxeXloNWtHbmphNmdlVVdWVUU?oc=5",
+          "pub": "Wed, 11 Nov 2026 20:48:29 GMT",
+          "source": "Trefis"
         }
       ]
     },
     {
       "ticker": "VRT",
       "name": "Vertiv Holdings, LLC",
-      "date": "2026-11-06",
-      "price": 182.86,
-      "d1": 3.468570718613617,
-      "d7": -21.350537371891797,
-      "d30": -24.974355304725336,
-      "ytd": 4.2004548195060165,
-      "offHigh52w": -51.37472095241318,
-      "volume": 9625500,
-      "volRatioPct": 114.64335786493403,
-      "shortPctFloat": 3.63,
-      "shortRatio": 2.79,
+      "date": "2026-11-13",
+      "price": 202.07,
+      "d1": -3.6109483340341364,
+      "d7": 10.505308241139598,
+      "d30": -5.904536752401047,
+      "ytd": 15.14702377489896,
+      "offHigh52w": -46.26648550534992,
+      "volume": 5401100,
+      "volRatioPct": 64.1176517142043,
+      "shortPctFloat": 2.8800000999999997,
+      "shortRatio": 1.65,
       "news": [
         {
           "title": "Vertiv Holdings, LLC (VRT) Stock Forecasts - Yahoo Finance",
-          "link": "https://news.google.com/rss/articles/CBMijwFBVV95cUxQRjJJUUFSb2xYVlNycGRSYjl0U28zbFlUSFhsV01pa2VjUUptTE1Tc3JrLXZJa1dRRUlxSXBMOWRLeXNGUjRyRjlsSGF2bGlJWTBCUnFPaUlkLVloNnJ3YWVHVnoyV05CeW1YS3I3ZDVvR0VUN3pJSEpWWWlyYURrUUxORE00V0VvNVROWDIzWQ?oc=5",
-          "pub": "Wed, 04 Nov 2026 23:24:02 GMT",
+          "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNdWtzZHk2QlhaNXIyd3BYV3VqYno5MW5paGZPVkNsalVlRFZBNGhmbVlDNDdXUW5qTlhwT29tUUMyWXBVM01IZVo4MFk3bkN2Z0FuVHdDLWI4ZlBvaTFtWC1sZ2tUUC1FWFhoYzY5eG5sQkpCb0VoZnBfS3lOeW1fOE9tOENMS2xYSjJoSw?oc=5",
+          "pub": "Fri, 13 Nov 2026 02:11:59 GMT",
           "source": "Yahoo Finance"
         },
         {
-          "title": "Vertiv Holdings, LLC (VRT) Stock forecasts - Yahoo Finance UK",
-          "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOM180ZWV0MXV6UlBnLVhzZHdzUndJOGo4d3ZEZWJrbmRNOS0yYTlWZVFKQzlLb3o2LU1zQUV5QS04UDRYd3RrOXlvTkZONElkbXdwOE95TzZnOWgyMDJtWjBMREtnTEdneWxvc0VHWk9tTmpqUEx4ajRsNWxBM0lHOTVYR1FqMENCT2wyWU0xcUc?oc=5",
-          "pub": "Sat, 07 Nov 2026 12:30:44 GMT",
-          "source": "Yahoo Finance UK"
+          "title": "VRT: Vertiv Holdings LLC filed SEC Form 8-K: Regulation FD Disclosure, Financial Statements and Exhibits - Quantisnow",
+          "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxOZFpqWFh6QmNrUTczS2w5dFltUnFteWtjbmlpRDRDZzJYVTRfSk03TFE3NUxuMTFxU2daWXEwTXFDNmZDbzFnblh4dGJNRmstUWtMMV9PQUpUUlNLeGdvalNiQl9CdDlsRnJxa3FSUW94TGFhT0pFOEZfWGh4eWdWMlpMQkZYdHU3eXZwYTNyYjZkS096Uk9OUlJJSjBkZUhFTkhkSEQ1SGVUQQ?oc=5",
+          "pub": "Fri, 13 Nov 2026 11:41:59 GMT",
+          "source": "Quantisnow"
         },
         {
-          "title": "Vertiv Holdings, LLC (VRT) Stock forecasts - Yahoo Finance UK",
-          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPTC14VERMZGNaR24xYmFNQWx1S2dGUU5ELXVaM3RUV0ZmSUVfQ0h1cE5yWmlETFhUb3dkekx5LVU2eVQzNGRYbkFTQjhCSmdJdV9XMWJEZFVXZjdGSGM3N3YyR2NUV2NKR0NLU3hvVTVUSVRWbms0Q3B5ZDhXaDFwc2Q0UzVpXzRNZC1oSGlma0FBQ3M?oc=5",
-          "pub": "Mon, 02 Nov 2026 21:38:22 GMT",
-          "source": "Yahoo Finance UK"
+          "title": "Vertiv Holdings, LLC (VRT) Stock Forecasts - Yahoo! Finance Canada",
+          "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQYjVRVVJJaTZSUTd4aFhEYlgxaGpHS1laRUFlMGNsWmhxTnJkX3A1STZCU3FpNElleHFfX1ZaVTRaUlJXOF9lOVBLVU9vdTYxQnc1a0lwcEF5S2ItRGgwVXZCVTg1aWdQLVU3dWkycC12Y3NRVk5UVXAyYlBqMXozbzczZ3NoUmlhVWh1N0gzcWxJZUk?oc=5",
+          "pub": "Thu, 12 Nov 2026 02:56:09 GMT",
+          "source": "Yahoo! Finance Canada"
         }
       ]
     }
   ],
   "autoNews": [
     {
-      "title": "Samsung Sells Out 2027 HBM as HBM4 Sales Triple [2026] - shattered.io",
-      "link": "https://news.google.com/rss/articles/CBMikgFBVV95cUxOdjBtenp5UGRZalFEbF8wVU54REYyRlFFNUtsZFpEaThEVUJIcV9Ia2QtcjJwUXVYLUpGbEhwX3dJU3JpU2o0TkRDWGlfV2YzZ0FOdk81WHJ0V1NBd2dDdmk0WVh3cUpsRDhVQkNneXhuOWdsU0cyZVZNQWM0bENNVl9wV2dKZjgzN0d6dkZpUVZEQQ?oc=5",
-      "pub": "Tue, 03 Nov 2026 02:12:31 GMT",
-      "source": "shattered.io",
-      "category": "메모리·HBM",
+      "title": "Nvidia Crisis Spurs Scrutiny of Agency That Oversees Chip Curbs - Bloomberg.com",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPamUtcHVhYVBXY1hIdXNVUERHbnRTd1JtNE1FZTJvSGxpZHhOSVBBMWhuTjBJLUtMZzhiQWU4OGNER3hDbEFmTHROQjFnaFZrU3Jma21saFgzTnRRY2VNdEtKQmV4LXZuNllUb2RoejQtcERQYmx6eXBCSk9xYlNEQTJ1Y2tWaTJYd0hsWVYtc1ZkalpzdjFtdmZGZTRfLUxsa1JnYUV2elFTSTgyNDRxMDVIWTg?oc=5",
+      "pub": "Fri, 13 Nov 2026 21:45:38 GMT",
+      "source": "Bloomberg.com",
+      "category": "수출통제·미중",
+      "lang": "영어"
+    },
+    {
+      "title": "US to widen AI chip export controls to seven nations, curb China remote access - Chosunbiz",
+      "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxQMy1RTTlQM1phT2puYkhHSmVJVExldDE2dkhINF9FV3hTVjNreVlDc2JJRm5aS2g3eHp1NklXZi1Lbk1GS21TVU1GamxyREtqb0VUMXV1RTU3dkZ5TVAxMXRXdWNTc195NGZtNjRWeV9kakNvckRLbkdLaXNPWVYycHJXUk5Xa3gw?oc=5",
+      "pub": "Thu, 12 Nov 2026 07:05:00 GMT",
+      "source": "Chosunbiz",
+      "category": "수출통제·미중",
       "lang": "영어"
     }
   ],
-  "summary": "이번 주 반도체 섹터는 AI 밸류에이션 조정 우려로 전반적 위험회피(리스크오프) 장세를 보이며 주요 종목이 7일 기준 7~28% 급락했다. 다만 펀더멘털 측면에서는 HBM4 계약가격이 1주 만에 급등하고 DRAM/NAND 구조적 공급부족이 2030년 이후까지 지속될 것이란 경고가 나오는 등 메모리 사이클 상승 동력은 오히려 강화됐다. 정책 측면에서는 11월 10일 미 Affiliates Rule 재발효와 중국 희토류 통제 유예 만료라는 '이중 절벽'이, 11월 18~19일 APEC 선전 정상회의(트럼프·시진핑 회동 예상)와 맞물려 단기 변동성을 키우고 있다. 리쇼어링 가설의 핵심 종목 INTC는 30일 -47%로 동종업체를 크게 하회하며 가설 검증에 부담을 주고 있다.",
+  "summary": "이번 주 반도체 섹터는 지난 30일 급락 이후 광범위한 반등을 보였다(AMD +18.9%, AVGO +18.2%, MU +12.8% 7D). 젠슨 황 엔비디아 CEO의 사임 스캔들로 NVDA는 7일 -12.7% 하락했고 대만 가권지수는 베어마켓에 진입했으나, 대만 당국의 공매도 규제·150억 달러 안정화 기금과 TSMC의 10월 사상 최대 매출(전년비 +59.7%)이 시장에 바닥을 제공했다. HBM·DRAM 구조적 공급부족이 2028년까지 지속될 전망으로 메모리 사이클은 강세이며, 다음 주 트럼프-시진핑 APEC 회담을 앞두고 미·중 수출통제 긴장이 재점화됐다.",
   "scenarioProbs": {
     "Base": 45,
-    "Bull": 15,
-    "Bear": 30,
+    "Bull": 22,
+    "Bear": 23,
     "BlackSwan": 10
   },
   "hypothesis": [
     {
       "dir": "up",
-      "w": "중",
-      "txt": "11/10 미 Affiliates Rule 재발효로 대중 장비·기술 통제 유지",
-      "tag": "실제",
-      "note": "연방관보 규정상 유예가 11/9 종료되고 11/10 재적용 예정 — 리쇼어링·디커플링 압박의 제도적 지속",
-      "isNew": true
-    },
-    {
-      "dir": "down",
-      "w": "중",
-      "txt": "수출통제 완화 기조: H200 대중 수출 허용(+25% 관세)·무역협상 우선",
-      "tag": "실제",
-      "note": "2026년 상무부는 신규 통제 자제, 백악관이 대중 안정적 협상을 우선 — '강경 디커플링을 통한 제조패권 회복' 서사와 상충",
-      "isNew": true
-    },
-    {
-      "dir": "down",
-      "w": "중",
-      "txt": "11/10 중국 희토류 2차 통제(홀뮴·에르븀 등) 발효 임박 — 미 공급망 취약성 노출",
-      "tag": "실제",
-      "note": "핵심광물 레버리지는 중국이 쥐고 있어 미국 제조 리쇼어링의 상류 병목으로 작용",
-      "isNew": true
-    },
-    {
-      "dir": "down",
       "w": "강",
-      "txt": "리쇼어링 핵심 베팅 INTC 30일 -47%로 동종업체 크게 하회",
+      "txt": "인텔, 테슬라를 14A 파운드리 고객으로 확보하고 18A 생산량이 내부 목표 초과",
+      "tag": "실제",
+      "note": "리쇼어링 가설 핵심인 INTC 파운드리의 외부 고객·수율 진전. 다만 분기 약 25억 달러 파운드리 적자는 지속",
+      "isNew": true
+    },
+    {
+      "dir": "up",
+      "w": "중",
+      "txt": "TSMC, 美·日·獨·中서 1~9월 사상 최대 51억 달러 보조금 수령, 텍사스 셔먼 제2 제조허브 검토",
+      "tag": "실제",
+      "note": "미국 리쇼어링 인센티브가 실제 자본으로 유입 중이나 대만 외 분산 성격",
+      "isNew": true
+    },
+    {
+      "dir": "down",
+      "w": "중",
+      "txt": "TSMC, 1nm 공정을 대만 타이난에 배치하고 13개 선단·패키징 팹을 대만 내 건설 계획",
+      "tag": "실제",
+      "note": "최선단 기술·'실리콘 실드'는 대만에 잔류 — 제조 패권 회복은 선단 노드에서 여전히 제한적",
+      "isNew": true
+    },
+    {
+      "dir": "down",
+      "w": "약",
+      "txt": "中, 수출통제 추가 시 희토류 수출 제한 보복 시사 (분석가 전망)",
       "tag": "추정",
-      "note": "주가 급락폭은 실제 데이터, 인텔 특유의 파운드리 실행 우려가 반영된 것으로 추정 — 가설의 핵심 축이 시장에서 신뢰받지 못하는 신호",
+      "note": "핵심광물 축에서 미국 공급망 리쇼어링의 병목 리스크",
       "isNew": true
     }
   ],
@@ -586,57 +606,56 @@
     {
       "name": "HBM/메모리 가격",
       "status": "green",
-      "summary": "HBM4 계약가격이 1주 만에 약 117% 급등했고 DRAM은 171%까지 상승, SK하이닉스·삼성·엔비디아가 2027년 물량까지 선계약하며 공급부족이 2030년 이후까지 지속될 것으로 경고됐다. 메모리 상승 사이클은 이번 주 가장 강한 동력.",
+      "summary": "DRAM 계약가가 2026년 분기마다 두 자릿수~90%대 급등했고, Goldman·TrendForce는 공급부족이 2028년 상반기까지 지속되며 HBM 블렌디드 가격이 2027년 +122% 상승할 것으로 전망. 공급사 재고가 10일 미만으로 역대 최저.",
       "tag": "실제"
     },
     {
       "name": "WFE/장비 수주",
       "status": "amber",
-      "summary": "메모리 증설 수요는 장비 수주에 긍정적이나, 이번 주 AMAT·LRCX가 30일 기준 -35%/-38%로 급락하며 조정 국면 진입. 신규 수주 모멘텀 자체의 둔화 신호인지 밸류에이션 조정인지 혼재.",
+      "summary": "AMAT·LRCX·ASML 주가가 이번 주 반등(+11.4%/+12.7%/+4.9%)했으나, 메모리 증설의 구조적 병목은 클린룸 공간 부족과 긴 장비 리드타임으로 2028년 전 의미있는 공급 확대가 어렵다는 분석.",
       "tag": "추정"
     },
     {
       "name": "AI capex",
       "status": "green",
-      "summary": "2026년 하이퍼스케일러 설비투자가 약 6,000억 달러(전년比 +36%)에 근접하며 AI 인프라 투자 사이클은 견조. 다만 주가 조정은 'capex 지속성'에 대한 시장 의구심을 반영.",
+      "summary": "빅4 하이퍼스케일러 2026년 capex 가이던스가 약 7,300~8,000억 달러로 상향됐고 Q3 합산은 2,019억 달러(전년비 +107.6%). 2027년 1.1~1.3조 달러로 가속 전망.",
       "tag": "실제"
     }
   ],
   "customChipSignal": {
     "name": "자체칩(ASIC) 동향",
-    "status": "amber",
-    "summary": "하이퍼스케일러 자체칩(TPU·Trainium·MTIA) 투자는 구조적으로 확대되나, 대표 설계 파트너 MRVL이 이번 주 7일 -28%·30일 -49%로 섹터 내 최악의 낙폭을 기록하며 ASIC 모멘텀에 대한 단기 신뢰가 흔들렸다. AVGO도 7일 -9.9%로 동반 약세.",
-    "tag": "추정"
+    "status": "green",
+    "summary": "브로드컴(AVGO)이 이번 주 +18.2%로 강세. AWS는 18A에 커스텀 ASIC, MS는 Maia 2를 인텔 18A에서 생산 계획 등 하이퍼스케일러 자체칩 설계가 선단 파운드리 수요로 확산 중. GPU 독점 완화·ASIC 침투 지속.",
+    "tag": "실제"
   },
   "intelScenario": {
-    "current": "Bear",
-    "rationale": "INTC는 30일 -47%, 7일 -14%로 동종 리쇼어링·장비주를 크게 하회하며 시장이 인텔의 파운드리 실행력과 외부 고객 확보에 강한 의구심을 반영하고 있다. 리쇼어링 가설의 핵심 베팅임에도 주가가 구조적으로 붕괴 중이라 현재 판단은 Bear에 가깝다. 다만 메모리·AI capex 호조라는 사이클 상방이 공존해 Breakup(분할)까지는 아닌 것으로 본다.",
-    "keyTrigger": "18A 수율·대형 외부 파운드리 고객 확정 또는 미 정부·전략적 투자자 지분 관련 추가 발표"
+    "current": "Base",
+    "rationale": "18A가 2026년 1월부터 양산 중이고 수율이 개선(약 60→85% 보고)됐으며 테슬라(14A)·AWS·MS 등 외부 수주 신호가 쌓이고 있어 하방 'Breakup' 시나리오는 후퇴. 다만 외부 고객의 18A-P/14A 대량 물량 확약은 아직 미검증이고 분기 약 25억 달러 파운드리 적자가 지속돼 Bull 전환엔 이르다.",
+    "keyTrigger": "외부 고객의 18A-P/14A 양산 물량 확약 공시 및 D-Series·Xeon 6+ 랙 배치 진척 여부"
   },
   "topNews": [
     {
-      "headline": "HBM4 계약가 1주 만에 117% 급등…메모리 공급부족 2030년 이후까지 지속 경고",
-      "summary": "AMD·엔비디아·삼성·SK하이닉스가 AI 칩용 메모리 확보 경쟁을 벌이며 HBM4 가격이 급등했고, DRAM은 171%까지 올랐다. 삼성은 2027년 HBM 물량이 매진됐고 엔비디아는 2027~2028년 용량의 절반 이상을 장기계약으로 선점했다.",
-      "implication": "메모리 상승 사이클은 MU·SK하이닉스·삼성에 강한 실적 상방이나, 일반 서버·PC 원가 상승은 CPU 교체 수요에 역풍.",
+      "headline": "젠슨 황 엔비디아 CEO 사임 스캔들 — 미·중 수출통제 긴장 재점화, 다음 주 트럼프-시진핑 APEC 회담",
+      "summary": "황의 사임(스파이·스캔들 의혹) 이후 미 의회에서 대중 칩 수출통제 강화론이 확산됐다. 중국은 추가 통제에 반대하며 희토류 보복 가능성을 시사했고, 미 정부는 수출통제가 협상 대상이 아니라고 선을 그었다. NVDA는 7일 -12.7%.",
+      "implication": "지정학 변동성이 NVDA 중심 리스크프리미엄을 키우는 반면 리쇼어링·수출통제 강화는 INTC·GFS 등 미국 생산 비중 종목에 상대적 호재.",
       "tag": "실제"
     },
     {
-      "headline": "11/10 '수출통제 이중 절벽'…미 Affiliates Rule 재발효·중국 희토류 통제 유예 만료",
-      "summary": "미국의 Affiliates Rule 유예가 11월 9일 종료되고 11월 10일 재적용되는 동시에, 중국의 홀뮴·에르븀 등 5개 희토류 2차 통제 유예도 11월 10일 만료 예정이다. 11월 18~19일 APEC 선전 정상회의에서 트럼프·시진핑 회동이 예상되나 확정되지는 않았다.",
-      "implication": "정책 분수령 직전으로 지정학 변동성 확대 — 장비(AMAT/LRCX/ASML)와 핵심광물 노출 종목에 양방향 리스크.",
+      "headline": "대만 반도체 급락·베어마켓 진입 후 정책 지원으로 반등, TSMC 10월 사상 최대 매출",
+      "summary": "대만 가권지수가 금요일 최대 9% 급락하며 2001년 이후 최악의 주간을 기록, TSM 미국주는 목요일 -10.78% 하락했다. 대만 금융당국이 공매도를 제한하고 150억 달러 기금을 준비하자 TSMC는 약 7% 반등했다. TSMC 10월 매출은 전년비 +59.7%로 사상 최대.",
+      "implication": "AI 수요 자체는 견조하나 밸류에이션 변동성 확대 국면 — 실적 펀더멘털(TSM·메모리) 대비 심리 괴리 매수 기회 관찰.",
       "tag": "실제"
     },
     {
-      "headline": "AI 밸류에이션 조정 속 반도체 전면 매도…주요 종목 7일 7~28% 급락",
-      "summary": "엔비디아 -8.8%, MU -22%, MRVL -28%, DELL -22.6%, VRT -21.4% 등 AI 밸류체인 전반이 급락했다. 메모리 공급부족·capex 호조 등 펀더멘털 호재에도 불구하고 'AI 과잉투자·거품' 우려가 리스크오프를 촉발했다.",
-      "implication": "펀더멘털과 주가의 괴리 확대 — 사이클 하방 전환 신호인지, 과열 해소 조정인지가 향후 수주·가이던스로 판가름.",
+      "headline": "메모리 슈퍼사이클 — DRAM 공급부족 2028년까지, HBM 가격 2027년 +122% 전망",
+      "summary": "삼성·SK하이닉스 완제품 재고가 10일 미만으로 역대 최저를 기록했고, HBM4 전환으로 일반 DRAM 웨이퍼가 잠식되며 DDR5·DDR4 가격이 급등했다. Goldman·TrendForce는 공급 타이트가 2028년 상반기까지 이어질 것으로 봤다. MU는 7일 +12.8%.",
+      "implication": "MU·메모리 공급사 이익 상향 지속 전망이나, 메모리 원가 상승은 DELL·SMCI 등 서버·PC OEM 마진 압박 요인.",
       "tag": "실제"
     }
   ],
-  "qualUpdatedAt": "2026-11-09 05:30",
+  "qualUpdatedAt": "2026-11-14 10:29",
   "aiCpu": {
     "dates": [
-      "2026-05-04",
       "2026-05-11",
       "2026-05-18",
       "2026-05-25",
@@ -662,68 +681,68 @@
       "2026-10-12",
       "2026-10-19",
       "2026-10-26",
-      "2026-11-02"
+      "2026-11-02",
+      "2026-11-09"
     ],
     "gpuIdx": [
       100.0,
-      102.52,
-      103.92,
-      107.5,
-      113.33,
-      116.24,
-      125.41,
-      110.47,
-      106.26,
-      109.98,
-      97.22,
-      99.79,
-      98.11,
-      110.81,
-      108.94,
-      108.36,
-      104.82,
-      107.32,
-      108.27,
-      110.14,
-      113.72,
-      117.31,
-      117.68,
-      103.47,
-      102.57,
-      95.63,
-      79.5
+      101.32,
+      104.89,
+      110.27,
+      113.05,
+      121.98,
+      107.45,
+      103.38,
+      107.1,
+      94.72,
+      97.23,
+      95.65,
+      107.98,
+      106.05,
+      105.41,
+      102.01,
+      104.36,
+      105.29,
+      107.08,
+      110.5,
+      113.95,
+      114.33,
+      100.56,
+      99.67,
+      93.02,
+      77.4,
+      81.0
     ],
     "cpuIdx": [
       100.0,
-      92.77,
-      114.12,
-      123.61,
-      114.21,
-      130.22,
-      143.79,
-      124.68,
-      119.31,
-      120.71,
-      103.43,
-      103.5,
-      96.4,
-      106.68,
-      108.69,
-      96.72,
-      95.33,
-      99.94,
-      106.65,
-      113.05,
-      127.5,
-      126.32,
-      114.09,
-      98.3,
-      93.92,
-      86.71,
-      75.19
+      122.32,
+      132.01,
+      121.7,
+      139.07,
+      153.33,
+      133.59,
+      127.83,
+      129.05,
+      110.67,
+      110.75,
+      103.27,
+      114.17,
+      116.38,
+      103.58,
+      102.11,
+      107.07,
+      114.31,
+      121.21,
+      136.72,
+      135.4,
+      122.32,
+      105.4,
+      100.79,
+      92.65,
+      80.37,
+      90.62
     ],
     "amdIntcRatio": [
-      3.644,
       3.899,
       3.901,
       4.5,
@@ -749,7 +768,8 @@
       5.885,
       5.943,
       7.676,
-      7.979
+      7.979,
+      8.952
     ],
     "gpuBasket": [
       "NVDA",
@@ -766,30 +786,30 @@
     "signals": [
       {
         "name": "서버 CPU 점유율 (AMD vs Intel vs ARM)",
-        "status": "amber",
-        "summary": "AMD EPYC의 데이터센터 매출 점유율 상승 추세와 ARM 기반(Graviton·Grace 등) 침투 확대로 Intel 점유율 압박이 지속되는 것으로 추정된다. 이번 주 Mercury Research 등 신규 공식 수치는 확인되지 않아 추정 기반.",
-        "tag": "추정"
+        "status": "green",
+        "summary": "Mercury Research 기준 Q2 2026 서버 CPU 출하량이 전년비 +20%로 AI가 시장을 떠받쳤다. AMD는 서버 점유율 34.5%(x86 매출 46.4%)로 신고점, ARM 서버는 13.6% 기록적 수준. 다만 성장 가치는 AMD·ARM으로 쏠리고 Intel은 점유율 잠식.",
+        "tag": "실제"
       },
       {
         "name": "AI 서버 호스트 CPU attach",
-        "status": "amber",
-        "summary": "GB200/GB300급 플랫폼은 ARM(Grace)을 호스트로 채택하고 x86 AI 서버는 EPYC/Xeon을 탑재해 GPU당 호스트 CPU attach는 유지되나, GPU 대비 CPU 금액 비중이 희석되는 구조로 추정된다.",
-        "tag": "추정"
+        "status": "green",
+        "summary": "엔비디아 Grace CPU가 Blackwell NVL72 랙에 탑재되며 ARM 서버 출하가 1년 새 거의 2배로 급증. AI 랙이 호스트 CPU 수요를 실제로 견인 중이나 수혜는 ARM(Grace)에 집중.",
+        "tag": "실제"
       },
       {
         "name": "CPU 기반 AI 추론 확산",
-        "status": "red",
-        "summary": "소형모델·온프레미스 CPU 추론이 틈새 수요를 만들지만 대규모 AI 투자·추론은 GPU·ASIC에 집중돼 CPU 독자 수요 동력으로 보기 어렵다. 이번 주 가시적 반전 신호 부재.",
+        "status": "amber",
+        "summary": "소형모델·온프레미스 CPU 추론 수요는 일부 관찰되나 AI 가치의 대부분이 여전히 GPU·HBM에 집중돼 CPU 추론이 독립적 수요 동력이라는 명확한 증거는 제한적.",
         "tag": "추정"
       },
       {
         "name": "일반 서버 교체 사이클",
         "status": "amber",
-        "summary": "코로나기 도입 서버의 노후 교체 수요는 잠재하나, 메모리 가격 급등(DRAM 171%·AI 서버 DRAM 원가 2배)이 일반 서버 BOM 원가를 끌어올려 교체 지연 압력으로 작용할 수 있다.",
-        "tag": "추정"
+        "summary": "서버 출하는 +20%로 회복세이나 데스크톱 CPU는 -20% 급감, DRAM 가격 급등이 일반 서버·PC 교체 수요의 원가 역풍으로 작용해 회복이 혼재.",
+        "tag": "실제"
       }
     ],
-    "verdict": "amber — GPU 중심 AI 투자 속 호스트 CPU attach로 일부 파급은 있으나, CPU 독자 수요 동력은 제한적이고 메모리 원가 급등이 일반 서버 교체에 역풍으로 작용(혼재)."
+    "verdict": "amber — AI 발달이 호스트 CPU(특히 ARM Grace)와 서버 전반 출하 증가로 파급되고 있으나, 가치 증가는 GPU·HBM·ASIC에 쏠리고 CPU 추론·일반 서버 교체는 메모리 원가 역풍 속 혼재 상태."
   },
   "history": [
     {
@@ -1491,6 +1511,45 @@
         "amber",
         "amber",
         "red",
+        "amber"
+      ]
+    },
+    {
+      "date": "2026-11-14",
+      "prices": {
+        "NVDA": 162.85,
+        "INTC": 59.66,
+        "AMD": 534.06,
+        "MU": 778.31,
+        "AVGO": 347.01,
+        "TSM": 398.73,
+        "AMAT": 370.5,
+        "LRCX": 225.92,
+        "ASML": 1495.16,
+        "MRVL": 156.76,
+        "GFS": 41.47,
+        "AMKR": 36.11,
+        "ARM": 190.53,
+        "SMCI": 26.87,
+        "DELL": 344.53,
+        "VRT": 202.07
+      },
+      "scenarioProbs": {
+        "Base": 45,
+        "Bull": 22,
+        "Bear": 23,
+        "BlackSwan": 10
+      },
+      "amdIntcRatio": 8.952,
+      "cycleStatuses": [
+        "green",
+        "amber",
+        "green"
+      ],
+      "aiCpuStatuses": [
+        "green",
+        "green",
+        "amber",
         "amber"
       ]
     }
