@@ -3,6 +3,7 @@ semi_news.py — 반도체 뉴스 헤드라인 수집 (Step A-2)
 용도: run_semi.py에서 호출 → 헤드라인 반환 → build_semi.py로 전달
 설계: crypto-dashboard/crypto_news.py와 동일 (Google News RSS, 무료·키 불필요)
 """
+import time
 import requests
 import urllib.parse
 import datetime
@@ -69,7 +70,16 @@ def fetch_macro_news(keywords=KEYWORDS, langs=LANGS):
     for category, words in keywords.items():
         query = " OR ".join(words)
         for lang_name, lang_cfg in langs.items():
-            for art in _fetch_one(query, lang_cfg):
+            try:
+                arts = _fetch_one(query, lang_cfg)
+            except Exception:
+                time.sleep(5)  # 429 등 일시 오류 → 1회 재시도
+                try:
+                    arts = _fetch_one(query, lang_cfg)
+                except Exception as e:
+                    print(f"[경고] 뉴스 수집 실패 (무시): {category}/{lang_name} — {e}")
+                    continue
+            for art in arts:
                 if art["link"] in seen:
                     continue
                 seen.add(art["link"])
